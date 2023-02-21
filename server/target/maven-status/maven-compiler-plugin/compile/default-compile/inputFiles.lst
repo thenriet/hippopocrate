@@ -1,1 +1,11 @@
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/model/Service.java
 /Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/HippopocrateApplication.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/repository/PatientRepository.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/repository/RoomRepository.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/repository/BedRepository.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/repository/ServiceRepository.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/service/PatientServiceImpl.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/model/Bed.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/model/Room.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/service/PatientService.java
+/Users/tom/projects/simplon/hippopocrate/server/src/main/java/co/simplon/hippopocrate/model/Patient.java

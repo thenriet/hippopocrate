@@ -24,13 +24,19 @@ public class Patient {
 		
 	}
 	
-	public Patient(int id, String firstname, String lastname, Date birthdate, int bed_id, String address) {
+	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
 		this.bed_id = bed_id;
 		this.address = address;
+	}
+	
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate
+				+ ", bed_id=" + bed_id + ", address=" + address + "]";
 	}
 
 	public long getId() {

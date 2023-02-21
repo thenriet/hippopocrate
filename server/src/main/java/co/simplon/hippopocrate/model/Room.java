@@ -20,8 +20,8 @@ public class Room {
 		
 	}
 	
-	public Room(int id, int number, int service_id) {
-		this.id = id;
+	public Room(int number, int service_id) {
+		super();
 		this.number = number;
 		this.service_id = service_id;
 	}

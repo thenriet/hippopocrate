@@ -19,8 +19,8 @@ public class Bed {
 		
 	}
 	
-	public Bed(int id, int number, int room_id, boolean occupied) {
-		this.id = id;
+	public Bed(int number, int room_id, boolean occupied) {
+		super();
 		this.number = number;
 		this.room_id = room_id;
 		this.occupied = occupied;

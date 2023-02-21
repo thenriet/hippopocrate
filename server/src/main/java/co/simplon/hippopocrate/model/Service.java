@@ -22,9 +22,8 @@ public class Service {
 		
 	}
 	
-	public Service(int id, String name, Date date_in, Date date_out) {
+	public Service(String name, Date date_in, Date date_out) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.date_in = date_in;
 		this.date_out = date_out;
