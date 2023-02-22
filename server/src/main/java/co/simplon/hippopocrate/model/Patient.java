@@ -1,6 +1,7 @@
 package co.simplon.hippopocrate.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,18 +20,22 @@ public class Patient {
 	private Date birthdate;
 	private int bed_id;
 	private String address;
+	private LocalDate date_in;
+	private LocalDate date_out;
 	
 	public Patient() {
 		
 	}
 	
-	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address) {
+	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate date_in,  LocalDate date_out) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
 		this.bed_id = bed_id;
 		this.address = address;
+		this.date_in = date_in;
+		this.date_out = date_out;
 	}
 	
 	@Override
@@ -85,6 +90,22 @@ public class Patient {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public LocalDate getDate_in() {
+		return date_in;
+	}
+
+	public void setDate_in(LocalDate date_in) {
+		this.date_in = date_in;
+	}
+
+	public LocalDate getDate_out() {
+		return date_out;
+	}
+
+	public void setDate_out(LocalDate date_out) {
+		this.date_out = date_out;
 	}
 	
 	
