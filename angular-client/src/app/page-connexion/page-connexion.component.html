@@ -9,5 +9,6 @@
   <label>Mot de passe:</label>
   <input type="password" name="password" formControlName="password">
   <button type="submit" class="button">Se connecter</button>
+  <p *ngIf="error">Le mot de passe ou l'identifiant est incorrecte!</p>
 </form>
 </body>

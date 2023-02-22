@@ -11,6 +11,7 @@ import { identifiantModel } from 'src/Models/identifiant-models';
 export class PageConnexionComponent {
   contactForm: FormGroup;
   remplissageForm= new identifiantModel;
+  error= false; 
   
 
   constructor(private fb: FormBuilder) { 
@@ -26,5 +27,14 @@ export class PageConnexionComponent {
     this.remplissageForm.id = data.id;
     this.remplissageForm.password = data.password;
     console.log(this.remplissageForm);
+    try {
+      this.contactForm.value
+      
+    }
+    catch (error){
+     console.log(error);
+     this.error= true;
+    }
   }
+
 }
