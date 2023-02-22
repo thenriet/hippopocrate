@@ -29,6 +29,8 @@ public class SecurityConfig {
 		http.csrf().disable()
 				.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/register/**").permitAll()
 						.requestMatchers("/api/login").permitAll()
+						.requestMatchers("/api/patients").permitAll()
+						.requestMatchers("/api/patients").permitAll()
 						.requestMatchers("/api/users").permitAll());
 //						.requestMatchers("/addClient").hasRole("ADMIN")
 //						.requestMatchers("/formUpdateClient/{id}").hasRole("ADMIN")

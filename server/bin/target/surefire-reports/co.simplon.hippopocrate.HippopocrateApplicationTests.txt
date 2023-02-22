@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+-------------------------------------------------------------------------------
+Test set: co.simplon.hippopocrate.HippopocrateApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.861 s - in co.simplon.hippopocrate.HippopocrateApplicationTests
+=======
+-------------------------------------------------------------------------------
+Test set: co.simplon.hippopocrate.HippopocrateApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.674 s - in co.simplon.hippopocrate.HippopocrateApplicationTests
+>>>>>>> da76cfad6ac5851c6d940cd9cfba5637f738912c
