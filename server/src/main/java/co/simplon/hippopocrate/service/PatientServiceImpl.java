@@ -28,6 +28,10 @@ public class PatientServiceImpl implements PatientService {
 		return pr.findAll();
 	}
 	
+	public Patient findPatientById(long patientId) {
+		return pr.findById(patientId).get();
+	}
+	
 
 	@Override
 	public Patient updatePatient(Patient patient, long patientId) {
