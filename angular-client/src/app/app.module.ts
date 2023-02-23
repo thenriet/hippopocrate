@@ -9,6 +9,9 @@ import { UserServiceService } from './service/user-service.service';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { HomeComponent } from './home/home.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientService } from './service/patient-service.service';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { AddpatientComponent } from './addpatient/addpatient.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { PatientListComponent } from './patient-list/patient-list.component';
     UserListComponent,
     FormLoginComponent,
     HomeComponent,
-    PatientListComponent
+    PatientListComponent,
+    PatientDetailsComponent,
+    AddpatientComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,7 @@ import { PatientListComponent } from './patient-list/patient-list.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [UserServiceService],
+  providers: [UserServiceService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

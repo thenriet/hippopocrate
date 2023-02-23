@@ -27,9 +27,12 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable()
-				.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/register/**").permitAll()
-						.requestMatchers("/login").permitAll()
-						.requestMatchers("/users").permitAll());
+		.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/register/**").permitAll()
+				.requestMatchers("/api/login").permitAll()
+				.requestMatchers("/api/patients").permitAll()
+				.requestMatchers("/api/patients/{id}").permitAll()
+				.requestMatchers("/api/addpatient").permitAll()
+				.requestMatchers("/api/users").permitAll());
 //						.requestMatchers("/addClient").hasRole("ADMIN")
 //						.requestMatchers("/formUpdateClient/{id}").hasRole("ADMIN")
 //						.requestMatchers("/deleteClient/{id}").hasRole("ADMIN"))

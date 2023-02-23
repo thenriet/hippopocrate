@@ -1,0 +1,40 @@
+<div class="body">
+  <form>
+    <h2>Nom de Service</h2>
+
+    <p class="titre">Nom patient :
+    {{ patient.firstname }} {{ patient.lastname }}</p>
+    <p>Date de naissance:</p>
+    <p>{{ patient.birthdate }}</p>
+    <p>Adresse:</p>
+    <p>{{ patient.address }}</p>
+    <p>Numéro de lit :</p>
+    <div class="bouton">
+      <button type="submit" class="button">Modifier</button>
+      <button type="submit" class="button">Sortie</button>
+    </div>
+    <table>
+      <tr class="date">
+        Le 00/00/23 par infirmier
+      </tr>
+      <tr class="review">
+        Commentaire: .....
+      </tr>
+      <tr class="date">
+        Le 00/00/23 par infirmier
+      </tr>
+      <tr class="review">
+        Commentaire: .....
+      </tr>
+      <tr class="date">
+        Le 00/00/23 par infirmier
+      </tr>
+      <tr class="review">
+        Commentaire: .....
+      </tr>
+    </table>
+    <div class="boutonbas">
+      <button type="submit" class="buttonbas">Suivi</button>
+    </div>
+  </form>
+</div>

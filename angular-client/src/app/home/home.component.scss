@@ -1,5 +1,4 @@
 h1{ 
-  font-family: 'Roboto Slab';
   font-size: 50px;
   padding-bottom: 30px;
 }
@@ -18,7 +17,6 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  font-family: 'Roboto Slab';
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
@@ -35,5 +33,5 @@ button {
   border:solid 1px#5ECAB5;
   font-size: 25px;
   font-family: 'Roboto Slab';
-
+  cursor: pointer;
 }

@@ -1,38 +1,29 @@
 package co.simplon.hippopocrate.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "rooms")
 
 public class Room {
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column
 	private int number;
+	private int service_id;
 
-	@OneToOne(mappedBy = "room")
-	private Bed bed;
+	public Room() {
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "service_id", referencedColumnName = "id")
-	private Service service;
+	}
+
+	public Room(int number, int service_id) {
+		super();
+		this.number = number;
+		this.service_id = service_id;
+	}
 
 	public int getId() {
 		return id;
@@ -50,20 +41,12 @@ public class Room {
 		this.number = number;
 	}
 
-	public Bed getBed() {
-		return bed;
+	public int getService_id() {
+		return service_id;
 	}
 
-	public void setBed(Bed bed) {
-		this.bed = bed;
-	}
-
-	public Service getService() {
-		return service;
-	}
-
-	public void setService(Service service) {
-		this.service = service;
+	public void setService_id(int service_id) {
+		this.service_id = service_id;
 	}
 
 }

@@ -1,6 +1,7 @@
 body{
     background-color: #AFA8BA;
     background-size: 100vh;
+    font-family: 'Roboto Slab';
 }
 
 a {
@@ -10,22 +11,27 @@ a {
         background-color: #5ECAB5;
         color:white;
     }
+    font-family: 'Roboto Slab';
 }
 
 li {
     font-size: 25px;
     list-style: none;
     align-self: center;
+    font-family: 'Roboto Slab';
 }
 
 nav {
     display: flex;
+    font-family: 'Roboto Slab';
 }
 
 h1 {
     font-size: 50px;
+    font-family: 'Roboto Slab';
 }
 
 p {
     font-size: 25px;
+    font-family: 'Roboto Slab';
 }

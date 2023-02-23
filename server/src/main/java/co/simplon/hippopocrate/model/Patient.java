@@ -1,54 +1,50 @@
 package co.simplon.hippopocrate.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "patients")
+
 public class Patient {
-
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column(name = "firstname")
-	private String firstName;
-
-	@Column(name = "lastname")
-	private String lastName;
-
-	@Column(name = "birthdate")
-	private Date birthDate;
-
-	@Column
+	private String firstname;
+	private String lastname;
+	private Date birthdate;
+	private int bed_id;
 	private String address;
+	private LocalDate date_in;
+	private LocalDate date_out;
+	
+	public Patient() {
+		
+	}
+	
+	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate date_in,  LocalDate date_out) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.birthdate = birthdate;
+		this.bed_id = bed_id;
+		this.address = address;
+		this.date_in = date_in;
+		this.date_out = date_out;
+	}
+	
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate
+				+ ", bed_id=" + bed_id + ", address=" + address + "]";
+	}
 
-	@Column(name = "date_in")
-	private Date dateIn;
-
-	@Column(name = "date_out")
-	private Date dateOut;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "bed_id", referencedColumnName = "id")
-	private Bed bed;
-
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -56,28 +52,36 @@ public class Patient {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
+	public Date getBirthdate() {
+		return birthdate;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	public int getBed_id() {
+		return bed_id;
+	}
+
+	public void setBed_id(int bed_id) {
+		this.bed_id = bed_id;
 	}
 
 	public String getAddress() {
@@ -88,28 +92,22 @@ public class Patient {
 		this.address = address;
 	}
 
-	public Date getDateIn() {
-		return dateIn;
+	public LocalDate getDate_in() {
+		return date_in;
 	}
 
-	public void setDateIn(Date dateIn) {
-		this.dateIn = dateIn;
+	public void setDate_in(LocalDate date_in) {
+		this.date_in = date_in;
 	}
 
-	public Date getDateOut() {
-		return dateOut;
+	public LocalDate getDate_out() {
+		return date_out;
 	}
 
-	public void setDateOut(Date dateOut) {
-		this.dateOut = dateOut;
+	public void setDate_out(LocalDate date_out) {
+		this.date_out = date_out;
 	}
-
-	public Bed getBed() {
-		return bed;
-	}
-
-	public void setBed(Bed bed) {
-		this.bed = bed;
-	}
+	
+	
 
 }

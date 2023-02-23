@@ -20,7 +20,8 @@ import co.simplon.hippopocrate.service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("api/")
 public class AuthController {
 
 	@Autowired
@@ -34,12 +35,6 @@ public class AuthController {
 			return true;
 		}
 		return false;
-	}
-
-//	 handler method to handle home page request
-	@GetMapping("/index")
-	public String home() {
-		return "index";
 	}
 
 //	 Méthode pour récupérer la liste de Users

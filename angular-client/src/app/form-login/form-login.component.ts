@@ -22,7 +22,7 @@ export class FormLoginComponent implements OnInit {
   }
 
   login() {
-    let url = 'http://localhost:8080/login';
+    let url = 'http://localhost:8080/api/login';
     this.http.post<Observable<boolean>>(url, {
         name: this.model.username,
         password: this.model.password

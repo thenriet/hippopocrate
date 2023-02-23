@@ -4,6 +4,8 @@ import { FormLoginComponent } from './form-login/form-login.component';
 import { HomeComponent } from './home/home.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { AddPatientComponent } from './addpatient/addpatient.component';
 
 const routes: Routes = [
   { path: '', component: FormLoginComponent},
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
   { path: 'users', component: UserListComponent },
   { path: 'patients', component: PatientListComponent },
+  { path: 'patient/:id', component: PatientDetailsComponent},
+  { path: 'ajouterPatient', component: AddPatientComponent},
   { path: '**', redirectTo: '' }
 ];
 

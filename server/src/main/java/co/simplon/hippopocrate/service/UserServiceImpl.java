@@ -5,19 +5,19 @@ import org.springframework.stereotype.Service;
 
 import co.simplon.hippopocrate.model.Role;
 import co.simplon.hippopocrate.model.User;
-import co.simplon.hippopocrate.repository.RoleRepo;
-import co.simplon.hippopocrate.repository.UserRepo;
+import co.simplon.hippopocrate.repository.RoleRepository;
+import co.simplon.hippopocrate.repository.UserRepository;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-	private UserRepo userRepository;
-	private RoleRepo roleRepository;
+	private UserRepository userRepository;
+	private RoleRepository roleRepository;
 	private PasswordEncoder passwordEncoder;
 
-	public UserServiceImpl(UserRepo userRepository, RoleRepo roleRepository, PasswordEncoder passwordEncoder) {
+	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.passwordEncoder = passwordEncoder;
