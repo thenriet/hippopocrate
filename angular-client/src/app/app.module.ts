@@ -11,6 +11,11 @@ import { CardiologieComponent } from './cardiologie/cardiologie.component';
 import { NeurologieComponent } from './neurologie/neurologie.component';
 import { GynecologieComponent } from './gynecologie/gynecologie.component';
 import { FichePatientComponent } from './fiche-patient/fiche-patient.component';
+import { ListePatientsComponent } from './liste-patients/liste-patients.component';
+import { ListeUtilisateursComponent } from './liste-utilisateurs/liste-utilisateurs.component';
+import { PageAccueilComponent } from './page-accueil/page-accueil.component';
+import { SuiviPatientComponent } from './suivi-patient/suivi-patient.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { FichePatientComponent } from './fiche-patient/fiche-patient.component';
     CardiologieComponent,
     NeurologieComponent,
     GynecologieComponent,
-    FichePatientComponent
+    FichePatientComponent,
+    ListePatientsComponent,
+    ListeUtilisateursComponent,
+    PageAccueilComponent,
+    SuiviPatientComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,64 @@
+.service{
+    justify-content: left;
+    display: flex;
+    font-family: 'Roboto Slab';
+    }
+    
+    // h1{
+    // text-align: center;
+    // }
+    textarea {
+        width: 70%;
+        height: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f8f8f8;
+        margin-bottom: 0px;
+      } 
+    
+    button {
+        color: white;
+        margin-top: 15px;
+        background: #5ECAB5;
+        height: 80px;
+        width: 300px;
+        border-radius: 15px;
+        margin: 50px;
+        border:solid 1px#5ECAB5;
+        font-size: 20px;
+        font-family: 'Roboto Slab';
+        transition: transform .1s;
+    }
+    button:hover {
+        -ms-transform: scale(1.05); 
+        transform: scale(1.05);
+    }
+    
+    .body {
+        margin: 0;
+        font-family: 'Roboto Slab';
+    
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+      }
+    
+      form {
+        background-color: white;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        width: 800px;
+        height: 650px;
+        border-radius: 8px;
+        padding: 20px;
+        justify-content: center;
+    }
+    .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    }

@@ -1,0 +1,41 @@
+h1{ 
+    font-family: 'Roboto Slab';
+    font-size: 38px;
+
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
+
+.body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: 'Roboto Slab';
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button {
+    color: white;
+    margin-top: 15px;
+    background: #5ECAB5;
+    height: 40px;
+    width: 180px;
+    border-radius: 15px;
+    margin: 50px;
+    border:solid 1px#5ECAB5;
+    font-size: 25px;
+    font-family: 'Roboto Slab';
+    transition: transform .1s;
+}
+
+button:hover {
+    -ms-transform: scale(1.05); /* IE 9 /
+    -webkit-transform: scale(1.05); / Safari 3-8 */
+    transform: scale(1.05);
+}
