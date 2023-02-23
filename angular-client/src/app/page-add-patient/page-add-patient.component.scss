@@ -62,8 +62,12 @@ form button {
     height: 40px;
     margin-top: 15px;
     background-color: #5ECAB5;
+    color:white;
+    transition: transform .1s;
 }
 
-button{
-color:white;
+button:hover {
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
 }

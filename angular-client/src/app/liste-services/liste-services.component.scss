@@ -1,0 +1,37 @@
+
+h1{
+    font-family:'Roboto Slab';
+    font-size: 50px;
+}
+.body{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
+}
+
+button{
+    font-family: 'Roboto Slab';
+    width: 250px;
+    font-size: 25px;
+    border-radius: 20px;
+    height: 120px;
+    margin-top: 15px;
+    background-color: #5ECAB5;
+    color:white;
+    margin: 100px;
+    border: solid 1px #5ECAB5;
+    transition: transform .1s;
+}
+
+button:hover {
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+}
