@@ -22,9 +22,9 @@ public class Role
 
     @Column(nullable=false, unique=true)
     private String name;
-
-    @ManyToMany(mappedBy="roles")
-    private List<User> users;
+//
+//    @ManyToMany(mappedBy="roles")
+//    private List<User> users;
 
 	public Long getId() {
 		return id;
@@ -42,12 +42,12 @@ public class Role
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+//	public List<User> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}
  
 }

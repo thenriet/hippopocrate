@@ -1,21 +1,33 @@
-<form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-    <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-        <label for="username">Name</label>
-        <input type="text"
-          name="username" [(ngModel)]="model.username"
-            #username="ngModel" required />
-        <div *ngIf="f.submitted
-          && !username.valid">Username is required</div>
-    </div>
-    <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-        <label for="password">Password</label>
-        <input type="password"
-          name="password" [(ngModel)]="model.password"
-            #password="ngModel" required />
-        <div *ngIf="f.submitted
-          && !password.valid">Password is required</div>
-    </div>
-    <div>
-        <button>Login</button>
-    </div>
-</form>
+<div class="container">
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <h1>Hippopocrate:</h1>
+        <h2>Merci de vous identifier</h2>
+        <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <div>
+                <label for="username">Identifiant </label>
+            </div>
+            <div>
+                <input type="text"
+                name="username" [(ngModel)]="model.username"
+                #username="ngModel" required />
+            </div>
+            <div *ngIf="f.submitted
+                && !username.valid">Merci de rentrer un identifiant</div>
+        </div>
+        <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <div>
+                <label for="password">Mot de passe </label>
+            </div>
+            <div>
+                <input type="password"
+                name="password" [(ngModel)]="model.password"
+                #password="ngModel" required />
+            </div>
+            <div *ngIf="f.submitted
+                && !password.valid">Merci de rentrer un mot de passe</div>
+        </div>
+        <div>
+            <button>Se connecter</button>
+        </div>
+    </form>
+</div>

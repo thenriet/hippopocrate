@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #AFA8BA;
+    background-size: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    a:hover {
+        background-color: #5ECAB5;
+        color:white;
+    }
+}
+
+li {
+    font-size: 25px;
+    list-style: none;
+    align-self: center;
+}
+
+nav {
+    display: flex;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 25px;
+}

@@ -31,12 +31,12 @@ public class User
     @Column(nullable=false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name="users_roles",
-            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
-            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
-    private List<Role> roles = new ArrayList<>();
+//    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+//    @JoinTable(
+//            name="users_roles",
+//            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+//            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+//    private List<Role> roles = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -62,12 +62,12 @@ public class User
 		this.password = password;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
-	}
+//	public List<Role> getRoles() {
+//		return roles;
+//	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+//	public void setRoles(List<Role> roles) {
+//		this.roles = roles;
+//	}
     
 }
