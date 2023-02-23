@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { addPatientModel } from 'src/Models/addPatient-models';
+import { addPatientModel } from 'src/model/addPatient-models';
 
 @Component({
   selector: 'app-page-add-patient',

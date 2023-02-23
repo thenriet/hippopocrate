@@ -10,6 +10,7 @@ import { OncologieComponent } from './oncologie/oncologie.component';
 import { CardiologieComponent } from './cardiologie/cardiologie.component';
 import { NeurologieComponent } from './neurologie/neurologie.component';
 import { GynecologieComponent } from './gynecologie/gynecologie.component';
+import { FichePatientComponent } from './fiche-patient/fiche-patient.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GynecologieComponent } from './gynecologie/gynecologie.component';
     OncologieComponent,
     CardiologieComponent,
     NeurologieComponent,
-    GynecologieComponent
+    GynecologieComponent,
+    FichePatientComponent
   ],
   imports: [
     BrowserModule,
