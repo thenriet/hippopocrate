@@ -1,7 +1,7 @@
 export class addPatientModel {
     firstname!:string;
-    lastname!:string;
+    name!:string;
     address!:string;
-    birthdate!:Date;
+    birthday!:Date;
     service!:string; 
 }
