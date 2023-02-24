@@ -16,6 +16,7 @@ import { ListeUtilisateursComponent } from './liste-utilisateurs/liste-utilisate
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { SuiviPatientComponent } from './suivi-patient/suivi-patient.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ChangePatientComponent } from './change-patient/change-patient.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ListeUtilisateursComponent,
     PageAccueilComponent,
     SuiviPatientComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChangePatientComponent
   ],
   imports: [
     BrowserModule,

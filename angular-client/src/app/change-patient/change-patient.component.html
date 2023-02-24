@@ -1,26 +1,26 @@
-<body>
-    <form >
+<div class="body">
+    <form>
     <h1>Hippopocrate:</h1>
-    <h2>Ajouter un patient </h2>
+    <h2>Modifier les infos d'un patient </h2>
+
         <label>Prénom:</label>
         <input type="text" name="firstname" formControlName="firstname" required>
 
         <label>Nom:</label>
         <input type="text" name="name" formControlName="name" required>
 
+
         <label>Adresse:</label>
         <input type="text" name="address" formControlName="address" required>
+
 
         <label>Date de naissance:</label>
         <input type="date" name="birthday" formControlName="birthday" required>
 
         <label>Services :</label>
-        <select class="dropbox" name="service" id="service">
-            <option value="cardiologie">Cardiologie</option>
-            <option value="oncologie">Oncologie</option>
-            <option value="neurologie">Neurologie</option>
-            <option value="gynecologie">Gynécologie</option>
-        </select>
-        
+        <input type="services" name="services" formControlName="services" required>
+
+        <button type="submit" class="button">Modifier</button>
+
     </form>
-    </body>
+</div>

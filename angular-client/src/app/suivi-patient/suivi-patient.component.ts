@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-suivi-patient',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./suivi-patient.component.scss']
 })
 export class SuiviPatientComponent {
-
+  constructor ( private route: Router){
+  }
+  ngOnInit():void{
+  this.route.navigateByUrl("/suivipatient");
+  }
 }
