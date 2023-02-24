@@ -3,9 +3,14 @@ package co.simplon.hippopocrate.model;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -15,13 +20,21 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(nullable=false)
 	private String firstname;
+	@Column(nullable=false)
 	private String lastname;
+	@Column(nullable=false)
 	private Date birthdate;
-	private int bed_id;
+	@Column(nullable=false)
 	private String address;
 	private LocalDate date_in;
 	private LocalDate date_out;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonBackReference(value="patient-bed")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bed_id", referencedColumnName = "id")
+    private Bed bed;
 	
 	public Patient() {
 		
@@ -32,7 +45,6 @@ public class Patient {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
-		this.bed_id = bed_id;
 		this.address = address;
 		this.date_in = date_in;
 		this.date_out = date_out;
@@ -41,7 +53,7 @@ public class Patient {
 	@Override
 	public String toString() {
 		return "Patient [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate
-				+ ", bed_id=" + bed_id + ", address=" + address + "]";
+				+ ", bed_id=" + ", address=" + address + "]";
 	}
 
 	public long getId() {
@@ -76,13 +88,6 @@ public class Patient {
 		this.birthdate = birthdate;
 	}
 
-	public int getBed_id() {
-		return bed_id;
-	}
-
-	public void setBed_id(int bed_id) {
-		this.bed_id = bed_id;
-	}
 
 	public String getAddress() {
 		return address;
@@ -107,7 +112,13 @@ public class Patient {
 	public void setDate_out(LocalDate date_out) {
 		this.date_out = date_out;
 	}
-	
-	
+
+	public Bed getBed() {
+		return bed;
+	}
+
+	public void setBed(Bed bed) {
+		this.bed = bed;
+	}
 
 }

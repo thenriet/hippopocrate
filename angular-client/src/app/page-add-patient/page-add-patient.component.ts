@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { addPatientModel } from 'src/Models/addPatient-models';
+import { addPatientModel } from '../model/addPatient-models';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service';
 
@@ -18,8 +18,9 @@ import { PatientService } from '../service/patient-service';
 export class PageAddPatientComponent implements OnInit {
   addPatientForm!: FormGroup;
   patient!: Patient;
-  remplissageForm= new addPatientModel;
-  error= false; 
+  patientForm = new addPatientModel;
+  error= false;
+  patientListLength !: number;
   
   constructor(
     private fb: FormBuilder,
@@ -37,25 +38,21 @@ export class PageAddPatientComponent implements OnInit {
       birthdate:['', Validators.required],
       service:['', Validators.required]
      });
+     this.patientService.findAll().subscribe(result => 
+      this.patientListLength = result.length +1
+    );
   }
 
   onSubmit() {
-    let data = this.addPatientForm.value;
-    this.remplissageForm.firstname = data.firstname;
-    this.remplissageForm.lastname = data.lastname;
-    this.remplissageForm.address= data.address;
-    this.remplissageForm.birthdate= data.birthday;
-    this.remplissageForm.service= data.service;
-    console.log(this.remplissageForm);
-    this.patient.firstname = data.firstname;
-    this.patient.lastname = data.lastname;
-    this.patient.address = data.address;
-    this.patient.bed_id = 3;
-    this.patient.id = 3;
-    this.patient.birthdate = data.birthdate;
-    console.log(this.patient)
-    this.patientService.save(this.patient).subscribe(result => this.gotoPatientList());
 
+    let data = this.addPatientForm.value;
+    this.patientForm.id = this.patientListLength;
+    this.patientForm.firstname = data.firstname;
+    this.patientForm.lastname = data.lastname;
+    this.patientForm.address= data.address;
+    this.patientForm.birthdate= data.birthdate;
+    this.patientService.save(this.patientForm).subscribe(result => this.gotoPatientList());
+    console.log(this.patientForm)
     try {
       this.addPatientForm.value
     }

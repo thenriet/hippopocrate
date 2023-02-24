@@ -1,7 +1,13 @@
 package co.simplon.hippopocrate.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -12,8 +18,16 @@ public class Bed {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int number;
-	private int room_id;
 	private boolean occupied;
+	
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;
+	
+	@JsonBackReference(value="bed-patient")
+	@OneToOne(mappedBy = "bed")
+    private Patient patient;
 	
 	public Bed() {
 		
@@ -22,7 +36,6 @@ public class Bed {
 	public Bed(int number, int room_id, boolean occupied) {
 		super();
 		this.number = number;
-		this.room_id = room_id;
 		this.occupied = occupied;
 	}
 
@@ -42,13 +55,6 @@ public class Bed {
 		this.number = number;
 	}
 
-	public int getRoom_id() {
-		return room_id;
-	}
-
-	public void setRoom_id(int room_id) {
-		this.room_id = room_id;
-	}
 
 	public boolean isOccupied() {
 		return occupied;
@@ -57,5 +63,24 @@ public class Bed {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
 	
+	public void toggleOccupied() {
+		this.occupied = !occupied;
+	}
 }

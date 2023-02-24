@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Patient } from '../model/patient';
 import { Observable } from 'rxjs';
+import { addPatientModel } from '../model/addPatient-models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class PatientService {
     return this.http.get<Patient[]>(this.patientsUrl);
   }
 
-  public save(patient: Patient) {
-    return this.http.post<Patient>(this.patientsUrl, patient);
+  public save(patient: addPatientModel) {
+    return this.http.post<addPatientModel>(this.patientsUrl, patient);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { identifiantModel } from 'src/Models/identifiant-models';
+import { identifiantModel } from '../model/identifiant-models';
 
 @Component({
   selector: 'app-page-connexion',

@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -31,6 +30,7 @@ public class SecurityConfig {
 						.requestMatchers("/api/login").permitAll()
 						.requestMatchers("/api/patients").permitAll()
 						.requestMatchers("/api/addpatient").permitAll()
+						.requestMatchers("/api/services").permitAll()
 						.requestMatchers("/api/users").permitAll());
 //						.requestMatchers("/addClient").hasRole("ADMIN")
 //						.requestMatchers("/formUpdateClient/{id}").hasRole("ADMIN")

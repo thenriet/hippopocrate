@@ -1,7 +1,5 @@
 package co.simplon.hippopocrate.model;
 
-import java.io.Serializable;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +9,8 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,8 +19,6 @@ import java.util.List;
 @Table(name="users")
 public class User
 {
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +28,7 @@ public class User
     
     @Column(nullable=false)
     private String password;
-
+    @JsonBackReference
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name="users_roles",
