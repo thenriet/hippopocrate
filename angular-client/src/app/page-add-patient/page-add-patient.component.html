@@ -19,11 +19,8 @@
         <p *ngIf="error">Veuillez entrer une date valide</p>
 
         <label>Services :</label>
-        <select class="dropbox" name="services" id="service" formControlName="service">
-            <option value="cardiologie">Cardiologie</option>
-            <option value="oncologie">Oncologie</option>
-            <option value="neurologie">Neurologie</option>
-            <option value="gynecologie">Gynécologie</option>
+        <select (ngModelChange)="onClick()" class="dropbox" name="services" id="service" formControlName="service">
+            <option  *ngFor="let service of services" value="{{ service.id }}">{{ service.name }}"</option>
         </select>
         <p *ngIf="error">Veuillez sélectionner un service</p>
 

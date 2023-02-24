@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { addPatientModel } from '../model/addPatient-models';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service';
+import { ServiceHippoService } from '../service/service-hippo.service';
+import { ServiceHippo } from '../model/serviceHippo';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-add-patient',
@@ -21,15 +24,21 @@ export class PageAddPatientComponent implements OnInit {
   patientForm = new addPatientModel;
   error= false;
   patientListLength !: number;
+  services !: ServiceHippo[];
   
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute, 
     private router: Router, 
-    private patientService: PatientService
+    private patientService: PatientService,
+    private serviceHippo: ServiceHippoService
     ) { 
-      this.patient = new Patient();  
+      this.patient = new Patient(); 
+      this.serviceHippo.findAll().subscribe(data => {
+        this.services = data;
+      });
   }
+
   ngOnInit(): void {
     this.addPatientForm = this.fb.group({
       firstname:['',Validators.required],
@@ -46,6 +55,7 @@ export class PageAddPatientComponent implements OnInit {
   onSubmit() {
 
     let data = this.addPatientForm.value;
+    console.log(data);
     this.patientForm.id = this.patientListLength;
     this.patientForm.firstname = data.firstname;
     this.patientForm.lastname = data.lastname;
@@ -64,5 +74,10 @@ export class PageAddPatientComponent implements OnInit {
 
   gotoPatientList() {
     this.router.navigate(['/patients']);
+  }
+
+  onClick(){
+    console.log("test");
+    // méthode qui va chercher un service en particulier
   }
 }
