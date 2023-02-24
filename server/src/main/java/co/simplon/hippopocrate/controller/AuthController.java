@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.simplon.hippopocrate.model.Role;
 
 import co.simplon.hippopocrate.model.User;
+import co.simplon.hippopocrate.model.UserDto;
 import co.simplon.hippopocrate.service.UserService;
 import jakarta.validation.Valid;
 
@@ -41,5 +42,10 @@ public class AuthController {
 	@GetMapping("users")
 	public List<User> getUsers() {
 		return this.userService.findAllUsers();
+	}
+	
+	@GetMapping("users/roles")
+	public List <UserDto> getRoles() {
+		return this.userService.findAllUserDto();
 	}
 }

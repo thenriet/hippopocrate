@@ -1,0 +1,37 @@
+nav {
+  display: flex;
+  font-family: "Roboto Slab";
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #afa8ba;
+}
+li {
+  display: inline;
+  float: left;
+}
+
+a {
+  display: block;
+  padding: 8px;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #5ecab5;
+  color: white;
+}
+
+.logout {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}

@@ -12,7 +12,8 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientService } from './service/patient-service.service';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { AddPatientComponent } from './addpatient/addpatient.component';
-import { LoginService } from './service/login-service.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AuthentificationService } from './service/authentification-service.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginService } from './service/login-service.service';
     HomeComponent,
     PatientListComponent,
     PatientDetailsComponent,
-    AddPatientComponent
+    AddPatientComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { LoginService } from './service/login-service.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserServiceService, PatientService, LoginService],
+  providers: [UserServiceService, PatientService, AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
