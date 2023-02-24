@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientService } from './service/patient-service.service';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
-import { AddpatientComponent } from './addpatient/addpatient.component';
+import { AddPatientComponent } from './addpatient/addpatient.component';
+import { LoginService } from './service/login-service.service';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { AddpatientComponent } from './addpatient/addpatient.component';
     HomeComponent,
     PatientListComponent,
     PatientDetailsComponent,
-    AddpatientComponent
+    AddPatientComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [UserServiceService, PatientService],
+  providers: [UserServiceService, PatientService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

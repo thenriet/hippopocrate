@@ -38,8 +38,8 @@ public class PatientController {
 
 	@PostMapping("patients")
 	void addPatient(@RequestBody Patient patient) {
-		ZoneId z = ZoneId.of("Europe/France");
-		LocalDate today = LocalDate.now(z);// Always pass a time zone.
+//		ZoneId z = ZoneId.of("Europe/France");
+//		LocalDate today = LocalDate.now(z);// Always pass a time zone.
 		psi.savePatient(patient);
 	}
 	

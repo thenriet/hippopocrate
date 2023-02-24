@@ -8,15 +8,19 @@
 <div class="card my-5">
   <h1>Liste utilisateurs</h1>
     <div class="card-body">
-      <table>
-        <thead class="thead-dark">
+      <table class ="tableau">
+        <thead>
           <tr>
-            <th scope="col">Nom</th>
+            <th>Nom utilisateur</th>
+            <th>Habilitations</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
             <td>{{ user.name }}</td>
+            <td>Rôle</td>
+            <td><button>Modifier</button><button>Supprimer</button></td>
           </tr>
         </tbody>
       </table>
