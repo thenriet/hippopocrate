@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { identifiantModel } from 'src/model/identifiant-models';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-page-connexion',
@@ -8,33 +10,31 @@ import { identifiantModel } from 'src/model/identifiant-models';
   styleUrls: ['./page-connexion.component.scss']
 })
 
-export class PageConnexionComponent {
-  contactForm: FormGroup;
-  remplissageForm= new identifiantModel;
-  error= false; 
-  
+export class PageConnexionComponent implements OnInit {
+  model: any={};
 
-  constructor(private fb: FormBuilder) { 
-
-    this.contactForm = this.fb.group({
-      id:['',Validators.required],
-      password :['',Validators.required],
-     });
+  constructor(  
+    private router: Router,
+    private http: HttpClient,
+    private route: ActivatedRoute) { 
+  }
+  ngOnInit(){
+    sessionStorage.setItem('token', '');
   }
 
-  onSubmit() {
-    let data = this.contactForm.value;
-    this.remplissageForm.id = data.id;
-    this.remplissageForm.password = data.password;
-    console.log(this.remplissageForm);
-    try {
-      this.contactForm.value
-      
-    }
-    catch (error){
-     console.log(error);
-     this.error= true;
-    }
+  login() {
+    let url = 'http://localhost:8080/api/login';
+    this.http.post<Observable<boolean>>(url, {
+        name: this.model.username,
+        password: this.model.password
+    }).subscribe(isValid => {
+        if (isValid) {
+            sessionStorage.setItem('token', window.btoa(this.model.username + ':' + this.model.password));
+            this.router.navigate(['accueil']);
+        } else {
+            alert("Authentication failed.")
+        }
+    });
   }
 
 }
