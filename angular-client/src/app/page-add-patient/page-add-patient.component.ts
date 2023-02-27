@@ -7,6 +7,7 @@ import { PatientService } from '../service/patient-service';
 import { ServiceHippoService } from '../service/service-hippo.service';
 import { ServiceHippo } from '../model/serviceHippo';
 import { Observable } from 'rxjs';
+import { Room } from '../model/room';
 
 @Component({
   selector: 'app-page-add-patient',
@@ -25,6 +26,9 @@ export class PageAddPatientComponent implements OnInit {
   error= false;
   patientListLength !: number;
   services !: ServiceHippo[];
+  serviceId!: string;
+  rooms !: Room[];
+  roomId!: string;
   
   constructor(
     private fb: FormBuilder,
@@ -45,7 +49,8 @@ export class PageAddPatientComponent implements OnInit {
       lastname :['',Validators.required],
       address:['', Validators.required],
       birthdate:['', Validators.required],
-      service:['', Validators.required]
+      service:['', Validators.required],
+      room:['', Validators.required]
      });
      this.patientService.findAll().subscribe(result => 
       this.patientListLength = result.length +1
@@ -76,8 +81,31 @@ export class PageAddPatientComponent implements OnInit {
     this.router.navigate(['/patients']);
   }
 
-  onClick(){
+  onSelectService(){
     console.log("test");
     // méthode qui va chercher un service en particulier
+    // this.serviceHippo.findOne(serviceId){
+      console.log('Selected option:', this.serviceId);
+      if(this.serviceId){
+        console.log(this.serviceHippo.findOneById(this.serviceId));
+        this.serviceHippo.findRooms(this.serviceId).subscribe(data => {
+          this.rooms = data;
+        });
+      }
+    // }
+  }
+
+  onSelectRoom(){
+    console.log('Selected option:', this.roomId);
+    console.log(this.serviceHippo.findRooms(this.serviceId));
+
+    
+     
+    
+  }
+
+
+  save() {
+    // Call a function to save the selected option
   }
 }

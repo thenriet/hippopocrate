@@ -19,10 +19,16 @@
         <p *ngIf="error">Veuillez entrer une date valide</p>
 
         <label>Services :</label>
-        <select (ngModelChange)="onClick()" class="dropbox" name="services" id="service" formControlName="service">
-            <option  *ngFor="let service of services" value="{{ service.id }}">{{ service.name }}"</option>
+        <select [(ngModel)]="serviceId" (ngModelChange)="onSelectService()" class="dropbox" name="services" id="service" formControlName="service">
+            <option  *ngFor="let service of services" value="{{ service.id }}">{{ service.name }}</option>
         </select>
         <p *ngIf="error">Veuillez sélectionner un service</p>
+
+        <label>Chambre :</label>
+        <select [(ngModel)]="roomId" (ngModelChange)="onSelectRoom()" class="dropbox" name="rooms" id="room" formControlName="room">
+            <option  *ngFor="let room of rooms" value="{{ room.id }}">{{ room.number }}</option>
+        </select>
+        <p *ngIf="error">Veuillez sélectionner une chambre</p>
 
         <button type="submit" class="button">Valider</button>
 

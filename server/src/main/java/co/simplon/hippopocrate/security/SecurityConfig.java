@@ -31,6 +31,8 @@ public class SecurityConfig {
 						.requestMatchers("/api/patients").permitAll()
 						.requestMatchers("/api/addpatient").permitAll()
 						.requestMatchers("/api/services").permitAll()
+						.requestMatchers("/api/services/{id}").permitAll()
+						.requestMatchers("/api/services/{id}/rooms").permitAll()
 						.requestMatchers("/api/users").permitAll());
 //						.requestMatchers("/addClient").hasRole("ADMIN")
 //						.requestMatchers("/formUpdateClient/{id}").hasRole("ADMIN")

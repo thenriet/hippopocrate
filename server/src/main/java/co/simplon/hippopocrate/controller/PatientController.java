@@ -28,6 +28,7 @@ public class PatientController {
 	public List<PatientDTO> fetchPatientsList() {
 		return psi.createPatientsDTOFromDB();
 	}
+
     
     @PostMapping("patients")
     void addPatient(@RequestBody Patient patient) {
