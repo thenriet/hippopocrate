@@ -10,58 +10,55 @@ import { PatientService } from '../service/patient-service.service';
   templateUrl: './addpatient.component.html',
   styleUrls: ['./addpatient.component.scss'],
 })
+
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AddPatientComponent {
+
+export class PageAddPatientComponent implements OnInit {
   addPatientForm!: FormGroup;
   patient!: Patient;
-  remplissageForm = new AddPatient();
-  error = false;
-
+  patientForm = new AddPatient;
+  error= false;
+  patientListLength !: number;
+  
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
+    private route: ActivatedRoute, 
+    private router: Router, 
     private patientService: PatientService
-  ) {
-    this.patient = new Patient();
+    ) { 
+      this.patient = new Patient();  
   }
-  
   ngOnInit(): void {
     this.addPatientForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      address: ['', Validators.required],
-      birthdate: ['', Validators.required],
-      service: ['', Validators.required],
-    });
+      firstname:['',Validators.required],
+      lastname :['',Validators.required],
+      address:['', Validators.required],
+      birthdate:['', Validators.required],
+      service:['', Validators.required]
+     });
+     this.patientService.findAll().subscribe(result => 
+      this.patientListLength = result.length+1
+    );
   }
 
   onSubmit() {
-    let data = this.addPatientForm.value;
-    this.remplissageForm.firstname = data.firstname;
-    this.remplissageForm.lastname = data.lastname;
-    this.remplissageForm.address = data.address;
-    this.remplissageForm.birthdate = data.birthday;
-    this.remplissageForm.service = data.service;
-    console.log(this.remplissageForm);
-    this.patient.firstname = data.firstname;
-    this.patient.lastname = data.lastname;
-    this.patient.address = data.address;
-    this.patient.bed_id = 3;
-    this.patient.id = 3;
-    this.patient.birthdate = data.birthdate;
-    console.log(this.patient);
-    this.patientService
-      .save(this.patient)
-      .subscribe((result) => this.gotoPatientList());
 
+    let data = this.addPatientForm.value;
+    //this.patientForm.id = this.patientListLength;
+    this.patientForm.firstname = data.firstname;
+    this.patientForm.lastname = data.lastname;
+    this.patientForm.address= data.address;
+    this.patientForm.birthdate= data.birthdate;
+    this.patientService.save(this.patient).subscribe((result) => this.gotoPatientList());
+    console.log(this.patientForm)
     try {
-      this.addPatientForm.value;
-    } catch (error) {
-      console.log(error);
-      this.error = true;
+      this.addPatientForm.value
+    }
+    catch (error){
+     console.log(error);
+     this.error= true;
     }
   }
 

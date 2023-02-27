@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.hippopocrate.model.Patient;
+import co.simplon.hippopocrate.model.*;
 import co.simplon.hippopocrate.service.PatientServiceImpl;
 
 @RestController
@@ -47,5 +47,16 @@ public class PatientController {
 	public Patient findById(@PathVariable long id) {
 		return psi.findPatientById(id);
 	}
-
+	
+	@GetMapping("updatepatient/{id}")
+	public Patient updateById(@PathVariable long id) {
+		return psi.findPatientById(id);
+	}
+	
+	@PostMapping("updatepatient/{id}")
+	void updatePatient (@RequestBody Patient patient, long patientId) {
+		System.out.println("je suis là!");
+		psi.updatePatient(patient, patientId);
+		
+	}
 }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   templateUrl: './form-login.component.html',
   styleUrls: ['./form-login.component.scss']
 })
+
 export class FormLoginComponent implements OnInit {
   model: any = {};
 
@@ -35,4 +36,5 @@ export class FormLoginComponent implements OnInit {
         }
     });
 }
+
 }

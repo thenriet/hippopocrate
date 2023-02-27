@@ -1,15 +1,3 @@
-<nav>
-  <div>
-    <a routerLinkActive="active" routerLink="/"
-      ><img src=".\assets\logo_hippopocrate.png" alt="" style="width: 50px"
-    /></a>
-  </div>
-  <ul>
-    <li>
-      <a routerLinkActive="active" routerLink="/users">Liste utilisateurs</a>
-    </li>
-  </ul>
-</nav>
 
 <div class="card my-5">
   <h1>Liste Patients</h1>
@@ -27,9 +15,9 @@
       <tbody>
         <tr *ngFor="let patient of patients">
           <td>{{ patient.firstname }} {{ patient.lastname }}</td>
-          <td>A faire</td>
-          <td>A faire</td>
-          <td>A faire</td>
+          <td>{{patient.room_id}}</td>
+          <td>{{patient.bed_id}}</td>
+          <td>{{patient.service_id}}</td>
           <td>
             <button (click)="seePatient(patient.id)">Voir détails</button>
           </td>

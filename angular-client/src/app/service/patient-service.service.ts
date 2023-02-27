@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class PatientService {
 
   private patientsUrl: string = 'http://localhost:8080/api/patients';
+  private idUrl: string= 'http://localhost:8080/api/updatepatient';
 
   constructor(private http: HttpClient) {}
 
@@ -22,5 +23,13 @@ export class PatientService {
 
   public save(patient: Patient) {
     return this.http.post<Patient>(this.patientsUrl, patient);
+  }
+  
+  getDetailsById (id:number): Observable<Patient>{
+      return this.http.get<Patient>(`${this.idUrl}/${id}`);
+  }
+
+  public update(patient:Patient, id:number){
+    return this.http.post<Patient> ( "http://localhost:8080/api/updatepatient",patient);
   }
 }

@@ -7,4 +7,6 @@ export class Patient {
     date_in!: number;
     date_out!: number;
     bed_id!: number;
+    room_id!: number;
+    service_id!: number;
 }

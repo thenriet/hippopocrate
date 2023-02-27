@@ -12,7 +12,6 @@ export class PatientListComponent {
   patients!: Patient[];
 
   constructor (private patientService: PatientService, private router: Router) {
-
   }
 
   ngOnInit() {

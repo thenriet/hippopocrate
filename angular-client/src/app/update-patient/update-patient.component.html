@@ -1,0 +1,25 @@
+<div class="body">
+    <form [formGroup]="updatePatientForm" (ngSubmit)="OnSubmit()">
+    <h1>Hippopocrate:</h1>
+    <h2>Modifier les infos d'un patient </h2>
+
+        <label>Prénom:</label>
+        <input type="text" name="firstname" formControlName="firstname" required placeholder="{{patient.firstname}}">
+
+        <label>Nom:</label>
+        <input type="text" name="name" formControlName="lastname" required placeholder="{{patient.lastname}}">
+
+        <label>Adresse:</label>
+        <input type="text" name="address" formControlName="address" required placeholder="{{patient.address}}">
+
+
+        <label>Date de naissance:</label>
+        <input type="text" name="birthday" formControlName="birthdate" placeholder="{{patient.birthdate}}">
+
+        <label>Services :</label>
+        <input type="text" name="services" formControlName="services" placeholder="{{patient.service_id}}">
+
+        <button type="submit" class="button" >Modifier</button>
+
+    </form>
+</div>

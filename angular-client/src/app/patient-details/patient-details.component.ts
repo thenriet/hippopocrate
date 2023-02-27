@@ -8,6 +8,7 @@ import { PatientService } from '../service/patient-service.service';
   templateUrl: './patient-details.component.html',
   styleUrls: ['./patient-details.component.scss']
 })
+
 export class PatientDetailsComponent implements OnInit {
   id!: number;
   patient!: Patient;
@@ -30,4 +31,10 @@ export class PatientDetailsComponent implements OnInit {
     });
   }
 
-}
+  transferTheId (id: number) {
+      this.router.navigate(['updatepatient', id]);
+    }
+  
+  }
+
+
