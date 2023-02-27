@@ -9,7 +9,7 @@ import { AuthentificationService } from '../service/authentification-service.ser
 })
 export class NavbarComponent {
   
-  isLoggedIn = false;
+  isLoggedIn!:boolean;
 
   constructor(private authenticationService: AuthentificationService) {}
 

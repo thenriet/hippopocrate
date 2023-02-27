@@ -20,7 +20,7 @@ export class FormLoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    sessionStorage.setItem('token', '');
+    sessionStorage.setItem(this.authService.USER_NAME_SESSION_ATTRIBUTE_NAME, '')
   }
 
   login() {
@@ -32,15 +32,18 @@ export class FormLoginComponent implements OnInit {
       })
       .subscribe((isValid) => {
         if (isValid) {
-          sessionStorage.setItem(
-            'token',
-            window.btoa(this.model.username + ':' + this.model.password)
-          );
-          // this.authService.registerSuccessfulLogin(
-          //   this.model.username,
+          // sessionStorage.setItem(
+          //   'user',
+          //   window.btoa(this.model.username)
+          // );
+          this.authService.registerSuccessfulLogin(
+            this.model.username)
+            console.log(sessionStorage.getItem(this.authService.USER_NAME_SESSION_ATTRIBUTE_NAME))
+            console.log(this.authService.isUserLoggedIn())
           //   this.model.password
           // );
           this.router.navigate(['accueil']);
+
         } else {
           alert('Impossible de vous identifier');
         }

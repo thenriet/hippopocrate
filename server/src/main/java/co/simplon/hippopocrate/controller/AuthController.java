@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,5 +48,10 @@ public class AuthController {
 	@GetMapping("users/roles")
 	public List <UserDto> getRoles() {
 		return this.userService.findAllUserDto();
+	}
+	
+	@GetMapping("users/roles/{name}")
+	public String findRoleByName(@PathVariable String name) {
+		return this.userService.findUserRoleDtoByName(name);
 	}
 }
