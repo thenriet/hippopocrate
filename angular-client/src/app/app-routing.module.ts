@@ -7,6 +7,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PageAddPatientComponent } from './addpatient/addpatient.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 const routes: Routes = [
   { path: '', component: FormLoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'patient/:id', component: PatientDetailsComponent},
   { path: 'ajouterPatient', component: PageAddPatientComponent},
   {path: 'updatepatient/:id', component:UpdatePatientComponent},
+  {path:'suivipatient/:id', component: ReviewsComponent},
   { path: '**', redirectTo: '' }
 ];
 

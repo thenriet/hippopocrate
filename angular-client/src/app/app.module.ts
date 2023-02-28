@@ -14,6 +14,7 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PageAddPatientComponent } from './addpatient/addpatient.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
     PatientDetailsComponent,
     PageAddPatientComponent,
     NavbarComponent,
-    UpdatePatientComponent
+    UpdatePatientComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,4 +39,5 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
   providers: [UserServiceService, PatientService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

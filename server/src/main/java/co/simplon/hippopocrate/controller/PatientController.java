@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,6 @@ public class PatientController {
 	@GetMapping("patients")
 	public List<Patient> fetchPatientList() {
 		return psi.fetchPatientList();
-
 	}
 
 	@PostMapping("patients")
@@ -53,10 +53,10 @@ public class PatientController {
 		return psi.findPatientById(id);
 	}
 	
-	@PostMapping("updatepatient/{id}")
-	void updatePatient (@RequestBody Patient patient, long patientId) {
+	@PutMapping("updatepatient/{id}")
+	void updatePatient(@RequestBody Patient patient, @PathVariable long id) {
 		System.out.println("je suis là!");
-		psi.updatePatient(patient, patientId);
-		
+		psi.updatePatient(patient, id);
 	}
+	
 }

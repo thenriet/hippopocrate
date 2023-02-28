@@ -30,6 +30,7 @@ export class PageAddPatientComponent implements OnInit {
     ) { 
       this.patient = new Patient();  
   }
+  
   ngOnInit(): void {
     this.addPatientForm = this.fb.group({
       firstname:['',Validators.required],

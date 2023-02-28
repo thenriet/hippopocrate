@@ -12,9 +12,9 @@ public interface PatientService {
     List<Patient> fetchPatientList();
   
     // update operation
-    Patient updatePatient(Patient patient, long patientId);
+    Patient updatePatient(Patient patient, long id);
   
     // delete operation
-    void deletePatientById(long patientId);
+    void deletePatientById(long id);
 
 }

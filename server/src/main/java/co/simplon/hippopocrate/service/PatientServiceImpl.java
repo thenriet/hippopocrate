@@ -27,14 +27,14 @@ public class PatientServiceImpl implements PatientService {
 		return pr.findAll();
 	}
 
-	public Patient findPatientById(long patientId) {
-		return pr.findById(patientId).get();
+	public Patient findPatientById(long id) {
+		return pr.findById(id).get();
 	}
 
 	@Override
-	public Patient updatePatient(Patient patient, long patientId) {
+	public Patient updatePatient(Patient patient, long id) {
 		// TODO Auto-generated method stub
-		Patient patientInDB = pr.findById(patientId).get();
+		Patient patientInDB = pr.findById(id).get();
 
 		if (Objects.nonNull(patient.getFirstname()) && !"".equalsIgnoreCase(patient.getFirstname())) {
 			patientInDB.setFirstname(patient.getFirstname());
@@ -60,7 +60,7 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public void deletePatientById(long patientId) {
+	public void deletePatientById(long id) {
 		// TODO Auto-generated method stub
 
 	}

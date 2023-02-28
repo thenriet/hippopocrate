@@ -30,6 +30,6 @@ export class PatientService {
   }
 
   public update(patient:Patient, id:number){
-    return this.http.post<Patient> ( "http://localhost:8080/api/updatepatient",patient);
+    return this.http.put<Patient>(`${this.idUrl}/${id}`,patient);
   }
 }

@@ -23,11 +23,12 @@ public class Patient {
 	private LocalDate date_in;
 	private LocalDate date_out;
 	
+	
 	public Patient() {
 		
 	}
 	
-	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate date_in,  LocalDate date_out) {
+	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate date_in,  LocalDate date_out, String[] commentary) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -37,7 +38,7 @@ public class Patient {
 		this.date_in = date_in;
 		this.date_out = date_out;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Patient [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate

@@ -16,7 +16,7 @@ export class UpdatePatientComponent {
    updatePatientForm!: FormGroup;
    error=false;
    patientForm = new AddPatient;
-   patient!: Patient;
+   patient= new Patient();
    id!:number;
 
 
@@ -61,7 +61,7 @@ export class UpdatePatientComponent {
     this.patientForm.address= data.address;
     this.patientForm.birthdate = data.birthdate;
 
-    this.patientService.update(this.patientForm, this.id);
+   this.patientService.update(this.patientForm, this.id);
     
     console.log(this.patientForm);
 

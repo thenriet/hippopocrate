@@ -10,6 +10,7 @@ import { PatientService } from '../service/patient-service.service';
 export class PatientListComponent {
 
   patients!: Patient[];
+  patient!:Patient;
 
   constructor (private patientService: PatientService, private router: Router) {
   }

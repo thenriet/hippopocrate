@@ -9,4 +9,5 @@ export class Patient {
     bed_id!: number;
     room_id!: number;
     service_id!: number;
+    commentary!: String[];
 }

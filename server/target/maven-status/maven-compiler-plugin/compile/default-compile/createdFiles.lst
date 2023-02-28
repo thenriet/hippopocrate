@@ -2,7 +2,10 @@ co\simplon\hippopocrate\controller\PatientController.class
 co\simplon\hippopocrate\repository\UserRepository.class
 co\simplon\hippopocrate\repository\RoleRepository.class
 co\simplon\hippopocrate\HippopocrateApplication.class
+co\simplon\hippopocrate\repository\CommentaryRepository.class
 co\simplon\hippopocrate\security\SecurityConfig.class
+co\simplon\hippopocrate\model\Commentary.class
+co\simplon\hippopocrate\service\CommentaryServiceImpl.class
 co\simplon\hippopocrate\model\User.class
 co\simplon\hippopocrate\service\CustomUserDetailService.class
 co\simplon\hippopocrate\model\Bed.class
@@ -12,7 +15,9 @@ co\simplon\hippopocrate\service\PatientService.class
 co\simplon\hippopocrate\model\Patient.class
 co\simplon\hippopocrate\model\Room.class
 co\simplon\hippopocrate\model\Role.class
+co\simplon\hippopocrate\service\CommentaryService.class
 co\simplon\hippopocrate\service\UserService.class
 co\simplon\hippopocrate\service\UserServiceImpl.class
+co\simplon\hippopocrate\controller\CommentaryController.class
 co\simplon\hippopocrate\service\PatientServiceImpl.class
 co\simplon\hippopocrate\repository\PatientRepository.class
