@@ -20,8 +20,8 @@ export class PatientService {
     return this.http.get<Patient[]>(this.patientsUrl);
   }
 
-  public save(patient: addPatientModel) {
-    return this.http.post<addPatientModel>(this.patientsUrl, patient);
+  public save(patient: Patient) {
+    return this.http.post<Patient>(this.patientsUrl, patient);
   }
 
 }

@@ -8,6 +8,7 @@ import { ServiceHippoService } from '../service/service-hippo.service';
 import { ServiceHippo } from '../model/serviceHippo';
 import { Observable } from 'rxjs';
 import { Room } from '../model/room';
+import { Bed } from '../model/bed';
 
 @Component({
   selector: 'app-page-add-patient',
@@ -29,7 +30,9 @@ export class PageAddPatientComponent implements OnInit {
   serviceId!: string;
   rooms !: Room[];
   roomId!: string;
-  
+  beds !: Bed[];
+  bedId!: string;
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute, 
@@ -50,7 +53,8 @@ export class PageAddPatientComponent implements OnInit {
       address:['', Validators.required],
       birthdate:['', Validators.required],
       service:['', Validators.required],
-      room:['', Validators.required]
+      room:['', Validators.required],
+      bed:['', Validators.required]
      });
      this.patientService.findAll().subscribe(result => 
       this.patientListLength = result.length +1
@@ -60,14 +64,19 @@ export class PageAddPatientComponent implements OnInit {
   onSubmit() {
 
     let data = this.addPatientForm.value;
-    console.log(data);
-    this.patientForm.id = this.patientListLength;
-    this.patientForm.firstname = data.firstname;
-    this.patientForm.lastname = data.lastname;
-    this.patientForm.address= data.address;
-    this.patientForm.birthdate= data.birthdate;
-    this.patientService.save(this.patientForm).subscribe(result => this.gotoPatientList());
-    console.log(this.patientForm)
+    this.patient.id = this.patientListLength;
+    this.patient.firstname = data.firstname;
+    this.patient.lastname = data.lastname;
+    this.patient.address= data.address;
+    this.patient.birthdate= data.birthdate;
+    this.patient.service_id= data.service;
+    this.patient.room_id= data.room;
+    this.patient.bed_id=data.bed;
+    const current = new Date();
+    const timestamp = current.getTime();
+    this.patient.date_in= current;
+    this.patientService.save(this.patient).subscribe(result => this.gotoPatientList());
+    console.log(this.patient)
     try {
       this.addPatientForm.value
     }
@@ -82,26 +91,30 @@ export class PageAddPatientComponent implements OnInit {
   }
 
   onSelectService(){
-    console.log("test");
-    // méthode qui va chercher un service en particulier
-    // this.serviceHippo.findOne(serviceId){
-      console.log('Selected option:', this.serviceId);
-      if(this.serviceId){
-        console.log(this.serviceHippo.findOneById(this.serviceId));
-        this.serviceHippo.findRooms(this.serviceId).subscribe(data => {
-          this.rooms = data;
-        });
-      }
-    // }
+    console.log('Selected option:', this.serviceId);
+    if(this.serviceId){
+      console.log(this.serviceHippo.findOneById(this.serviceId));
+      this.serviceHippo.findRooms(this.serviceId).subscribe(data => {
+        this.rooms = data;
+        console.log(this.rooms)
+      });
+    }
   }
 
   onSelectRoom(){
     console.log('Selected option:', this.roomId);
     console.log(this.serviceHippo.findRooms(this.serviceId));
+    if(this.serviceId){
+      this.serviceHippo.findBeds(this.roomId).subscribe(data => {
+        this.beds = data;
+        console.log(this.beds)
+      });
 
-    
-     
-    
+    }
+  }
+
+  onSelectBed(){
+    console.log('Le bed is selected');
   }
 
 

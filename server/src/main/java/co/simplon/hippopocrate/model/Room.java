@@ -75,6 +75,15 @@ public class Room {
 		this.beds = beds;
 	}
 
+
+	public ServiceHippo getServiceHippo() {
+		return serviceHippo;
+	}
+
+	public void setServiceHippo(ServiceHippo serviceHippo) {
+		this.serviceHippo = serviceHippo;
+	}
+
 	
 	
 

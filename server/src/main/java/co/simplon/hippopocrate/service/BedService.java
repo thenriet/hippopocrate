@@ -3,7 +3,6 @@ package co.simplon.hippopocrate.service;
 import java.util.List;
 
 import co.simplon.hippopocrate.model.Bed;
-import co.simplon.hippopocrate.model.Patient;
 
 public interface BedService {
 	
@@ -14,7 +13,7 @@ public interface BedService {
     List<Bed> fetchBedList();
   
     // update operation
-    Bed updateBed(Patient bed, long bedId);
+    Bed updateBed(Bed bed, long bedId);
   
     // delete operation
     void deleteBedById(long bedId);

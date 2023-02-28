@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.hippopocrate.dto.PatientDTO;
-import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.service.PatientServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -28,11 +27,15 @@ public class PatientController {
 	public List<PatientDTO> fetchPatientsList() {
 		return psi.createPatientsDTOFromDB();
 	}
-
+ 
+//    @PostMapping("patients")
+//    void addPatient(@RequestBody Patient patient) {
+//    	psi.savePatient(patient);
+//    }
     
     @PostMapping("patients")
-    void addPatient(@RequestBody Patient patient) {
-    	psi.savePatient(patient);
+    void addPatient(@RequestBody PatientDTO patientDTO) {
+    	psi.savePatientDTO(patientDTO);
     }
     
 

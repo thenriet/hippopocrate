@@ -14,9 +14,9 @@ public class PatientDTO {
 	private String address;
 	private LocalDate date_in; 
 	private LocalDate date_out; 
-	private int bed_id;
-	private int room_id;
-	private int service_id;
+	private long bed_id;
+	private long room_id;
+	private long service_id;
 
 	
 
@@ -76,27 +76,27 @@ public class PatientDTO {
 		this.date_out = date_out;
 	}
 
-	public int getBed_id() {
+	public Long getBed_id() {
 		return bed_id;
 	}
 
-	public void setBed_id(int bed_id) {
+	public void setBed_id(long bed_id) {
 		this.bed_id = bed_id;
 	}
 
-	public int getRoom_id() {
+	public long getRoom_id() {
 		return room_id;
 	}
 
-	public void setRoom_id(int room_id) {
+	public void setRoom_id(long room_id) {
 		this.room_id = room_id;
 	}
 
-	public int getService_id() {
+	public long getService_id() {
 		return service_id;
 	}
 
-	public void setService_id(int service_id) {
+	public void setService_id(long service_id) {
 		this.service_id = service_id;
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.hippopocrate.dto.PatientDTO;
+import co.simplon.hippopocrate.model.Bed;
 import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.repository.PatientRepository;
 
@@ -17,6 +18,8 @@ public class PatientServiceImpl implements PatientService {
 	
 	@Autowired
     private PatientRepository pr;
+	@Autowired
+	private BedServiceImpl bsi;
 	
 	@Override
 	public Patient savePatient(Patient patient) {
@@ -105,6 +108,25 @@ public class PatientServiceImpl implements PatientService {
 		}
 		return patientsDTOList;
 			
+	}
+
+	public void savePatientDTO(PatientDTO patientDTO) {
+		// TODO Auto-generated method stub
+		Patient patient = new Patient();
+		
+		patient.setId(patientDTO.getId());
+		patient.setFirstname(patientDTO.getFirstname());
+		patient.setLastname(patientDTO.getLastname());
+		patient.setBirthdate(patientDTO.getBirthdate());
+		patient.setAddress(patientDTO.getAddress());
+		patient.setDate_in(patientDTO.getDate_in());
+		patient.setBed(bsi.findBedById(patientDTO.getBed_id()));
+		Bed bed = bsi.findBedById(patientDTO.getBed_id());
+		bed.setPatient(patient);
+		bed.setOccupied(true);
+		bsi.updateBed(bed, patientDTO.getBed_id());
+		
+		pr.save(patient);
 	}
 
 }

@@ -1,7 +1,6 @@
 package co.simplon.hippopocrate.controller;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.simplon.hippopocrate.model.Bed;
 import co.simplon.hippopocrate.model.Room;
 import co.simplon.hippopocrate.model.ServiceHippo;
 import co.simplon.hippopocrate.service.ServiceServImpl;
@@ -42,6 +42,10 @@ public class ServiceController {
    		return ssi.findRooms(id);
    	}
     
+    @GetMapping("rooms/{id}/beds")
+   	public  Set<Bed> fetchBedsByRoom(@PathVariable("id") long id, Model model) {
+   		return ssi.findBeds(id);
+   	}
     
     
 }

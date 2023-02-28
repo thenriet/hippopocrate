@@ -2,7 +2,6 @@ package co.simplon.hippopocrate.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,7 +18,7 @@ import jakarta.persistence.Table;
 public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	@Column(nullable=false)
 	private String firstname;
 	@Column(nullable=false)
@@ -60,8 +59,8 @@ public class Patient {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(long id) {
+		this.id = id ;
 	}
 
 	public String getFirstname() {

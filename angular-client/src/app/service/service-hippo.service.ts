@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ServiceHippo } from '../model/serviceHippo';
 import { Observable } from 'rxjs';
 import { Room } from '../model/room';
+import { Bed } from '../model/bed';
 
 
 @Injectable({
@@ -13,13 +14,13 @@ export class ServiceHippoService {
   private servicesUrl: string;
   private serviceUrl: string;
   private roomsUrl: string;
-
-
+  private bedsUrl: string;
 
   constructor(private http: HttpClient) { 
     this.servicesUrl = 'http://localhost:8080/api/services';
     this.serviceUrl = 'http://localhost:8080/api/services/'
     this.roomsUrl = 'http://localhost:8080/api/services/'
+    this.bedsUrl = 'http://localhost:8080/api/rooms/'
   }
 
   public findAll(): Observable<ServiceHippo[]> {
@@ -31,6 +32,10 @@ export class ServiceHippoService {
   }
 
   public findRooms(serviceId: string): Observable<Room[]> {
-    return this.http.get<Room[]>(this.roomsUrl+serviceId+'/rooms')
+    return this.http.get<Room[]>(this.serviceUrl+serviceId+'/rooms')
+  }
+
+  public findBeds(roomId: string): Observable<Bed[]> {
+    return this.http.get<Bed[]>(this.bedsUrl+roomId+'/beds')
   }
 }

@@ -16,7 +16,7 @@ public class Bed {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	private int number;
 	private boolean occupied;
 	
@@ -39,11 +39,11 @@ public class Bed {
 		this.occupied = occupied;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

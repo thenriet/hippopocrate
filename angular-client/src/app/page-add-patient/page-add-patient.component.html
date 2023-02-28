@@ -30,6 +30,12 @@
         </select>
         <p *ngIf="error">Veuillez sélectionner une chambre</p>
 
+        <label>Lit :</label>
+        <select [(ngModel)]="bedId" (ngModelChange)="onSelectBed()" class="dropbox" name="beds" id="bed" formControlName="bed">
+            <option  *ngFor="let bed of beds" value="{{ bed.id }}">{{ bed.number }}</option>
+        </select>
+        <p *ngIf="error">Veuillez sélectionner un lit</p>
+
         <button type="submit" class="button">Valider</button>
 
     </form>
