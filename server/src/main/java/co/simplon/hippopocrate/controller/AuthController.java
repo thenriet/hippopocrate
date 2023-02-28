@@ -26,7 +26,6 @@ import co.simplon.hippopocrate.model.Role;
 import co.simplon.hippopocrate.model.User;
 import co.simplon.hippopocrate.model.UserDto;
 import co.simplon.hippopocrate.service.UserService;
-import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

@@ -1,11 +1,14 @@
 package co.simplon.hippopocrate.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.simplon.hippopocrate.dto.PatientDTO;
+import co.simplon.hippopocrate.model.Bed;
 import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.repository.PatientRepository;
 
@@ -14,6 +17,8 @@ public class PatientServiceImpl implements PatientService {
 
 	@Autowired
 	private PatientRepository pr;
+	@Autowired
+	private BedServiceImpl bsi;
 
 	@Override
 	public Patient savePatient(Patient patient) {
@@ -48,8 +53,8 @@ public class PatientServiceImpl implements PatientService {
 			patientInDB.setBirthdate(patient.getBirthdate());
 		}
 
-		if (Objects.nonNull(patient.getBed_id())) {
-			patientInDB.setBed_id(patient.getBed_id());
+		if (Objects.nonNull(patient.getBed())) {
+			patientInDB.setBed(patient.getBed());
 		}
 
 		if (Objects.nonNull(patient.getAddress()) && !"".equalsIgnoreCase(patient.getAddress())) {
@@ -64,5 +69,62 @@ public class PatientServiceImpl implements PatientService {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public PatientDTO createPatientDTOFromDB(long id){
+		Patient patient = pr.findById(id).get();
+		PatientDTO patientDTO = new PatientDTO();
+		patientDTO.setId(patient.getId()); 
+		patientDTO.setFirstname(patient.getFirstname()); 
+		patientDTO.setLastname(patient.getLastname());
+		patientDTO.setBirthdate(patient.getBirthdate());
+		patientDTO.setAddress(patient.getAddress());
+		patientDTO.setDate_in(patient.getDate_in());
+		patientDTO.setDate_out(patient.getDate_out());
+		patientDTO.setBed_id(patient.getBed().getId());
+		patientDTO.setRoom_id(patient.getBed().getRoom().getId());
+		patientDTO.setService_id(patient.getBed().getRoom().getService().getId());
+		return patientDTO;
+	}
+	
+	public List<PatientDTO> createPatientsDTOFromDB() {
+		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>(); 
+		List <Patient> patientsInDB = this.fetchPatientList();
+		for (int i = 0; i < patientsInDB.size(); i++) {
+			PatientDTO patientDTO = new PatientDTO();
+			patientDTO.setId(patientsInDB.get(i).getId()); 
+			patientDTO.setFirstname(patientsInDB.get(i).getFirstname()); 
+			patientDTO.setLastname(patientsInDB.get(i).getLastname());
+			patientDTO.setBirthdate(patientsInDB.get(i).getBirthdate());
+			patientDTO.setAddress(patientsInDB.get(i).getAddress());
+			patientDTO.setDate_in(patientsInDB.get(i).getDate_in());
+			patientDTO.setDate_out(patientsInDB.get(i).getDate_out());
+			patientDTO.setBed_id(patientsInDB.get(i).getBed().getId());
+			patientDTO.setRoom_id(patientsInDB.get(i).getBed().getRoom().getId());
+			patientDTO.setService_id(patientsInDB.get(i).getBed().getRoom().getService().getId());
+			patientsDTOList.add(patientDTO);
+		}
+		return patientsDTOList;
+			
+	}
+
+	public void savePatientDTO(PatientDTO patientDTO) {
+		// TODO Auto-generated method stub
+		Patient patient = new Patient();
+		
+		patient.setId(patientDTO.getId());
+		patient.setFirstname(patientDTO.getFirstname());
+		patient.setLastname(patientDTO.getLastname());
+		patient.setBirthdate(patientDTO.getBirthdate());
+		patient.setAddress(patientDTO.getAddress());
+		patient.setDate_in(patientDTO.getDate_in());
+		patient.setBed(bsi.findBedById(patientDTO.getBed_id()));
+		Bed bed = bsi.findBedById(patientDTO.getBed_id());
+		bed.setPatient(patient);
+		bed.setOccupied(true);
+		bsi.updateBed(bed, patientDTO.getBed_id());
+		
+		pr.save(patient);
+	}
+
 
 }

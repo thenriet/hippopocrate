@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -22,7 +24,7 @@ public class Role
 
     @Column(nullable=false, unique=true)
     private String name;
-
+    @JsonBackReference
     @ManyToMany(mappedBy="roles")
     private List<User> users;
 

@@ -1,12 +1,14 @@
 package co.simplon.hippopocrate.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
+import co.simplon.hippopocrate.dto.PatientDTO;
 import co.simplon.hippopocrate.model.Patient;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+@Component
+public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-@Repository
-public interface PatientRepository extends JpaRepository<Patient, Long>{
+	Object save(PatientDTO patient);
 
 }

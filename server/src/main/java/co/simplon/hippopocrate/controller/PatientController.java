@@ -1,8 +1,5 @@
 package co.simplon.hippopocrate.controller;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.simplon.hippopocrate.dto.PatientDTO;
 import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.service.PatientServiceImpl;
 
@@ -31,19 +29,15 @@ public class PatientController {
 	@Autowired
 	private PatientServiceImpl psi;
 
-	@GetMapping("patients")
-	@PreAuthorize("hasAuthority('ROLE_INFIRMIER')")
-	public List<Patient> fetchPatientList() {
-		return psi.fetchPatientList();
-
+    @GetMapping("patients")
+	public List<PatientDTO> fetchPatientsList() {
+		return psi.createPatientsDTOFromDB();
 	}
 
-	@PostMapping("patients")
-	void addPatient(@RequestBody Patient patient) {
-//		ZoneId z = ZoneId.of("Europe/France");
-//		LocalDate today = LocalDate.now(z);// Always pass a time zone.
-		psi.savePatient(patient);
-	}
+    @PostMapping("patients")
+    void addPatient(@RequestBody PatientDTO patientDTO) {
+    	psi.savePatientDTO(patientDTO);
+    }
 	
 	@GetMapping("patients/{id}")
 	public Patient findById(@PathVariable long id) {
