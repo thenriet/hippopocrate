@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthentificationService } from '../service/authentification-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../model/patient';
-import { PatientService } from '../service/patient-service';
+import { PatientService } from '../service/patient-service.service';
 
 @Component({
   selector: 'app-patient-list',

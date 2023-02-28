@@ -15,7 +15,7 @@ export class AuthentificationService {
 
   private url = 'http://localhost:8080/api/login';
   private urlLogout = 'http://localhost:8080/logout';
-  private urlUsersRole = 'http://localhost:8080/api/users/roles';
+  private urlUsersRole = 'http://localhost:8080/api/users/role';
 
   constructor(private http: HttpClient, private router: Router) {}
 

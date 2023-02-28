@@ -32,8 +32,20 @@ public class PatientServiceImpl implements PatientService {
 		return pr.findAll();
 	}
 
-	public Patient findPatientById(long patientId) {
-		return pr.findById(patientId).get();
+	public PatientDTO findPatientById(long patientId) {
+		Patient patient = pr.findById(patientId).get();
+		PatientDTO patientDTO = new PatientDTO();
+		patientDTO.setId(patient.getId()); 
+		patientDTO.setFirstname(patient.getFirstname()); 
+		patientDTO.setLastname(patient.getLastname());
+		patientDTO.setBirthdate(patient.getBirthdate());
+		patientDTO.setAddress(patient.getAddress());
+		patientDTO.setDate_in(patient.getDate_in());
+		patientDTO.setDate_out(patient.getDate_out());
+		patientDTO.setBed_id(patient.getBed().getId());
+		patientDTO.setRoom_id(patient.getBed().getRoom().getId());
+		patientDTO.setService_id(patient.getBed().getRoom().getService().getId());
+		return patientDTO;
 	}
 
 	@Override

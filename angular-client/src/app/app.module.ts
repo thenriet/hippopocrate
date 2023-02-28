@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AuthentificationService } from './service/authentification-service.service';
 // import { HttpInterceptorService } from './service/httpinterceptor.service';
 import { ListeServiceComponent } from './liste-service/liste-service.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListeServiceComponent } from './liste-service/liste-service.component';
     PatientDetailsComponent,
     AddPatientComponent,
     NavbarComponent,
-    ListeServiceComponent
+    ListeServiceComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

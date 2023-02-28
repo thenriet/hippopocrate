@@ -40,7 +40,7 @@ public class PatientController {
     }
 	
 	@GetMapping("patients/{id}")
-	public Patient findById(@PathVariable long id) {
+	public PatientDTO findById(@PathVariable long id) {
 		return psi.findPatientById(id);
 	}
 

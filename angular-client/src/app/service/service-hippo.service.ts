@@ -16,7 +16,7 @@ export class ServiceHippoService {
   private roomsUrl: string;
   private bedsUrl: string;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.servicesUrl = 'http://localhost:8080/api/services';
     this.serviceUrl = 'http://localhost:8080/api/services/'
     this.roomsUrl = 'http://localhost:8080/api/services/'
@@ -27,15 +27,19 @@ export class ServiceHippoService {
     return this.http.get<ServiceHippo[]>(this.servicesUrl);
   }
 
-  public findOneById(serviceId: string): Observable<ServiceHippo> {
+  public findOneById(serviceId: number): Observable<ServiceHippo> {
     return this.http.get<ServiceHippo>(this.serviceUrl + serviceId);
   }
 
-  public findRooms(serviceId: string): Observable<Room[]> {
+  public findRooms(serviceId: number): Observable<Room[]> {
     return this.http.get<Room[]>(this.serviceUrl+serviceId+'/rooms')
   }
 
-  public findBeds(roomId: string): Observable<Bed[]> {
+  public findOneRoomById(roomId: number): Observable<Room> {
+    return this.http.get<Room>(this.bedsUrl+roomId)
+  }
+
+  public findBeds(roomId: number): Observable<Bed[]> {
     return this.http.get<Bed[]>(this.bedsUrl+roomId+'/beds')
   }
 }

@@ -14,4 +14,6 @@ public interface UserService {
     List<UserDto> findAllUserDto();
 
 	String findUserRoleDtoByName(String name);
+
+	void saveUser(UserDto userDto);
 }

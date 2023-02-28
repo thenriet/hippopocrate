@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../model/patient';
+import { ServiceHippo } from '../model/serviceHippo';
 import { PatientService } from '../service/patient-service.service';
+import { ServiceHippoService } from '../service/service-hippo.service';
 
 @Component({
   selector: 'app-patient-details',
@@ -12,7 +14,7 @@ export class PatientDetailsComponent implements OnInit {
   id!: number;
   patient!: Patient;
 
-  constructor (private patientService: PatientService, private route: ActivatedRoute, private router: Router) {}
+  constructor (private patientService: PatientService, private route: ActivatedRoute, private router: Router, private serviceHippo: ServiceHippoService) {}
 
   ngOnInit() {
     this.loadPatientById();
@@ -29,5 +31,17 @@ export class PatientDetailsComponent implements OnInit {
       }
     });
   }
+
+  // loadPatientService(id: number) {
+  //   this.serviceHippo.findOneById(id).subscribe({
+  //     next: (data) => {
+  //       this.service = data;
+  //     }
+  //   });
+  // }
+
+  // loadPatientRoom(id: number) {
+  //   this.serviceHippo.find
+  // }
 
 }

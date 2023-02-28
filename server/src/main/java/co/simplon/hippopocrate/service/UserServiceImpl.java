@@ -1,5 +1,6 @@
 package co.simplon.hippopocrate.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import co.simplon.hippopocrate.repository.RoleRepository;
 import co.simplon.hippopocrate.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -18,6 +20,8 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private RoleService roleService;
 
 	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
 			PasswordEncoder passwordEncoder) {
@@ -25,6 +29,19 @@ public class UserServiceImpl implements UserService {
 		this.roleRepository = roleRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
+	
+    @Override
+    public void saveUser(UserDto userDto) {
+        User user = new User();
+        user.setName(userDto.getName());
+//        user.setEmail(userDto.getEmail());
+        // encrypt the password using spring security
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        Role role = roleService.findByName(userDto.getRole());
+        user.setRoles(Arrays.asList(role));
+        System.out.println(role);
+        userRepository.save(user);
+    }
 
 	@Override
 	public List<User> findAllUsers() {
@@ -61,22 +78,6 @@ public class UserServiceImpl implements UserService {
 		return userDto.getRole();
 
 	}
-
-//    @Override
-//    public void saveUser(UserDto userDto) {
-//        User user = new User();
-//        user.setName(userDto.getName());
-////        user.setEmail(userDto.getEmail());
-//        // encrypt the password using spring security
-//        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-//
-//        Role role = roleRepository.findByName("ROLE_USER");
-//        if(role == null){
-//            role = checkRoleExist();
-//        }
-//        user.setRoles(Arrays.asList(role));
-//        userRepository.save(user);
-//    }
 
 	@Override
 	public User findUserByName(String name) {
