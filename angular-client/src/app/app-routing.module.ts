@@ -8,12 +8,14 @@ import { UserListComponent } from './user-list/user-list.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 const routes: Routes = [
   { path: 'list', component: ListeServiceComponent },
   { path: '', component: FormLoginComponent},
   { path: 'login', component: FormLoginComponent },
   { path: 'addUser', component: AddUserComponent },
+  { path: 'updateUser/:id', component: UpdateUserComponent },
   { path: 'accueil', component: HomeComponent },
   { path: 'users', component: UserListComponent },
   { path: 'patients', component: PatientListComponent },

@@ -89,4 +89,9 @@ public class AuthController {
     void addUser(@RequestBody UserDto userDTO) {
     	this.userService.saveUser(userDTO);
     }
+    
+	@GetMapping("users/{id}")
+	public Optional<User> getUserById(@PathVariable int id) {
+		return this.userService.findById(id);
+	}
 }

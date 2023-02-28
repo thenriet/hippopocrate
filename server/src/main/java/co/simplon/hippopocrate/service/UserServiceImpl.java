@@ -13,6 +13,7 @@ import co.simplon.hippopocrate.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,19 +30,17 @@ public class UserServiceImpl implements UserService {
 		this.roleRepository = roleRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
-	
-    @Override
-    public void saveUser(UserDto userDto) {
-        User user = new User();
-        user.setName(userDto.getName());
-//        user.setEmail(userDto.getEmail());
-        // encrypt the password using spring security
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        Role role = roleService.findByName(userDto.getRole());
-        user.setRoles(Arrays.asList(role));
-        System.out.println(role);
-        userRepository.save(user);
-    }
+
+	@Override
+	public void saveUser(UserDto userDto) {
+		User user = new User();
+		user.setName(userDto.getName());
+		// encrypt the password using spring security
+		user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+		Role role = roleService.findByName(userDto.getRole());
+		user.setRoles(Arrays.asList(role));
+		userRepository.save(user);
+	}
 
 	@Override
 	public List<User> findAllUsers() {
@@ -84,6 +83,11 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByName(name);
 	}
 
+	@Override
+	public Optional<User> findById(int id) {
+		return userRepository.findById(id);
+	}
+
 //    private UserDto mapToUserDto(User user){
 //        UserDto userDto = new UserDto();
 //        String str = user.getName();
@@ -91,10 +95,4 @@ public class UserServiceImpl implements UserService {
 ////        userDto.setEmail(user.getEmail());
 //        return userDto;
 //    }
-
-//	private Role checkRoleExist() {
-//		Role role = new Role();
-//		role.setName("ROLE_USER");
-//		return roleRepository.save(role);
-//	}
 }

@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<body>
+  <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit()">
+    <h1>Hippopocrate</h1>
+    <h2>Modifier un utilisateur</h2>
+    <label>Nom d'utilisateur :</label>
+    <input type="text" name="name" formControlName="name" required placeholder="{{ user.name }}" />
+    <label>Mot de passe :</label>
+    <input type="text" name="password" formControlName="password" required placeholder=" {{ user.password }}" />
+    <label>Habilitation :</label>
+    <select
+      [(ngModel)]="roleId"
+      (ngModelChange)="onSelectRole()"
+      class="dropbox"
+      name="roles"
+      id="role"
+      formControlName="role"
+    >
+      <option *ngFor="let role of roles" value="{{ role.name }}">
+        {{ user.role }}
+      </option>
+    </select>
+    <button type="submit" class="button">Valider</button>
+  </form>
+</body>

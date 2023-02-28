@@ -17,6 +17,7 @@ import { AuthentificationService } from './service/authentification-service.serv
 // import { HttpInterceptorService } from './service/httpinterceptor.service';
 import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AddUserComponent } from './add-user/add-user.component';
     AddPatientComponent,
     NavbarComponent,
     ListeServiceComponent,
-    AddUserComponent
+    AddUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

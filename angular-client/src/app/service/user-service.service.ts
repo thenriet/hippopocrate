@@ -31,4 +31,8 @@ export class UserServiceService {
     return this.http.post<User>(this.usersUrl, user);
   }
 
+  public findUserById(userId: number): Observable<User> {
+    return this.http.get<User>(this.usersUrl + '/' + userId);
+  }
+
  }

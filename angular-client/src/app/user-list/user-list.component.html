@@ -1,23 +1,31 @@
 <app-navbar></app-navbar>
 <div class="card my-5">
   <h1>Liste utilisateurs</h1>
-    <div class="card-body">
-      <table class ="tableau">
-        <thead>
-          <tr>
-            <th>Nom utilisateur</th>
-            <th>Habilitations</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.name }}</td>
-            <td>{{ user.role }}</td>
-            <td><button>Modifier</button><button>Supprimer</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="ajouter"><a routerLinkActive="active" routerLink="/addUser"><button class ="btn" >Ajouter un utilisateur</button></a></div>
+  <div class="card-body">
+    <table class="tableau">
+      <thead>
+        <tr>
+          <th>Nom utilisateur</th>
+          <th>Habilitations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button (click)="updateUser(user.id)">Modifier</button>
+            <span></span>
+            <button>Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="ajouter">
+      <a routerLinkActive="active" routerLink="/addUser"
+        ><button class="btn">Ajouter un utilisateur</button></a
+      >
     </div>
   </div>
+</div>
