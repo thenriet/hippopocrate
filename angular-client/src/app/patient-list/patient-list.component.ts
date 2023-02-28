@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Patient } from '../model/patient';
+import { AuthentificationService } from '../service/authentification-service.service';
 import { PatientService } from '../service/patient-service.service';
 @Component({
   selector: 'app-patient-list',
@@ -10,13 +11,18 @@ import { PatientService } from '../service/patient-service.service';
 export class PatientListComponent {
 
   patients!: Patient[];
+  role!: String;
+  username!: any;
 
-  constructor (private patientService: PatientService, private router: Router) {
+  constructor (private patientService: PatientService, private router: Router, private authService: AuthentificationService) {
 
   }
 
   ngOnInit() {
     this.loadPatients()
+    this.authService.getUserRole().subscribe(data => {
+      this.role = data;
+    })
   }
 
   loadPatients() {
@@ -28,5 +34,4 @@ export class PatientListComponent {
   seePatient(id: number) {
     this.router.navigate(['patient', id]);
   }
-
 }

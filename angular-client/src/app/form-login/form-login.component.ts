@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 import { AuthentificationService } from '../service/authentification-service.service';
 
 @Component({
@@ -20,7 +21,10 @@ export class FormLoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    sessionStorage.setItem(this.authService.USER_NAME_SESSION_ATTRIBUTE_NAME, '')
+    sessionStorage.setItem(
+      this.authService.USER_NAME_SESSION_ATTRIBUTE_NAME,
+      ''
+    );
   }
 
   login() {
@@ -37,13 +41,13 @@ export class FormLoginComponent implements OnInit {
           //   window.btoa(this.model.username)
           // );
           this.authService.registerSuccessfulLogin(
-            this.model.username)
-            console.log(sessionStorage.getItem(this.authService.USER_NAME_SESSION_ATTRIBUTE_NAME))
-            console.log(this.authService.isUserLoggedIn())
+            this.model.username,
+            this.model.password
+          );
+          console.log(this.authService.isUserLoggedIn());
           //   this.model.password
           // );
           this.router.navigate(['accueil']);
-
         } else {
           alert('Impossible de vous identifier');
         }

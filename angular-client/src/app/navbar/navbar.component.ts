@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormLoginComponent } from '../form-login/form-login.component';
 import { AuthentificationService } from '../service/authentification-service.service';
 
 @Component({
@@ -8,17 +7,20 @@ import { AuthentificationService } from '../service/authentification-service.ser
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  
-  isLoggedIn!:boolean;
+  role!: String;
+  isLoggedIn!: boolean;
 
   constructor(private authenticationService: AuthentificationService) {}
 
   ngOnInit() {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    this.authenticationService.getUserRole().subscribe((data) => {
+      this.role = data;
+      console.log(this.role)
+    });
   }
 
   handlelogout() {
     this.authenticationService.logout();
   }
-
 }

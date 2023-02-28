@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     
-    let headers: HttpHeaders = new HttpHeaders({
-      'Authorization': 'Basic ' + sessionStorage.getItem('token')
-  });
+  //   let headers: HttpHeaders = new HttpHeaders({
+  //     'Authorization': 'Basic ' + sessionStorage.getItem('token')
+  // });
   }
 }

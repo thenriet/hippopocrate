@@ -24,6 +24,6 @@
         </tr>
       </tbody>
     </table>
-    <div><a routerLinkActive="active" routerLink="/ajouterPatient"><button class ="btn" >Nouveau Patient</button></a></div>
+    <div *ngIf = "role === 'ROLE_SECRETAIRE'"><a routerLinkActive="active" routerLink="/ajouterPatient"><button class ="btn" >Nouveau Patient</button></a></div>
   </div>
 </div>

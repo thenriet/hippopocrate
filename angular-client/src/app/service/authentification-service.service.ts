@@ -33,7 +33,9 @@ export class AuthentificationService {
   //   return 'Basic ' + window.btoa(username + ":" + password)
   // }
 
-  registerSuccessfulLogin(username: string) {
+  registerSuccessfulLogin(username: string, password: string) {
+    this.username = username;
+    this.password = password;
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
   }
 
@@ -54,7 +56,13 @@ export class AuthentificationService {
     }
   }
 
-  getUserRole(username: string) {
-    this.http.get(`${this.urlUsersRole}/${username}`);
+  getLoggedInUserName() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
+    if (user === null) return ''
+    return user
+  }
+
+  getUserRole(){
+    return this.http.get(`${this.urlUsersRole}/${this.getLoggedInUserName()}`, {responseType: 'text'});
   }
 }
