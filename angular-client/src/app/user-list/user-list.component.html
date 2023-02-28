@@ -1,15 +1,20 @@
+<app-navbar></app-navbar>
 <div class="card my-5">
+  <h1>Liste utilisateurs</h1>
     <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+      <table class ="tableau">
+        <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
+            <th>Nom utilisateur</th>
+            <th>Habilitations</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
             <td>{{ user.name }}</td>
+            <td>{{ user.role }}</td>
+            <td><button>Modifier</button><button>Supprimer</button></td>
           </tr>
         </tbody>
       </table>

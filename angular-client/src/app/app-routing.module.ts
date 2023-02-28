@@ -6,6 +6,8 @@ import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { PageAddPatientComponent } from './page-add-patient/page-add-patient.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { AddPatientComponent } from './addpatient/addpatient.component';
 
 const routes: Routes = [
   { path: 'list', component: ListeServiceComponent },
@@ -13,6 +15,9 @@ const routes: Routes = [
   { path: 'login', component: FormLoginComponent },
   { path: 'accueil', component: HomeComponent },
   { path: 'users', component: UserListComponent },
+  { path: 'patients', component: PatientListComponent },
+  { path: 'patient/:id', component: PatientDetailsComponent},
+  { path: 'ajouterPatient', component: AddPatientComponent},
   { path: 'patients', component: PatientListComponent },
   { path: 'addpatient', component: PageAddPatientComponent },
   // { path: '**', redirectTo: '' }

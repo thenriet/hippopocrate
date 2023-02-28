@@ -8,13 +8,12 @@ import { Observable } from 'rxjs/internal/Observable';
   // providedIn: 'root'
 export class UserServiceService {
 
-  private usersUrl: string;
+  private usersUrl = 'http://localhost:8080/api/users';
+  private rolesUrl = 'http://localhost:8080/api/users/roles';
 
-  constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/api/users';
-  }
+  constructor(private http: HttpClient) {}
 
   public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+    return this.http.get<User[]>(this.rolesUrl);
   }
 }

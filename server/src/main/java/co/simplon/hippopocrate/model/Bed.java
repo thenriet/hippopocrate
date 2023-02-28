@@ -84,3 +84,4 @@ public class Bed {
 		this.occupied = !occupied;
 	}
 }
+

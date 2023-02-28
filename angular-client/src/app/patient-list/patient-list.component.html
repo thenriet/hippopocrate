@@ -1,18 +1,29 @@
+<app-navbar></app-navbar>
 <div class="card my-5">
+  <h1>Liste Patients</h1>
   <div class="card-body">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
+    <table class="tableau">
+      <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Firstname</th>
+          <th scope="col">Patient</th>
+          <th scope="col">Chambre</th>
+          <th scope="col">Lit</th>
+          <th scope="col">Service</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let patient of patients">
-          <td>{{ patient.id }}</td>
-          <td>{{ patient.firstname }}</td>
+          <td>{{ patient.firstname }} {{ patient.lastname }}</td>
+          <td>A faire</td>
+          <td>A faire</td>
+          <td>A faire</td>
+          <td>
+            <button (click)="seePatient(patient.id)">Voir détails</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf = "role === 'ROLE_SECRETAIRE'"><a routerLinkActive="active" routerLink="/ajouterPatient"><button class ="btn" >Nouveau Patient</button></a></div>
   </div>
 </div>
