@@ -116,9 +116,5 @@ export class PageAddPatientComponent implements OnInit {
   onSelectBed(){
     console.log('Le bed is selected');
   }
-
-
-  save() {
-    // Call a function to save the selected option
-  }
+  
 }
