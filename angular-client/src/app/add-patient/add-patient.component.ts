@@ -111,9 +111,4 @@ export class AddPatientComponent implements OnInit {
 
     }
   }
-
-  onSelectBed(){
-    console.log('Le bed is selected');
-  }
-
 }

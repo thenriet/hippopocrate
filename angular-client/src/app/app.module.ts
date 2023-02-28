@@ -16,6 +16,7 @@ import { AuthentificationService } from './service/authentification-service.serv
 // import { HttpInterceptorService } from './service/httpinterceptor.service';
 import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
+import { UpdatePatientComponent } from './update-patient/update-patient.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PatientListComponent } from './patient-list/patient-list.component';
     PatientDetailsComponent,
     NavbarComponent,
     ListeServiceComponent,
-    PatientListComponent
+    PatientListComponent,
+    UpdatePatientComponent
   ],
   imports: [
     BrowserModule,

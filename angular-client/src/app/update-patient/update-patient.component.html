@@ -1,24 +1,24 @@
-<app-navbar></app-navbar>
-<body>
-    <form [formGroup]="addPatientForm" (ngSubmit)="onSubmit()">
+<div class="body">
+    <form [formGroup]="updatePatientForm" (ngSubmit)="onSubmit()" method="PUT">
     <h1>Hippopocrate:</h1>
-    <h2>Ajouter un patient </h2>
+    <h2>Modifier les infos d'un patient </h2>
+
         <label>Prénom:</label>
-        <input type="text" name="firstname" formControlName="firstname" required>
+        <input type="text" name="firstname" formControlName="firstname" required placeholder="{{patient.firstname}}">
         <p *ngIf="error">Veuillez entrer un prénom valide</p>
 
         <label>Nom:</label>
-        <input type="text" name="lastname" formControlName="lastname" required>
+        <input type="text" name="name" formControlName="lastname" required placeholder="{{patient.lastname}}">
         <p *ngIf="error">Veuillez entrer un nom valide</p>
 
         <label>Adresse:</label>
-        <input type="text" name="address" formControlName="address" required>
+        <input type="text" name="address" formControlName="address" required placeholder="{{patient.address}}">
         <p *ngIf="error">Veuillez entrer une addresse valide</p>
 
         <label>Date de naissance:</label>
         <input type="date" name="birthdate" formControlName="birthdate" required>
         <p *ngIf="error">Veuillez entrer une date valide</p>
-
+        
         <label>Services :</label>
         <select [(ngModel)]="serviceId" (ngModelChange)="onSelectService()" class="dropbox" name="services" id="service" formControlName="service">
             <option  *ngFor="let service of services" value="{{ service.id }}">{{ service.name }}</option>
@@ -37,7 +37,6 @@
         </select>
         <p *ngIf="error">Veuillez sélectionner un lit</p>
 
-        <button type="submit" class="button">Valider</button>
-
+        <button type="submit" class="button" >Modifier</button>
     </form>
-</body>
+</div>

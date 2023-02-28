@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Patient } from '../model/patient';
 import { Observable } from 'rxjs';
 
@@ -9,9 +9,11 @@ import { Observable } from 'rxjs';
 export class PatientService {
 
   private patientsUrl: string;
+  private idUrl: string;
 
   constructor(private http: HttpClient) { 
     this.patientsUrl = 'http://localhost:8080/api/patients';
+    this.idUrl = 'http://localhost:8080/api/updatepatient';
   }
 
   public findAll(): Observable<Patient[]> {
@@ -24,6 +26,10 @@ export class PatientService {
 
   public save(patient: Patient) {
     return this.http.post<Patient>(this.patientsUrl, patient);
+  }
+
+  public update(patient:Patient, id:number){
+    return this.http.put<Patient>(`${this.idUrl}/${id}`, patient);
   }
 
 }

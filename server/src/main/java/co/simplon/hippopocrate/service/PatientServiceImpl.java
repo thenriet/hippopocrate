@@ -37,31 +37,31 @@ public class PatientServiceImpl implements PatientService {
 		return pr.findById(patientId).get();
 	}
 	
-
 	@Override
-	public Patient updatePatient(Patient patient, long patientId) {
+	public Patient updatePatient(PatientDTO patientDTO, long patientId) {
 		// TODO Auto-generated method stub
 		Patient patientInDB = pr.findById(patientId).get();
 		
-		if (Objects.nonNull(patient.getFirstname()) && !"".equalsIgnoreCase(patient.getFirstname())) {
-			patientInDB.setFirstname(patient.getFirstname());
+		if (Objects.nonNull(patientDTO.getFirstname()) && !"".equalsIgnoreCase(patientDTO.getFirstname())) {
+			patientInDB.setFirstname(patientDTO.getFirstname());
         }
         
-        if (Objects.nonNull(patient.getLastname()) && !"".equalsIgnoreCase(patient.getLastname())) {
-        	patientInDB.setLastname(patient.getLastname());
+        if (Objects.nonNull(patientDTO.getLastname()) && !"".equalsIgnoreCase(patientDTO.getLastname())) {
+        	patientInDB.setLastname(patientDTO.getLastname());
         }
         
   
-        if (Objects.nonNull(patient.getBirthdate()) ) {
-        	patientInDB.setBirthdate(patient.getBirthdate());
+        if (Objects.nonNull(patientDTO.getBirthdate()) ) {
+        	patientInDB.setBirthdate(patientDTO.getBirthdate());
         }
         
-        if (Objects.nonNull(patient.getBed())) {
-        	patientInDB.setBed(patient.getBed());
+        if (Objects.nonNull(patientDTO.getAddress()) && !"".equalsIgnoreCase(patientDTO.getAddress())) {
+        	patientInDB.setAddress(patientDTO.getAddress());
         }
         
-        if (Objects.nonNull(patient.getAddress()) && !"".equalsIgnoreCase(patient.getAddress())) {
-        	patientInDB.setAddress(patient.getAddress());
+        if (Objects.nonNull(patientDTO.getBedId())) {
+        	patientInDB.getBed().setOccupied(false);
+    		patientInDB.setBed(bsi.findBedById(patientDTO.getBedId()));
         }
   
         return pr.save(patientInDB);

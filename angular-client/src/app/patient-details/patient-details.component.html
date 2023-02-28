@@ -14,7 +14,7 @@
     <p>Numéro de lit :</p>
     <p>{{ patient.bedNumber }}</p>
     <div class="bouton">
-      <button type="submit" class="button">Modifier</button>
+      <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
       <button type="submit" class="button">Sortie</button>
     </div>
     <table>

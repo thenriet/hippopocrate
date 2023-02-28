@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Patient } from '../model/patient';
 import { Observable } from 'rxjs/internal/Observable';
+import { AddPatient } from '../model/addpatient';
 
 
 @Injectable()
   // providedIn: 'root'
 export class PatientService {
+  update(patientForm: AddPatient, id: number) {
+    throw new Error('Method not implemented.');
+  }
 
   private patientsUrl: string = 'http://localhost:8080/api/patients';
 

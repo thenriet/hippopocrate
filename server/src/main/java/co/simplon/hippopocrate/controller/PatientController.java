@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,16 +81,15 @@ public class PatientController {
 //	    return "edit/{id}";
 //	}
 //	
-//	@PostMapping("/update/{id}")
-//	public String updatePatient(Patient patient, @PathVariable("id") int id,
-//	  BindingResult result, Model model) {
-//	    if (result.hasErrors()) {
-//	        patient.setId(id);
-//	        return "updatePatient";
-//	    }
-//	   
-//	    psi.updatePatient(patient, id);
-//	    return "redirect:/patients";
-//	}
+    @GetMapping("updatepatient/{id}")
+	public Patient updateById(@PathVariable long id) {
+		return psi.findPatientById(id);
+	}
+	
+	@PutMapping("updatepatient/{id}")
+	void updatePatient (@RequestBody PatientDTO patientDTO, @PathVariable long id) {
+		System.out.println("je suis là!");
+		psi.updatePatient(patientDTO, id);
+	}
 
 }

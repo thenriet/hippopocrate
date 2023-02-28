@@ -31,4 +31,8 @@ export class PatientDetailsComponent implements OnInit {
     });
   }
 
+  transferTheId (id: number) {
+    this.router.navigate(['updatepatient', id]);
+  }
+
 }
