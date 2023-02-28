@@ -31,8 +31,6 @@ public class BedServiceImpl {
 	public Bed updateBed(Bed bed, long bedId) {
 		// TODO Auto-generated method stub
 		Bed bedInDB = br.findById(bedId).get();
-		
-  
         return br.save(bedInDB);
     }
 

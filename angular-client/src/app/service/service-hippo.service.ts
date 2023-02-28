@@ -27,7 +27,7 @@ export class ServiceHippoService {
     return this.http.get<ServiceHippo[]>(this.servicesUrl);
   }
 
-  public findOneById(serviceId: string): Observable<ServiceHippo> {
+  public findOneServiceById(serviceId: string): Observable<ServiceHippo> {
     return this.http.get<ServiceHippo>(this.serviceUrl + serviceId);
   }
 

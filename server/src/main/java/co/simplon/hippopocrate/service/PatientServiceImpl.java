@@ -81,11 +81,15 @@ public class PatientServiceImpl implements PatientService {
 		patientDTO.setLastname(patient.getLastname());
 		patientDTO.setBirthdate(patient.getBirthdate());
 		patientDTO.setAddress(patient.getAddress());
-		patientDTO.setDate_in(patient.getDate_in());
-		patientDTO.setDate_out(patient.getDate_out());
-		patientDTO.setBed_id(patient.getBed().getId());
-		patientDTO.setRoom_id(patient.getBed().getRoom().getId());
-		patientDTO.setService_id(patient.getBed().getRoom().getService().getId());
+		patientDTO.setDateIn(patient.getDateIn());
+		patientDTO.setDateOut(patient.getDateOut());
+		patientDTO.setBedId(patient.getBed().getId());
+		patientDTO.setRoomId(patient.getBed().getRoom().getId());
+		patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
+		patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
+		patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
+		patientDTO.setBedNumber(patient.getBed().getNumber());
+
 		return patientDTO;
 	}
 	
@@ -99,11 +103,15 @@ public class PatientServiceImpl implements PatientService {
 			patientDTO.setLastname(patientsInDB.get(i).getLastname());
 			patientDTO.setBirthdate(patientsInDB.get(i).getBirthdate());
 			patientDTO.setAddress(patientsInDB.get(i).getAddress());
-			patientDTO.setDate_in(patientsInDB.get(i).getDate_in());
-			patientDTO.setDate_out(patientsInDB.get(i).getDate_out());
-			patientDTO.setBed_id(patientsInDB.get(i).getBed().getId());
-			patientDTO.setRoom_id(patientsInDB.get(i).getBed().getRoom().getId());
-			patientDTO.setService_id(patientsInDB.get(i).getBed().getRoom().getService().getId());
+			patientDTO.setDateIn(patientsInDB.get(i).getDateIn());
+			patientDTO.setDateOut(patientsInDB.get(i).getDateOut());
+			patientDTO.setBedId(patientsInDB.get(i).getBed().getId());
+			patientDTO.setRoomId(patientsInDB.get(i).getBed().getRoom().getId());
+			patientDTO.setServiceId(patientsInDB.get(i).getBed().getRoom().getService().getId());
+			patientDTO.setServiceName(patientsInDB.get(i).getBed().getRoom().getService().getName());
+			patientDTO.setRoomNumber(patientsInDB.get(i).getBed().getRoom().getNumber());
+			patientDTO.setBedNumber(patientsInDB.get(i).getBed().getNumber());
+			
 			patientsDTOList.add(patientDTO);
 		}
 		return patientsDTOList;
@@ -119,12 +127,12 @@ public class PatientServiceImpl implements PatientService {
 		patient.setLastname(patientDTO.getLastname());
 		patient.setBirthdate(patientDTO.getBirthdate());
 		patient.setAddress(patientDTO.getAddress());
-		patient.setDate_in(patientDTO.getDate_in());
-		patient.setBed(bsi.findBedById(patientDTO.getBed_id()));
-		Bed bed = bsi.findBedById(patientDTO.getBed_id());
+		patient.setDateIn(patientDTO.getDateIn());
+		patient.setBed(bsi.findBedById(patientDTO.getBedId()));
+		Bed bed = bsi.findBedById(patientDTO.getBedId());
 		bed.setPatient(patient);
 		bed.setOccupied(true);
-		bsi.updateBed(bed, patientDTO.getBed_id());
+		bsi.updateBed(bed, patientDTO.getBedId());
 		
 		pr.save(patient);
 	}

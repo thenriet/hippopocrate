@@ -12,11 +12,14 @@ public class PatientDTO {
 	private String lastname;
 	private Date birthdate; 
 	private String address;
-	private LocalDate date_in; 
-	private LocalDate date_out; 
-	private long bed_id;
-	private long room_id;
-	private long service_id;
+	private LocalDate dateIn; 
+	private LocalDate dateOut; 
+	private long bedId;
+	private long roomId;
+	private long serviceId;
+	private String serviceName;
+	private long roomNumber;
+	private long bedNumber;
 
 	
 
@@ -60,51 +63,68 @@ public class PatientDTO {
 		this.address = address;
 	}
 
-	public LocalDate getDate_in() {
-		return date_in;
+	public LocalDate getDateIn() {
+		return dateIn;
 	}
 
-	public void setDate_in(LocalDate date_in) {
-		this.date_in = date_in;
+	public void setDateIn(LocalDate dateIn) {
+		this.dateIn = dateIn;
 	}
 
-	public LocalDate getDate_out() {
-		return date_out;
+	public LocalDate getDateOut() {
+		return dateOut;
 	}
 
-	public void setDate_out(LocalDate date_out) {
-		this.date_out = date_out;
+	public void setDateOut(LocalDate dateOut) {
+		this.dateOut = dateOut;
 	}
 
-	public Long getBed_id() {
-		return bed_id;
+	public long getBedId() {
+		return bedId;
 	}
 
-	public void setBed_id(long bed_id) {
-		this.bed_id = bed_id;
+	public void setBedId(long bedId) {
+		this.bedId = bedId;
 	}
 
-	public long getRoom_id() {
-		return room_id;
+	public long getRoomId() {
+		return roomId;
 	}
 
-	public void setRoom_id(long room_id) {
-		this.room_id = room_id;
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
 	}
 
-	public long getService_id() {
-		return service_id;
+	public long getServiceId() {
+		return serviceId;
 	}
 
-	public void setService_id(long service_id) {
-		this.service_id = service_id;
+	public void setServiceId(long serviceId) {
+		this.serviceId = serviceId;
 	}
 
-	@Override
-	public String toString() {
-		return "PatientDTO [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", birthdate=" + birthdate + ", address=" + address + ", date_in=" + date_in + ", date_out="
-				+ date_out + ", bed_id=" + bed_id + ", room_id=" + room_id + ", service_id=" + service_id + "]";
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+
+	public long getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(long roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public long getBedNumber() {
+		return bedNumber;
+	}
+
+	public void setBedNumber(long bedNumber) {
+		this.bedNumber = bedNumber;
 	}
 
 }

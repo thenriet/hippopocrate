@@ -30,20 +30,16 @@ public class PatientController {
 		return psi.createPatientsDTOFromDB();
 	}
  
-//    @PostMapping("patients")
-//    void addPatient(@RequestBody Patient patient) {
-//    	psi.savePatient(patient);
-//    }
+    @GetMapping("patients/{id}")
+    public PatientDTO findById(@PathVariable long id) {
+    	return psi.createPatientDTOFromDB(id);
+    }
     
     @PostMapping("patients")
     void addPatient(@RequestBody PatientDTO patientDTO) {
     	psi.savePatientDTO(patientDTO);
     }
     
-    @GetMapping("patients/{id}")
-    public Patient findById(@PathVariable long id) {
-    	return psi.findPatientById(id);
-    }
     
 
 //	@PostMapping({"addpatient"})

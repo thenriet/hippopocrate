@@ -23,7 +23,6 @@ import { Bed } from '../model/bed';
 export class AddPatientComponent implements OnInit {
   addPatientForm!: FormGroup;
   patient!: Patient;
-  patientForm = new addPatientModel;
   error= false;
   patientListLength !: number;
   services !: ServiceHippo[];
@@ -69,12 +68,12 @@ export class AddPatientComponent implements OnInit {
     this.patient.lastname = data.lastname;
     this.patient.address= data.address;
     this.patient.birthdate= data.birthdate;
-    this.patient.service_id= data.service;
-    this.patient.room_id= data.room;
-    this.patient.bed_id=data.bed;
+    this.patient.serviceId= data.service;
+    this.patient.roomId= data.room;
+    this.patient.bedId=data.bed;
     const current = new Date();
     const timestamp = current.getTime();
-    this.patient.date_in= current;
+    this.patient.dateIn= current;
     this.patientService.save(this.patient).subscribe(result => this.gotoPatientList());
     console.log(this.patient)
     try {
@@ -93,7 +92,7 @@ export class AddPatientComponent implements OnInit {
   onSelectService(){
     console.log('Selected option:', this.serviceId);
     if(this.serviceId){
-      console.log(this.serviceHippo.findOneById(this.serviceId));
+      console.log(this.serviceHippo.findOneServiceById(this.serviceId));
       this.serviceHippo.findRooms(this.serviceId).subscribe(data => {
         this.rooms = data;
         console.log(this.rooms)

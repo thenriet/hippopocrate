@@ -10,14 +10,13 @@ import { PatientService } from '../service/patient-service.service';
 })
 export class PatientDetailsComponent implements OnInit {
   id!: number;
-  patient!: Patient;
+  patient = new Patient();
 
   constructor (private patientService: PatientService, private route: ActivatedRoute, private router: Router) {
-    this.loadPatientById();
-    console.log(this.patient)
   }
-
+  
   ngOnInit() {
+    this.loadPatientById();
   }
 
   loadPatientById() {
