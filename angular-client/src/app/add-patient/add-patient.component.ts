@@ -11,16 +11,16 @@ import { Room } from '../model/room';
 import { Bed } from '../model/bed';
 
 @Component({
-  selector: 'app-page-add-patient',
-  templateUrl: './page-add-patient.component.html',
-  styleUrls: ['./page-add-patient.component.scss']
+  selector: 'app-add-patient',
+  templateUrl: './add-patient.component.html',
+  styleUrls: ['./add-patient.component.scss']
 })
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PageAddPatientComponent implements OnInit {
+export class AddPatientComponent implements OnInit {
   addPatientForm!: FormGroup;
   patient!: Patient;
   patientForm = new addPatientModel;
@@ -116,5 +116,5 @@ export class PageAddPatientComponent implements OnInit {
   onSelectBed(){
     console.log('Le bed is selected');
   }
-  
+
 }

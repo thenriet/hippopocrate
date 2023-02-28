@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageConnexionComponent } from './page-connexion.component';
+import { AddPatientComponent } from './add-patient.component';
 
-describe('PageConnexionComponent', () => {
-  let component: PageConnexionComponent;
-  let fixture: ComponentFixture<PageConnexionComponent>;
+describe('PageAddPatientComponent', () => {
+  let component: AddPatientComponent;
+  let fixture: ComponentFixture<AddPatientComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageConnexionComponent ]
+      declarations: [ AddPatientComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PageConnexionComponent);
+    fixture = TestBed.createComponent(AddPatientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

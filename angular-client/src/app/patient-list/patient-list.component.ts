@@ -32,29 +32,6 @@ export class PatientListComponent {
   }
 
   seePatient(id: number) {
-    this.router.navigate(['patient', id]);
+    this.router.navigate(['patients', id]);
   }
-}
-import { Component, OnInit } from '@angular/core';
-import { Patient } from '../model/patient';
-import { PatientService } from '../service/patient-service';
-
-@Component({
-  selector: 'app-patient-list',
-  templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.scss']
-})
-export class PatientListComponent implements OnInit {
-
-  patients!: Patient[];
-
-  constructor(private patientService: PatientService) {
-  }
-
-  ngOnInit() {
-    this.patientService.findAll().subscribe(data => {
-      this.patients = data;
-    });
-  }
-
 }
