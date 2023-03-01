@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserServiceService } from './service/user-service.service';
 import { FormLoginComponent } from './form-login/form-login.component';
@@ -17,6 +17,7 @@ import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
 import { DatePipe } from '@angular/common';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DatePipe } from '@angular/common';
     ListeServiceComponent,
     UpdatePatientComponent,
     PatientListComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

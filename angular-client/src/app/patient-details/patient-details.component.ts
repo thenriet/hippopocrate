@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service.service';
+import { PopUpService } from '../service/pop-up.service';
 import { DatePipe } from '@angular/common';
+
 
 
 @Component({
@@ -14,15 +16,21 @@ export class PatientDetailsComponent implements OnInit {
   id!: number;
   patient = new Patient();
   birthdate!: string|null;
+  isVisible = false;
+  bodyText = 'This text can be updated in modal 1';
+
 
   constructor (
     private patientService: PatientService, 
     private route: ActivatedRoute, 
     private router: Router,
-    private datePipe: DatePipe) {
+    private datePipe: DatePipe,
+    protected popUpService: PopUpService
+    ) {
       
       this.loadPatientById();
   }
+
   
   ngOnInit() {
   }
@@ -46,23 +54,6 @@ export class PatientDetailsComponent implements OnInit {
 
   transferTheId (id: number) {
     this.router.navigate(['updatepatient', id]);
-  }
-
-  exitThePatient(id : number) {
-    this.patient.bedId=null;
-    const current = new Date();
-    const timestamp = current.getTime();
-    this.patient.dateOut= current;
-    console.log(this.patient)   
-    this.patientService.exit(this.patient, this.id)
-    .subscribe(patient => {
-      console.log('Patient updated:', patient);
-    }, error => {
-      console.error('Error updating patient:', error);
-    });
-    
-    console.log(this.patient);
-    this.gotoPatientDetails(id);
   }
 
   gotoPatientDetails(id:number) {

@@ -15,7 +15,7 @@
     <p>{{ patient.bedNumber }}</p>
     <div class="bouton">
       <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
-      <button type="submit" class="button" (click)="exitThePatient(patient.id)">Sortie</button>
+      <button type="submit" class="button" (click)="popUpService.open('modal-1')">Sortie</button>
     </div>
     <table>
       <tr class="date">
@@ -42,3 +42,8 @@
     </div>
   </form>
 </div>
+<app-popup id="modal-1" [patient]="patient">
+        <h1>A custom modal popup</h1>
+        <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+        <button (click)="popUpService.close();">Close</button>
+</app-popup>
