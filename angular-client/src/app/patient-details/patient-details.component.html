@@ -15,7 +15,7 @@
     <p>{{ patient.bedNumber }}</p>
     <div class="bouton">
       <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
-      <button type="submit" class="button">Sortie</button>
+      <button type="submit" class="button" (click)="exitThePatient(patient.id)">Sortie</button>
     </div>
     <table>
       <tr class="date">

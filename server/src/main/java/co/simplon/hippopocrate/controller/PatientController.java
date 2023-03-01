@@ -50,5 +50,10 @@ public class PatientController {
 	void updatePatient (@RequestBody PatientDTO patientDTO, @PathVariable long id) {
 		psi.updatePatient(patientDTO, id);
 	}
+	
+	@PutMapping("exitpatient/{id}")
+	void exitPatient (@RequestBody PatientDTO patientDTO, @PathVariable long id) {
+		psi.exitPatient(patientDTO, id);
+	}
 
 }

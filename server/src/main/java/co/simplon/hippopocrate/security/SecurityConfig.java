@@ -46,7 +46,8 @@ public class SecurityConfig {
 				.requestMatchers("/api/users/{id}").permitAll()
 				.requestMatchers("/api/users/roles").permitAll()
 				.requestMatchers("/api/users/roles/{name}").permitAll()
-				.requestMatchers("/api/updatepatient/{id}").permitAll())
+				.requestMatchers("/api/updatepatient/{id}").permitAll()
+				.requestMatchers("/api/exitpatient/{id}").permitAll())
 		.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll());
 //		http.headers().frameOptions().disable();;
 //						.requestMatchers("/addClient").hasRole("ADMIN")

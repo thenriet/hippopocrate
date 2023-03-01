@@ -48,4 +48,27 @@ export class PatientDetailsComponent implements OnInit {
     this.router.navigate(['updatepatient', id]);
   }
 
+  exitThePatient(id : number) {
+    this.patient.bedId=null;
+    const current = new Date();
+    const timestamp = current.getTime();
+    this.patient.dateOut= current;
+    console.log(this.patient)   
+    this.patientService.exit(this.patient, this.id)
+    .subscribe(patient => {
+      console.log('Patient updated:', patient);
+    }, error => {
+      console.error('Error updating patient:', error);
+    });
+    
+    console.log(this.patient);
+    this.gotoPatientDetails(id);
+  }
+
+  gotoPatientDetails(id:number) {
+    this.router.navigate(['patients',id]).then(() => {
+      window.location.reload();
+    });
+  }
+
 }

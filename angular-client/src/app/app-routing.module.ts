@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'patients/:id', component: PatientDetailsComponent},
   { path: 'addpatient', component: AddPatientComponent },
   {path: 'updatepatient/:id', component: UpdatePatientComponent},
-  // { path: '**', redirectTo: '' }
+  {path: 'exitpatient/:id', component: PatientDetailsComponent},
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

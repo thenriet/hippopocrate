@@ -60,15 +60,13 @@ public class PatientServiceImpl implements PatientService {
         	patientInDB.setAddress(patientDTO.getAddress());
         }
         
-        if (Objects.nonNull(patientDTO.getBedId())) {
-        	
+        if (patientInDB.getBed() != null) {
         	patientInDB.getBed().setOccupied(false);
-    		patientInDB.setBed(bsi.findBedById(patientDTO.getBedId()));
-    		patientInDB.getBed().setOccupied(true);
-
-    		
+        	
         }
-  
+    		patientInDB.setBed(bsi.findBedById(patientDTO.getBedId()));
+    		patientInDB.getBed().setOccupied(true);	
+        
         return pr.save(patientInDB);
     }
 
@@ -88,13 +86,14 @@ public class PatientServiceImpl implements PatientService {
 		patientDTO.setAddress(patient.getAddress());
 		patientDTO.setDateIn(patient.getDateIn());
 		patientDTO.setDateOut(patient.getDateOut());
-		patientDTO.setBedId(patient.getBed().getId());
-		patientDTO.setRoomId(patient.getBed().getRoom().getId());
-		patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
-		patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
-		patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
-		patientDTO.setBedNumber(patient.getBed().getNumber());
-
+		if(patient.getBed() != null) {
+			patientDTO.setBedId(patient.getBed().getId());
+			patientDTO.setRoomId(patient.getBed().getRoom().getId());
+			patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
+			patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
+			patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
+			patientDTO.setBedNumber(patient.getBed().getNumber());
+		}
 		return patientDTO;
 	}
 	
@@ -110,12 +109,14 @@ public class PatientServiceImpl implements PatientService {
 			patientDTO.setAddress(patientsInDB.get(i).getAddress());
 			patientDTO.setDateIn(patientsInDB.get(i).getDateIn());
 			patientDTO.setDateOut(patientsInDB.get(i).getDateOut());
-			patientDTO.setBedId(patientsInDB.get(i).getBed().getId());
-			patientDTO.setRoomId(patientsInDB.get(i).getBed().getRoom().getId());
-			patientDTO.setServiceId(patientsInDB.get(i).getBed().getRoom().getService().getId());
-			patientDTO.setServiceName(patientsInDB.get(i).getBed().getRoom().getService().getName());
-			patientDTO.setRoomNumber(patientsInDB.get(i).getBed().getRoom().getNumber());
-			patientDTO.setBedNumber(patientsInDB.get(i).getBed().getNumber());
+			if(patientsInDB.get(i).getBed() != null) {
+				patientDTO.setBedId(patientsInDB.get(i).getBed().getId());
+				patientDTO.setRoomId(patientsInDB.get(i).getBed().getRoom().getId());
+				patientDTO.setServiceId(patientsInDB.get(i).getBed().getRoom().getService().getId());
+				patientDTO.setServiceName(patientsInDB.get(i).getBed().getRoom().getService().getName());
+				patientDTO.setRoomNumber(patientsInDB.get(i).getBed().getRoom().getNumber());
+				patientDTO.setBedNumber(patientsInDB.get(i).getBed().getNumber());
+			}
 			
 			patientsDTOList.add(patientDTO);
 		}
@@ -135,11 +136,40 @@ public class PatientServiceImpl implements PatientService {
 		patient.setDateIn(patientDTO.getDateIn());
 		patient.setBed(bsi.findBedById(patientDTO.getBedId()));
 		Bed bed = bsi.findBedById(patientDTO.getBedId());
-//		bed.setPatient(patient);
 		bed.setOccupied(true);
 		bsi.updateBed(bed, patientDTO.getBedId());
 		
 		pr.save(patient);
+	}
+	
+	public Patient exitPatient(PatientDTO patientDTO, long patientId ) {
+		Patient patientInDB = pr.findById(patientId).get();
+		
+		
+		if (Objects.nonNull(patientDTO.getFirstname()) && !"".equalsIgnoreCase(patientDTO.getFirstname())) {
+			patientInDB.setFirstname(patientDTO.getFirstname());
+        }
+        
+        if (Objects.nonNull(patientDTO.getLastname()) && !"".equalsIgnoreCase(patientDTO.getLastname())) {
+        	patientInDB.setLastname(patientDTO.getLastname());
+        }
+        
+  
+        if (Objects.nonNull(patientDTO.getBirthdate()) ) {
+        	patientInDB.setBirthdate(patientDTO.getBirthdate());
+        }
+        
+        if (Objects.nonNull(patientDTO.getAddress()) && !"".equalsIgnoreCase(patientDTO.getAddress())) {
+        	patientInDB.setAddress(patientDTO.getAddress());
+        }
+        
+       
+        	
+        	patientInDB.getBed().setOccupied(false);
+    		patientInDB.setBed(null);
+        
+  
+        return pr.save(patientInDB);
 	}
 
 }

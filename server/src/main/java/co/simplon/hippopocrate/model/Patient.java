@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -32,7 +33,7 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonBackReference(value="patient-bed")
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "bed_id", referencedColumnName = "id")
+    @JoinColumn(name = "bed_id", referencedColumnName = "id", nullable=true)
     private Bed bed;
 	
 	public Patient() {

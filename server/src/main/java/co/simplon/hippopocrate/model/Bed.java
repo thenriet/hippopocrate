@@ -28,6 +28,7 @@ public class Bed {
 	
 	@JsonBackReference(value="bed-patient")
 	@OneToOne(mappedBy = "bed", cascade=CascadeType.ALL)
+	@JoinColumn(nullable=true)
     private Patient patient;
 	
 	public Bed() {

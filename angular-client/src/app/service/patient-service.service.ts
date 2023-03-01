@@ -11,10 +11,12 @@ import { Observable } from 'rxjs/internal/Observable';
 
   private patientsUrl: string;
   private idUrl: string;
+  private exitUrl: string;
 
   constructor(private http: HttpClient) { 
     this.patientsUrl = 'http://localhost:8080/api/patients';
     this.idUrl = 'http://localhost:8080/api/updatepatient';
+    this.exitUrl = 'http://localhost:8080/api/exitpatient';
   }
 
   public findAll(): Observable<Patient[]> {
@@ -31,5 +33,9 @@ import { Observable } from 'rxjs/internal/Observable';
 
   public update(patient:Patient, id:number){
     return this.http.put<Patient>(`${this.idUrl}/${id}`, patient);
+  }
+
+  public exit(patient:Patient, id:number){
+    return this.http.put<Patient>(`${this.exitUrl}/${id}`, patient);
   }
 }

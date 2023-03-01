@@ -6,7 +6,7 @@ export class Patient {
     address!: string;
     dateIn!: Date;
     dateOut!: Date;
-    bedId!: number;
+    bedId!: number | null;
     roomId!: number;
     serviceId!: number;
     serviceName!: string;
