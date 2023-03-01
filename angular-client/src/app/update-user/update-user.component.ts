@@ -78,7 +78,9 @@ export class UpdateUserComponent implements OnInit {
   }
 
   goToUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/users']).then(() => {
+      window.location.reload();
+    });;
   }
 
   loadUserById() {
