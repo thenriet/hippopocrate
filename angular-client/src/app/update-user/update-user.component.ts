@@ -37,7 +37,6 @@ export class UpdateUserComponent implements OnInit {
     this.updateUserForm = this.fb.group({
       name: ['', Validators.required],
       role: ['', Validators.required],
-      password: ['', Validators.required],
     });
 
     this.userService
@@ -46,7 +45,25 @@ export class UpdateUserComponent implements OnInit {
   }
 
   onSubmit() {
+    let data = this.updateUserForm.value;
+    if(this.updateUserForm.value.name) {
+      this.updateUser.name = this.updateUserForm.value.name;
+    } else {
+      this.updateUser.name = this.user.name;
+    }
+    if(this.updateUserForm.value.role) {
+      this.updateUser.role = this.updateUserForm.value.role;
+    } else {
+      this.updateUser.role = this.user.role;
+    }
+    this.updateUser.password = this.user.password;
+    this.userService.update(this.updateUser, this.id).subscribe(updateUser => {
+      console.log('User updated:', updateUser);
+    }, error => {
+      console.error('Error updating patient:', error);
+    });
 
+    this.goToUserList();
   }
 
   onSelectRole() {

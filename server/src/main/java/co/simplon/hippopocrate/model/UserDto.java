@@ -1,15 +1,15 @@
 package co.simplon.hippopocrate.model;
 
 public class UserDto {
-	private int id;
+	private long id;
 	private String name;
 	private String role;
 	private String password;
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {

@@ -18,6 +18,7 @@ import { AuthentificationService } from './service/authentification-service.serv
 import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ServiceDetailsComponent } from './service-details/service-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     NavbarComponent,
     ListeServiceComponent,
     AddUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ServiceDetailsComponent,
   ],
   imports: [
     BrowserModule,

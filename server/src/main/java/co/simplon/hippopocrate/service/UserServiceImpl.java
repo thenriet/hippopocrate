@@ -13,6 +13,7 @@ import co.simplon.hippopocrate.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -59,10 +60,29 @@ public class UserServiceImpl implements UserService {
 				String roleString = role.getName();
 				userDto.setRole(roleString);
 			}
+			userDto.setId(user.getId());
 			userDto.setName(user.getName());
 			usersDto.add(userDto);
 		}
 		return usersDto;
+	}
+	
+	@Override
+	public void updateUser(UserDto userDTO, int id) {
+		User user = this.userRepository.findById(id).get();
+			user.setName(userDTO.getName());
+			user.setPassword(userDTO.getPassword());
+			Role role = roleService.findByName(userDTO.getRole());
+			System.out.println(user.getRoles());
+			if(user.getRoles().size() == 0) {
+				ArrayList<Role> roles = new ArrayList<>(user.getRoles());
+				roles.add(role);
+				user.setRoles(roles);
+			} else {
+				user.getRoles().set(0, role);
+			}
+
+			userRepository.save(user);
 	}
 
 	@Override

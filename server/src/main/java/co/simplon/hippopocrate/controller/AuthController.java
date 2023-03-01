@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,6 +81,11 @@ public class AuthController {
 		return this.roleService.findAll();
 	}
 	
+	/**
+	 * Méthode pour trouver le rôle d'un user grâce à l'id du rôle
+	 * @param id
+	 * @return le rôle trouvé
+	 */
 	@GetMapping("users/roles/{id}")
 	public Optional<Role> getRoleById(@PathVariable int id) {
 		return this.roleService.findById(id);
@@ -90,8 +96,24 @@ public class AuthController {
     	this.userService.saveUser(userDTO);
     }
     
+	/**
+	 * Méthode pour trouver un user grâce à son id
+	 * @param id
+	 * @return le user trouvé
+	 */
 	@GetMapping("users/{id}")
 	public Optional<User> getUserById(@PathVariable int id) {
 		return this.userService.findById(id);
+	}
+	
+	
+	/**
+	 * Méthode pour modifier le rôle d'un user existant
+	 * @param userDTO 
+	 * @param id
+	 */
+	@PutMapping("updateUser/{id}")
+	void updateUser (@RequestBody UserDto userDTO, @PathVariable int id) {
+		this.userService.updateUser(userDTO, id);
 	}
 }

@@ -8,10 +8,10 @@ import { Observable } from 'rxjs/internal/Observable';
 @Injectable()
   // providedIn: 'root'
 export class UserServiceService {
-
   private usersUrl = 'http://localhost:8080/api/users';
   private usersDtoUrl = 'http://localhost:8080/api/usersDto';
   private rolesUrl = 'http://localhost:8080/api/users/roles';
+  private updateUrl = 'http://localhost:8080/api/updateUser';
 
   constructor(private http: HttpClient) {}
 
@@ -33,6 +33,10 @@ export class UserServiceService {
 
   public findUserById(userId: number): Observable<User> {
     return this.http.get<User>(this.usersUrl + '/' + userId);
+  }
+
+  public update(user:User, id:number){
+    return this.http.put<User>(`${this.updateUrl}/${id}`, user);
   }
 
  }

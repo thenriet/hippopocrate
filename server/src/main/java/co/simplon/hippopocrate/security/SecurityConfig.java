@@ -39,6 +39,7 @@ public class SecurityConfig {
 				.requestMatchers("/api/users").permitAll()
 				.requestMatchers("/api/usersDto").permitAll()
 				.requestMatchers("/api/users/{id}").permitAll()
+				.requestMatchers("/api/updateUser/{id}").permitAll()
 				.requestMatchers("/api/users/roles").permitAll()
 				.requestMatchers("/api/users/roles/{id}").permitAll()
 				.requestMatchers("/api/users/role/{name}").permitAll())
