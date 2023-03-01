@@ -9,11 +9,16 @@ import { Observable } from 'rxjs/internal/Observable';
 export class PatientService {
 
   private patientsUrl: string = 'http://localhost:8080/api/patients';
+  private patientsServiceUrl: string ='http://localhost:8080/api/services/';
 
   constructor(private http: HttpClient) {}
 
   public findAll(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.patientsUrl);
+  }
+
+  public findAllByService(id: number): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this.patientsServiceUrl + id + '/patients');
   }
 
   getPatientById(id: number): Observable<Patient>{

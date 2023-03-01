@@ -9,9 +9,11 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ServiceDetailsComponent } from './service-details/service-details.component';
 
 const routes: Routes = [
-  { path: 'list', component: ListeServiceComponent },
+  { path: 'services', component: ListeServiceComponent },
+  { path: 'service/:id', component: ServiceDetailsComponent },
   { path: '', component: FormLoginComponent},
   { path: 'login', component: FormLoginComponent },
   { path: 'addUser', component: AddUserComponent },

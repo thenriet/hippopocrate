@@ -32,16 +32,4 @@ export class PatientDetailsComponent implements OnInit {
     });
   }
 
-  // loadPatientService(id: number) {
-  //   this.serviceHippo.findOneById(id).subscribe({
-  //     next: (data) => {
-  //       this.service = data;
-  //     }
-  //   });
-  // }
-
-  // loadPatientRoom(id: number) {
-  //   this.serviceHippo.find
-  // }
-
 }

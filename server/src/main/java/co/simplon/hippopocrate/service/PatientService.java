@@ -2,6 +2,7 @@ package co.simplon.hippopocrate.service;
 
 import java.util.List;
 
+import co.simplon.hippopocrate.dto.PatientDTO;
 import co.simplon.hippopocrate.model.Patient;
 
 public interface PatientService {
@@ -12,9 +13,8 @@ public interface PatientService {
     List<Patient> fetchPatientList();
   
     // update operation
-    Patient updatePatient(Patient patient, long patientId);
+    Patient updatePatient(PatientDTO patientDTO, long patientId);
   
     // delete operation
     void deletePatientById(long patientId);
-
 }

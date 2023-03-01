@@ -1,13 +1,7 @@
 <app-navbar></app-navbar>
 <div class="body">
   <h1>Les Services :</h1>
-  <div>
-    <button>ONCOLOGIE</button>
-    <button>CARDIOLOGIE</button>
-  </div>
-
-  <div>
-    <button>NEUROLOGIE</button>
-    <button>GYNECOLOGIE</button>
+  <div *ngFor="let service of services">
+    <button (click)="seeService(service.id)">{{ service.name }}</button>
   </div>
 </div>

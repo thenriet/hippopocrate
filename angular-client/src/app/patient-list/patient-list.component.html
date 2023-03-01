@@ -15,15 +15,15 @@
       <tbody>
         <tr *ngFor="let patient of patients">
           <td>{{ patient.firstname }} {{ patient.lastname }}</td>
-          <td>A faire</td>
-          <td>A faire</td>
-          <td>A faire</td>
+          <td>{{ patient.roomNumber }}</td>
+          <td>{{ patient.bedNumber }}</td>
+          <td>{{ patient.serviceName }}</td>
           <td>
             <button (click)="seePatient(patient.id)">Voir détails</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <div *ngIf = "role === 'ROLE_SECRETAIRE'" class="ajouter"><a routerLinkActive="active" routerLink="/addPatient"><button class ="btn" >Nouveau Patient</button></a></div>
+    <div *ngIf = "role !== 'ROLE_INFIRMIER'" class="ajouter"><a routerLinkActive="active" routerLink="/addPatient"><button class ="btn" >Nouveau Patient</button></a></div>
   </div>
 </div>

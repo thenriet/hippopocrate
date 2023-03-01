@@ -35,43 +35,46 @@ public class PatientServiceImpl implements PatientService {
 	public PatientDTO findPatientById(long patientId) {
 		Patient patient = pr.findById(patientId).get();
 		PatientDTO patientDTO = new PatientDTO();
-		patientDTO.setId(patient.getId()); 
-		patientDTO.setFirstname(patient.getFirstname()); 
+		patientDTO.setId(patient.getId());
+		patientDTO.setFirstname(patient.getFirstname());
 		patientDTO.setLastname(patient.getLastname());
 		patientDTO.setBirthdate(patient.getBirthdate());
 		patientDTO.setAddress(patient.getAddress());
-		patientDTO.setDate_in(patient.getDate_in());
-		patientDTO.setDate_out(patient.getDate_out());
-		patientDTO.setBed_id(patient.getBed().getId());
-		patientDTO.setRoom_id(patient.getBed().getRoom().getId());
-		patientDTO.setService_id(patient.getBed().getRoom().getService().getId());
+		patientDTO.setDateIn(patient.getDateIn());
+		patientDTO.setDateOut(patient.getDateOut());
+		patientDTO.setBedId(patient.getBed().getId());
+		patientDTO.setRoomId(patient.getBed().getRoom().getId());
+		patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
 		return patientDTO;
 	}
 
 	@Override
-	public Patient updatePatient(Patient patient, long patientId) {
+	public Patient updatePatient(PatientDTO patientDTO, long patientId) {
 		// TODO Auto-generated method stub
 		Patient patientInDB = pr.findById(patientId).get();
 
-		if (Objects.nonNull(patient.getFirstname()) && !"".equalsIgnoreCase(patient.getFirstname())) {
-			patientInDB.setFirstname(patient.getFirstname());
+		if (Objects.nonNull(patientDTO.getFirstname()) && !"".equalsIgnoreCase(patientDTO.getFirstname())) {
+			patientInDB.setFirstname(patientDTO.getFirstname());
 		}
 
-		if (Objects.nonNull(patient.getLastname()) && !"".equalsIgnoreCase(patient.getLastname())) {
-			patientInDB.setLastname(patient.getLastname());
+		if (Objects.nonNull(patientDTO.getLastname()) && !"".equalsIgnoreCase(patientDTO.getLastname())) {
+			patientInDB.setLastname(patientDTO.getLastname());
 		}
 
-		if (Objects.nonNull(patient.getBirthdate())) {
-			patientInDB.setBirthdate(patient.getBirthdate());
+		if (Objects.nonNull(patientDTO.getBirthdate())) {
+			patientInDB.setBirthdate(patientDTO.getBirthdate());
 		}
 
-		if (Objects.nonNull(patient.getBed())) {
-			patientInDB.setBed(patient.getBed());
+		if (Objects.nonNull(patientDTO.getAddress()) && !"".equalsIgnoreCase(patientDTO.getAddress())) {
+			patientInDB.setAddress(patientDTO.getAddress());
 		}
 
-		if (Objects.nonNull(patient.getAddress()) && !"".equalsIgnoreCase(patient.getAddress())) {
-			patientInDB.setAddress(patient.getAddress());
+		if (patientInDB.getBed() != null) {
+			patientInDB.getBed().setOccupied(false);
+
 		}
+		patientInDB.setBed(bsi.findBedById(patientDTO.getBedId()));
+		patientInDB.getBed().setOccupied(true);
 
 		return pr.save(patientInDB);
 	}
@@ -81,62 +84,124 @@ public class PatientServiceImpl implements PatientService {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public PatientDTO createPatientDTOFromDB(long id){
+
+	public PatientDTO createPatientDTOFromDB(long id) {
 		Patient patient = pr.findById(id).get();
 		PatientDTO patientDTO = new PatientDTO();
-		patientDTO.setId(patient.getId()); 
-		patientDTO.setFirstname(patient.getFirstname()); 
+		patientDTO.setId(patient.getId());
+		patientDTO.setFirstname(patient.getFirstname());
 		patientDTO.setLastname(patient.getLastname());
 		patientDTO.setBirthdate(patient.getBirthdate());
 		patientDTO.setAddress(patient.getAddress());
-		patientDTO.setDate_in(patient.getDate_in());
-		patientDTO.setDate_out(patient.getDate_out());
-		patientDTO.setBed_id(patient.getBed().getId());
-		patientDTO.setRoom_id(patient.getBed().getRoom().getId());
-		patientDTO.setService_id(patient.getBed().getRoom().getService().getId());
+		patientDTO.setDateIn(patient.getDateIn());
+		patientDTO.setDateOut(patient.getDateOut());
+		if (patient.getBed() != null) {
+			patientDTO.setBedId(patient.getBed().getId());
+			patientDTO.setRoomId(patient.getBed().getRoom().getId());
+			patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
+			patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
+			patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
+			patientDTO.setBedNumber(patient.getBed().getNumber());
+		}
 		return patientDTO;
 	}
-	
+
 	public List<PatientDTO> createPatientsDTOFromDB() {
-		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>(); 
-		List <Patient> patientsInDB = this.fetchPatientList();
+		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>();
+		List<Patient> patientsInDB = this.fetchPatientList();
 		for (int i = 0; i < patientsInDB.size(); i++) {
 			PatientDTO patientDTO = new PatientDTO();
-			patientDTO.setId(patientsInDB.get(i).getId()); 
-			patientDTO.setFirstname(patientsInDB.get(i).getFirstname()); 
+			patientDTO.setId(patientsInDB.get(i).getId());
+			patientDTO.setFirstname(patientsInDB.get(i).getFirstname());
 			patientDTO.setLastname(patientsInDB.get(i).getLastname());
 			patientDTO.setBirthdate(patientsInDB.get(i).getBirthdate());
 			patientDTO.setAddress(patientsInDB.get(i).getAddress());
-			patientDTO.setDate_in(patientsInDB.get(i).getDate_in());
-			patientDTO.setDate_out(patientsInDB.get(i).getDate_out());
-			patientDTO.setBed_id(patientsInDB.get(i).getBed().getId());
-			patientDTO.setRoom_id(patientsInDB.get(i).getBed().getRoom().getId());
-			patientDTO.setService_id(patientsInDB.get(i).getBed().getRoom().getService().getId());
+			patientDTO.setDateIn(patientsInDB.get(i).getDateIn());
+			patientDTO.setDateOut(patientsInDB.get(i).getDateOut());
+			if (patientsInDB.get(i).getBed() != null) {
+				patientDTO.setBedId(patientsInDB.get(i).getBed().getId());
+				patientDTO.setRoomId(patientsInDB.get(i).getBed().getRoom().getId());
+				patientDTO.setServiceId(patientsInDB.get(i).getBed().getRoom().getService().getId());
+				patientDTO.setServiceName(patientsInDB.get(i).getBed().getRoom().getService().getName());
+				patientDTO.setRoomNumber(patientsInDB.get(i).getBed().getRoom().getNumber());
+				patientDTO.setBedNumber(patientsInDB.get(i).getBed().getNumber());
+			}
+
 			patientsDTOList.add(patientDTO);
 		}
 		return patientsDTOList;
-			
+
+	}
+
+	public List<PatientDTO> fetchPatientsByService(int id) {
+		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>();
+		List<Patient> patientsInDB = this.fetchPatientList();
+		for (int i = 0; i < patientsInDB.size(); i++) {
+			PatientDTO patientDTO = new PatientDTO();
+			patientDTO.setId(patientsInDB.get(i).getId());
+			patientDTO.setFirstname(patientsInDB.get(i).getFirstname());
+			patientDTO.setLastname(patientsInDB.get(i).getLastname());
+			patientDTO.setBirthdate(patientsInDB.get(i).getBirthdate());
+			patientDTO.setAddress(patientsInDB.get(i).getAddress());
+			patientDTO.setDateIn(patientsInDB.get(i).getDateIn());
+			patientDTO.setDateOut(patientsInDB.get(i).getDateOut());
+			if (patientsInDB.get(i).getBed() != null) {
+				patientDTO.setBedId(patientsInDB.get(i).getBed().getId());
+				patientDTO.setRoomId(patientsInDB.get(i).getBed().getRoom().getId());
+				patientDTO.setServiceId(patientsInDB.get(i).getBed().getRoom().getService().getId());
+				patientDTO.setServiceName(patientsInDB.get(i).getBed().getRoom().getService().getName());
+				patientDTO.setRoomNumber(patientsInDB.get(i).getBed().getRoom().getNumber());
+				patientDTO.setBedNumber(patientsInDB.get(i).getBed().getNumber());
+			}
+			if (patientDTO.getServiceId() == id) {
+				patientsDTOList.add(patientDTO);
+			}
+		}
+		return patientsDTOList;
+
 	}
 
 	public void savePatientDTO(PatientDTO patientDTO) {
 		// TODO Auto-generated method stub
 		Patient patient = new Patient();
-		
+
 		patient.setId(patientDTO.getId());
 		patient.setFirstname(patientDTO.getFirstname());
 		patient.setLastname(patientDTO.getLastname());
 		patient.setBirthdate(patientDTO.getBirthdate());
 		patient.setAddress(patientDTO.getAddress());
-		patient.setDate_in(patientDTO.getDate_in());
-		patient.setBed(bsi.findBedById(patientDTO.getBed_id()));
-		Bed bed = bsi.findBedById(patientDTO.getBed_id());
-		bed.setPatient(patient);
+		patient.setDateIn(patientDTO.getDateIn());
+		patient.setBed(bsi.findBedById(patientDTO.getBedId()));
+		Bed bed = bsi.findBedById(patientDTO.getBedId());
 		bed.setOccupied(true);
-		bsi.updateBed(bed, patientDTO.getBed_id());
-		
+		bsi.updateBed(bed, patientDTO.getBedId());
+
 		pr.save(patient);
 	}
 
+	public Patient exitPatient(PatientDTO patientDTO, long patientId) {
+		Patient patientInDB = pr.findById(patientId).get();
+
+		if (Objects.nonNull(patientDTO.getFirstname()) && !"".equalsIgnoreCase(patientDTO.getFirstname())) {
+			patientInDB.setFirstname(patientDTO.getFirstname());
+		}
+
+		if (Objects.nonNull(patientDTO.getLastname()) && !"".equalsIgnoreCase(patientDTO.getLastname())) {
+			patientInDB.setLastname(patientDTO.getLastname());
+		}
+
+		if (Objects.nonNull(patientDTO.getBirthdate())) {
+			patientInDB.setBirthdate(patientDTO.getBirthdate());
+		}
+
+		if (Objects.nonNull(patientDTO.getAddress()) && !"".equalsIgnoreCase(patientDTO.getAddress())) {
+			patientInDB.setAddress(patientDTO.getAddress());
+		}
+
+		patientInDB.getBed().setOccupied(false);
+		patientInDB.setBed(null);
+
+		return pr.save(patientInDB);
+	}
 
 }

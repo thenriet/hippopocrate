@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -27,32 +28,26 @@ public class Patient {
 	private Date birthdate;
 	@Column(nullable=false)
 	private String address;
-	private LocalDate date_in;
-	private LocalDate date_out;
+	private LocalDate dateIn;
+	private LocalDate dateOut;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonBackReference(value="patient-bed")
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bed_id", referencedColumnName = "id")
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "bed_id", referencedColumnName = "id", nullable=true)
     private Bed bed;
 	
 	public Patient() {
 		
 	}
 	
-	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate date_in,  LocalDate date_out) {
+	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate dateIn,  LocalDate dateOut) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
 		this.address = address;
-		this.date_in = date_in;
-		this.date_out = date_out;
-	}
-	
-	@Override
-	public String toString() {
-		return "Patient [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate
-				+ ", bed_id=" + ", address=" + address + "]";
+		this.dateIn = dateIn;
+		this.dateOut = dateOut;
 	}
 
 	public long getId() {
@@ -96,20 +91,20 @@ public class Patient {
 		this.address = address;
 	}
 
-	public LocalDate getDate_in() {
-		return date_in;
+	public LocalDate getDateIn() {
+		return dateIn;
 	}
 
-	public void setDate_in(LocalDate date_in) {
-		this.date_in = date_in;
+	public void setDateIn(LocalDate dateIn) {
+		this.dateIn = dateIn;
 	}
 
-	public LocalDate getDate_out() {
-		return date_out;
+	public LocalDate getDateOut() {
+		return dateOut;
 	}
 
-	public void setDate_out(LocalDate date_out) {
-		this.date_out = date_out;
+	public void setDateOut(LocalDate dateOut) {
+		this.dateOut = dateOut;
 	}
 
 	public Bed getBed() {

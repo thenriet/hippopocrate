@@ -29,19 +29,24 @@ public class PatientController {
 	@Autowired
 	private PatientServiceImpl psi;
 
-    @GetMapping("patients")
+	@GetMapping("patients")
 	public List<PatientDTO> fetchPatientsList() {
 		return psi.createPatientsDTOFromDB();
 	}
 
-    @PostMapping("patients")
-    void addPatient(@RequestBody PatientDTO patientDTO) {
-    	psi.savePatientDTO(patientDTO);
-    }
-	
+	@PostMapping("patients")
+	void addPatient(@RequestBody PatientDTO patientDTO) {
+		psi.savePatientDTO(patientDTO);
+	}
+
 	@GetMapping("patients/{id}")
 	public PatientDTO findById(@PathVariable long id) {
 		return psi.findPatientById(id);
+	}
+
+	@GetMapping("services/{id}/patients")
+	public List<PatientDTO> fetchPatientsByService(@PathVariable int id) {
+		return psi.fetchPatientsByService(id);
 	}
 
 }
