@@ -77,6 +77,8 @@ export class PopupComponent implements OnInit, OnDestroy {
     });
     
     console.log(this.patient);
+    this.isOpen = false;
+    this.ngOnDestroy();
     this.gotoPatientDetails(id);
   }
 

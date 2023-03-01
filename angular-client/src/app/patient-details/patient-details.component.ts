@@ -5,8 +5,6 @@ import { PatientService } from '../service/patient-service.service';
 import { PopUpService } from '../service/pop-up.service';
 import { DatePipe } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
@@ -19,7 +17,6 @@ export class PatientDetailsComponent implements OnInit {
   isVisible = false;
   bodyText = 'This text can be updated in modal 1';
 
-
   constructor (
     private patientService: PatientService, 
     private route: ActivatedRoute, 
@@ -27,7 +24,6 @@ export class PatientDetailsComponent implements OnInit {
     private datePipe: DatePipe,
     protected popUpService: PopUpService
     ) {
-      
       this.loadPatientById();
   }
 
@@ -61,5 +57,4 @@ export class PatientDetailsComponent implements OnInit {
       window.location.reload();
     });
   }
-
 }

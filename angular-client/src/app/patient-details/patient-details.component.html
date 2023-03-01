@@ -2,7 +2,6 @@
 <div class="body">
   <form>
     <h2>{{ patient.serviceName }}</h2>
-
     <p class="titre">Nom patient :
     {{ patient.firstname }} {{ patient.lastname }}</p>
     <p>Date de naissance:</p>
@@ -42,8 +41,4 @@
     </div>
   </form>
 </div>
-<app-popup id="modal-1" [patient]="patient">
-        <h1>A custom modal popup</h1>
-        <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
-        <button (click)="popUpService.close();">Close</button>
-</app-popup>
+<app-popup id="modal-1" [patient]="patient"></app-popup>

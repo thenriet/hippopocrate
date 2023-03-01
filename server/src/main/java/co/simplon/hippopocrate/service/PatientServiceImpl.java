@@ -164,7 +164,7 @@ public class PatientServiceImpl implements PatientService {
         }
         
        
-        	
+        	patientInDB.setDateOut(patientDTO.getDateOut());
         	patientInDB.getBed().setOccupied(false);
     		patientInDB.setBed(null);
         
