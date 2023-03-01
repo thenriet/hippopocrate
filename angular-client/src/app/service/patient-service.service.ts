@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Patient } from '../model/patient';
 import { Observable } from 'rxjs/internal/Observable';
-import { AddPatient } from '../model/addpatient';
 
 
 @Injectable()
   // providedIn: 'root'
-export class PatientService {
-  update(patientForm: AddPatient, id: number) {
-    throw new Error('Method not implemented.');
+
+  export class PatientService {
+
+  private patientsUrl: string;
+  private idUrl: string;
+
+  constructor(private http: HttpClient) { 
+    this.patientsUrl = 'http://localhost:8080/api/patients';
+    this.idUrl = 'http://localhost:8080/api/updatepatient';
   }
-
-  private patientsUrl: string = 'http://localhost:8080/api/patients';
-
-  constructor(private http: HttpClient) {}
 
   public findAll(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.patientsUrl);
@@ -26,5 +27,9 @@ export class PatientService {
 
   public save(patient: Patient) {
     return this.http.post<Patient>(this.patientsUrl, patient);
+  }
+
+  public update(patient:Patient, id:number){
+    return this.http.put<Patient>(`${this.idUrl}/${id}`, patient);
   }
 }

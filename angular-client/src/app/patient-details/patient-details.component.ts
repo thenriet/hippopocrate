@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service.service';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-patient-details',
@@ -11,12 +13,22 @@ import { PatientService } from '../service/patient-service.service';
 export class PatientDetailsComponent implements OnInit {
   id!: number;
   patient = new Patient();
+  birthdate!: string|null;
 
-  constructor (private patientService: PatientService, private route: ActivatedRoute, private router: Router) {
+  constructor (
+    private patientService: PatientService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private datePipe: DatePipe) {
+      
+      this.loadPatientById();
   }
   
   ngOnInit() {
-    this.loadPatientById();
+  }
+
+  transformDate(date : Date) {
+    this.birthdate = (this.datePipe.transform(date, 'dd-MM-YYYY'));
   }
 
   loadPatientById() {
@@ -24,6 +36,7 @@ export class PatientDetailsComponent implements OnInit {
     this.patientService.getPatientById(this.id).subscribe({
       next: (data) => {
         this.patient = data;
+        this.transformDate(this.patient.birthdate);
       },
       error: (e) => {
         console.log(e);

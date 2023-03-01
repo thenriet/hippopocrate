@@ -9,6 +9,5 @@ import co.simplon.hippopocrate.model.Patient;
 @Component
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-	Object save(PatientDTO patient);
 
 }

@@ -1,12 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { addPatientModel } from '../model/addPatient-models';
 import { Patient } from '../model/patient';
-import { PatientService } from '../service/patient-service';
+import { PatientService } from '../service/patient-service.service';
 import { ServiceHippoService } from '../service/service-hippo.service';
 import { ServiceHippo } from '../model/serviceHippo';
-import { Observable } from 'rxjs';
 import { Room } from '../model/room';
 import { Bed } from '../model/bed';
 

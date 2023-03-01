@@ -5,7 +5,7 @@ import { Bed } from '../model/bed';
 import { Patient } from '../model/patient';
 import { Room } from '../model/room';
 import { ServiceHippo } from '../model/serviceHippo';
-import { PatientService } from '../service/patient-service';
+import { PatientService } from '../service/patient-service.service';
 import { ServiceHippoService } from '../service/service-hippo.service';
 
 @Component({

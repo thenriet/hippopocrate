@@ -60,7 +60,9 @@ public class PatientServiceImpl implements PatientService {
         }
         
         if (Objects.nonNull(patientDTO.getBedId())) {
+        	
         	patientInDB.getBed().setOccupied(false);
+    		bsi.updateBed(patientInDB.getBed(), patientDTO.getBedId());
     		patientInDB.setBed(bsi.findBedById(patientDTO.getBedId()));
         }
   
@@ -130,7 +132,7 @@ public class PatientServiceImpl implements PatientService {
 		patient.setDateIn(patientDTO.getDateIn());
 		patient.setBed(bsi.findBedById(patientDTO.getBedId()));
 		Bed bed = bsi.findBedById(patientDTO.getBedId());
-		bed.setPatient(patient);
+//		bed.setPatient(patient);
 		bed.setOccupied(true);
 		bsi.updateBed(bed, patientDTO.getBedId());
 		

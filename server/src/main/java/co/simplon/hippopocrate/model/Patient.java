@@ -31,7 +31,7 @@ public class Patient {
 	private LocalDate dateOut;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonBackReference(value="patient-bed")
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "bed_id", referencedColumnName = "id")
     private Bed bed;
 	

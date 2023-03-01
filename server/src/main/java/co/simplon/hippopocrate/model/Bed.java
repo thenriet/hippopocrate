@@ -1,6 +1,7 @@
 package co.simplon.hippopocrate.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Bed {
     private Room room;
 	
 	@JsonBackReference(value="bed-patient")
-	@OneToOne(mappedBy = "bed")
+	@OneToOne(mappedBy = "bed", cascade=CascadeType.ALL)
     private Patient patient;
 	
 	public Bed() {
@@ -43,7 +44,7 @@ public class Bed {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

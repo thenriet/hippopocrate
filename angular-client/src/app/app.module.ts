@@ -13,10 +13,10 @@ import { PatientService } from './service/patient-service.service';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthentificationService } from './service/authentification-service.service';
-// import { HttpInterceptorService } from './service/httpinterceptor.service';
 import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { UpdatePatientComponent } from './update-patient/update-patient.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,11 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
     UserListComponent,
     FormLoginComponent,
     HomeComponent,
-    PatientListComponent,
-    PatientDetailsComponent,
     NavbarComponent,
     ListeServiceComponent,
+    UpdatePatientComponent,
     PatientListComponent,
-    UpdatePatientComponent
+    PatientDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,12 +42,8 @@ import { UpdatePatientComponent } from './update-patient/update-patient.componen
     UserServiceService,
     PatientService,
     AuthentificationService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: HttpInterceptorService,
-    //   multi: true,
-    // },,
     ReactiveFormsModule,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })
