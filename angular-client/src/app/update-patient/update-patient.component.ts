@@ -96,7 +96,9 @@ export class UpdatePatientComponent {
   }
   
   gotoPatientDetails(id:number) {
-    this.router.navigate(['patients',id]);
+    this.router.navigate(['patients',id]).then(() => {
+      window.location.reload();
+    });
   }
   
   onSelectService(){

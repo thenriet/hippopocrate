@@ -42,6 +42,7 @@ public class PatientServiceImpl implements PatientService {
 		// TODO Auto-generated method stub
 		Patient patientInDB = pr.findById(patientId).get();
 		
+		
 		if (Objects.nonNull(patientDTO.getFirstname()) && !"".equalsIgnoreCase(patientDTO.getFirstname())) {
 			patientInDB.setFirstname(patientDTO.getFirstname());
         }
@@ -62,8 +63,10 @@ public class PatientServiceImpl implements PatientService {
         if (Objects.nonNull(patientDTO.getBedId())) {
         	
         	patientInDB.getBed().setOccupied(false);
-    		bsi.updateBed(patientInDB.getBed(), patientDTO.getBedId());
     		patientInDB.setBed(bsi.findBedById(patientDTO.getBedId()));
+    		patientInDB.getBed().setOccupied(true);
+
+    		
         }
   
         return pr.save(patientInDB);
