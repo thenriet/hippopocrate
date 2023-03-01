@@ -84,7 +84,9 @@ export class AddPatientComponent implements OnInit {
   }
 
   gotoPatientList() {
-    this.router.navigate(['/patients']);
+    this.router.navigate(['patients']).then(() => {
+      window.location.reload();
+    });
   }
 
   onSelectService(){

@@ -24,7 +24,6 @@ export class PopupComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute, 
     ) {
       this.element = el.nativeElement;
-      console.log(this.patient)
       this.patientId = this.route.snapshot.params['id'];
   }
 
@@ -75,15 +74,18 @@ export class PopupComponent implements OnInit, OnDestroy {
     }, error => {
       console.error('Error updating patient:', error);
     });
-    
-    console.log(this.patient);
-    this.isOpen = false;
-    this.ngOnDestroy();
-    this.gotoPatientDetails(id);
+        this.isOpen = false;
+    this.gotoPatients();
   }
 
   gotoPatientDetails(id:number) {
     this.router.navigate(['patients',id]).then(() => {
+      window.location.reload();
+    });
+  }
+
+  gotoPatients() {
+    this.router.navigate(['patients']).then(() => {
       window.location.reload();
     });
   }
