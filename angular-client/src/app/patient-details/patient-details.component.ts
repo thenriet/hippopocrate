@@ -13,12 +13,16 @@ import { CommentaryService } from '../service/Commentary.service';
 
 export class PatientDetailsComponent implements OnInit {
   id!: number;
+  patient_id!:number;
   patient= new Patient();
-  //commentary= new Commentary();
+  commentary= new Commentary();
   commentaries!: Commentary[];
-  commentary!:Commentary;
+  //commentary!:Commentary;
 
-  constructor (private commentaryService: CommentaryService, private patientService: PatientService, private route: ActivatedRoute, private router: Router) {}
+  constructor (private patientService: PatientService, 
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private commentaryService: CommentaryService) {}
 
   ngOnInit(){
     this.loadPatientById();
@@ -38,13 +42,18 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   loadCommentaryById(){
-    this.commentaryService.findAllComments(this.id).subscribe(data => {
-    this.commentaries = data;
-  })
-  // this.commentaryService.getCommentaryById(this.id).subscribe(data => {
-  //     this.commentary = data;
-  //   })
+  //  this.commentaryService.findAllComments(this.id).subscribe(data => {
+  //  this.commentaries = data;
+  // })
+  this.patient_id = this.route.snapshot.params['patient_id'];
+  this.commentaryService.getCommentaryByPatientId(this.patient_id).subscribe({next: (data) => {
+      this.commentary = data;
+  },
+  error: (e) => {
+    console.log(e);
   }
+  });
+}
 
     transferTheId(id: number) {
       this.router.navigate(['updatepatient', id]);

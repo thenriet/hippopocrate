@@ -1,23 +1,41 @@
 package co.simplon.hippopocrate.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@jakarta.persistence.Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name ="records")
 
 public class Commentary {
+	private static final long serialVersionUID = 1L;
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(nullable = false)
 	private String[] commentary;
+
+	@Column(nullable = false)
 	private int patient_id;
+
+	@Column(nullable = false)
 	private int user_id; 
 	
-	public Commentary () {
-		
+	public Commentary () {	
 	}
 
 	public Commentary(int id, String[] commentary, int patient_id, int user_id) {

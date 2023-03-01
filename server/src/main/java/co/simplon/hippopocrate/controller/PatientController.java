@@ -44,17 +44,17 @@ public class PatientController {
 	}
 	
 	@GetMapping("patients/{id}")
-	public Patient findById(@PathVariable long id) {
+	public Patient findById(@PathVariable int id) {
 		return psi.findPatientById(id);
 	}
 	
 	@GetMapping("updatepatient/{id}")
-	public Patient updateById(@PathVariable long id) {
+	public Patient updateById(@PathVariable int id) {
 		return psi.findPatientById(id);
 	}
 	
 	@PutMapping("updatepatient/{id}")
-	void updatePatient(@RequestBody Patient patient, @PathVariable long id) {
+	void updatePatient(@RequestBody Patient patient, @PathVariable int id) {
 		System.out.println("je suis là!");
 		psi.updatePatient(patient, id);
 	}

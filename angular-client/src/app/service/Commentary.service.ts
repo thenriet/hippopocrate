@@ -3,17 +3,19 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import {Commentary} from "../model/Commentary"
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CommentaryService {
     private CommentaryUrl: string = 'http://localhost:8080/api/suivipatient';
     constructor(private http: HttpClient) {}
     
-    public save(commentary: Commentary) {
-        return this.http.post<Commentary>(this.CommentaryUrl, commentary);
+    public save(commentary: Commentary, patient_id:number) {
+        return this.http.post<Commentary>(`${this.CommentaryUrl}/${patient_id}`, commentary);
       }
 
-    getCommentaryById (id:number): Observable <Commentary>{
-        return this.http.get<Commentary>(`${this.CommentaryUrl}/${id}`);
+    getCommentaryByPatientId (patient_id:number): Observable <Commentary>{
+        return this.http.get<Commentary>(`${this.CommentaryUrl}/${patient_id}`);
     }
 
     public findAllComments(id:number): Observable<Commentary[]> {

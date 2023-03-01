@@ -8,5 +8,5 @@ import co.simplon.hippopocrate.model.Patient;
 
 @Repository
 public interface CommentaryRepository extends JpaRepository<Commentary, Long>{
-	
+	Commentary findbyPatientId(int patient_id);
 }

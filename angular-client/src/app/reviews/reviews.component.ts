@@ -15,6 +15,8 @@ export class ReviewsComponent implements OnInit{
   addCommentaryForm!: FormGroup;
   commentaryForm= new Patient;
   error= false; 
+  patient_id!:number;
+
 
   constructor ( private route: ActivatedRoute, 
     private patientService: PatientService,
@@ -30,13 +32,13 @@ export class ReviewsComponent implements OnInit{
   this.addCommentaryForm = this.fb.group({
     commentary:['',Validators.required],
     user_id:['', Validators.required],
-    patient_id: ['',Validators.required],
+    // patient_id: ['',Validators.required],
    });
   }
 
   loadPatientById() {
-    this.id = this.route.snapshot.params['id'];
-    this.patientService.getPatientById(this.id).subscribe({
+    this.patient_id = this.route.snapshot.params['id'];
+    this.patientService.getPatientById(this.patient_id).subscribe({
       next: (data) => {
         this.patient = data;
       },
@@ -45,7 +47,10 @@ export class ReviewsComponent implements OnInit{
       }
     });
   }
-  OnSubmit(){
+
+  onSubmit(){
+    // this.patient_id = this.route.snapshot.params['patient_id'];
+
     let data =this.addCommentaryForm.value;
     this.commentaryForm.commentary= data.commentary;
 
@@ -63,7 +68,7 @@ export class ReviewsComponent implements OnInit{
     //subscribe((result) => 
     this.gotoPatientDetails(this.id);
   }
-  gotoPatientDetails(id:number) {
+    gotoPatientDetails(id:number) {
       this.router.navigate(['patient',id]);
     }
 }

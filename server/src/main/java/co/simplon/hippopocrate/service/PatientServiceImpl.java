@@ -32,9 +32,9 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public Patient updatePatient(Patient patient, long id) {
+	public Patient updatePatient(Patient patient, int id) {
 		// TODO Auto-generated method stub
-		Patient patientInDB = pr.findById(id).get();
+		Patient patientInDB = pr.findById((long) id).get();
 
 		if (Objects.nonNull(patient.getFirstname()) && !"".equalsIgnoreCase(patient.getFirstname())) {
 			patientInDB.setFirstname(patient.getFirstname());
@@ -60,9 +60,8 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public void deletePatientById(long id) {
-		// TODO Auto-generated method stub
-
+	public void deletePatientById(int id) {
+		
 	}
 
 }

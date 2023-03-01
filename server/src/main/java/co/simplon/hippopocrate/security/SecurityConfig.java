@@ -32,9 +32,13 @@ public class SecurityConfig {
 				.requestMatchers("/api/patients").permitAll()
 				.requestMatchers("/api/patients/{id}").permitAll()
 				.requestMatchers("/api/addpatient").permitAll()
+				.requestMatchers("/api/patient").permitAll()
+				.requestMatchers("/api/patient/{id}").permitAll()
 				.requestMatchers("/api/users").permitAll()
 				.requestMatchers("/api/updatepatient/{id}").permitAll()
-				.requestMatchers("/api/savepatient/{id}").permitAll());
+				.requestMatchers("/api/suivipatient").permitAll()
+				.requestMatchers("/api/suivipatient/{id}").permitAll());
+		
 //						.requestMatchers("/addClient").hasRole("ADMIN")
 //						.requestMatchers("/formUpdateClient/{id}").hasRole("ADMIN")
 //						.requestMatchers("/deleteClient/{id}").hasRole("ADMIN"))

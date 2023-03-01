@@ -10,8 +10,10 @@ public interface CommentaryService {
 	List<Commentary> fetchCommentaryList();
 	  
     // update operation
-  //Commentary updateCommentary(Commentary commentary, long commentaryId);
+  Commentary updateCommentary(Commentary commentary, int id);
   
     // delete operation
-    //void deleteCommentaryById(long id); 
+    void deleteCommentaryById(int id);
+
+	List<Commentary> findAllCommentary(); 
 }

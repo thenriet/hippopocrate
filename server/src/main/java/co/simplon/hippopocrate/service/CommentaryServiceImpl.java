@@ -25,17 +25,24 @@ public class CommentaryServiceImpl implements CommentaryService {
 
 	@Override
 	public List<Commentary> fetchCommentaryList() {
-		// TODO Auto-generated method stub
 		return cr.findAll();
 	}
 	
 	public Commentary findCommentaryById(long id) {
 		return cr.findById(id).get();
 	}
-	
-//	@Override
-	//public void deleteCommentaryById(long id) {
-		// TODO Auto-generated method stub
+	public Commentary findCommentaryByPatientId(long patient_id) {
+		return cr.findById(patient_id).get();
+	}
 
-	//}
+	@Override
+	public Commentary updateCommentary(Commentary commentary, int id) {
+		return null;
+	}
+
+	@Override
+	public void deleteCommentaryById(int id) {
+	}
+	
+
 }

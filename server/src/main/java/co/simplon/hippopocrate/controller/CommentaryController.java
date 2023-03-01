@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.hippopocrate.model.Commentary;
+import co.simplon.hippopocrate.model.User;
+import co.simplon.hippopocrate.service.CommentaryService;
 import co.simplon.hippopocrate.service.CommentaryServiceImpl;
+import co.simplon.hippopocrate.service.UserService;
 
 
 @RestController
@@ -24,22 +27,25 @@ import co.simplon.hippopocrate.service.CommentaryServiceImpl;
 public class CommentaryController {
 	
 	@Autowired
-	private CommentaryServiceImpl csi;
+	private CommentaryService commentaryService;	
+	//private CommentaryServiceImpl csi;
 
-	@GetMapping("suivipatient/{id}")
-	public List<Commentary> fetchCommentaryList() {
-		return csi.fetchCommentaryList();
-	}
-
-	@PostMapping("suivipatient/{id}")
-	void addCommentary(@RequestBody Commentary commentary) {
-		csi.saveCommentary(commentary);
-	}
 	
 	@GetMapping("suivipatient/{id}")
-	public Commentary findById(@PathVariable int id) {
-		return csi.findCommentaryById(id);
+	public List<Commentary> getCommentaryList() {
+		return this.commentaryService.findAllCommentary();
 	}
+
+		
+//	@PostMapping("suivipatient/{id}")
+//	void addCommentary(@RequestBody Commentary commentary) {
+//		csi.saveCommentary(commentary);
+//	}
+//	
+//	@GetMapping("suivipatient/{id}")
+//	public Commentary findById(@PathVariable int id) {
+//		return csi.findCommentaryById(id);
+//	}
 //	
 //	@GetMapping("suivipatient/:id")
 //	public Commentary updateById(@PathVariable long id) {

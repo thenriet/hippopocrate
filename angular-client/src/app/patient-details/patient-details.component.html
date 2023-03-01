@@ -9,12 +9,12 @@
       <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
       <button type="submit" class="button">Sortie</button>
     </div>
-    <table> <!-- *ngFor="let commentary of commentaries">-->
+    <table *ngFor="let commentary of commentaries">
       <tr class="date">
         Le 00/00/23 par infirmier
       </tr>
       <tr class="review">
-        Commentaire:{{commentary.commentary}}
+        Commentaire: {{commentary.commentary}}
       </tr>
       <tr class="date">
         Le 00/00/23 par infirmier
