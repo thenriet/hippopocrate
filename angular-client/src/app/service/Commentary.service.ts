@@ -14,8 +14,8 @@ export class CommentaryService {
         return this.http.post<Commentary>(`${this.CommentaryUrl}/${patient_id}`, commentary);
       }
 
-    getCommentaryByPatientId (patient_id:number): Observable <Commentary>{
-        return this.http.get<Commentary>(`${this.CommentaryUrl}/${patient_id}`);
+    getCommentaryByPatientId (patient_id:number): Observable <Commentary[]>{
+        return this.http.get<Commentary[]>(`${this.CommentaryUrl}/${patient_id}`);
     }
 
     public findAllComments(id:number): Observable<Commentary[]> {

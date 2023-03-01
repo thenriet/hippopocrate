@@ -1,12 +1,16 @@
 package co.simplon.hippopocrate.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.simplon.hippopocrate.model.Commentary;
 import co.simplon.hippopocrate.model.Patient;
+import co.simplon.hippopocrate.repository.CommentaryRepository;
 import co.simplon.hippopocrate.repository.PatientRepository;
 
 @Service
@@ -61,7 +65,17 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public void deletePatientById(int id) {
-		
 	}
-
+		
+	public Set<Commentary> findCommentary(long patient_Id) {
+		 Set<Commentary> commentaries = pr.findById(patient_Id).get().getCommentaries();
+		 System.out.println(commentaries);
+		 return commentaries;
+	}
+	
+//	public Commentary addCommentary(Commentary commentary, long patient_Id) {
+//		return pr.findById(patient_Id).save(commentary);
+//
+//	}
+	
 }

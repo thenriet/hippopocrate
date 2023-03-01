@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service.service';
+import { CommentaryService } from '../service/Commentary.service';
+import { Commentary } from '../model/Commentary';
+
 
 @Component({
   selector: 'app-reviews',
@@ -13,7 +16,7 @@ export class ReviewsComponent implements OnInit{
   id!: number;
   patient!: Patient;
   addCommentaryForm!: FormGroup;
-  commentaryForm= new Patient;
+  commentaryForm= new Commentary;
   error= false; 
   patient_id!:number;
 
@@ -21,7 +24,7 @@ export class ReviewsComponent implements OnInit{
   constructor ( private route: ActivatedRoute, 
     private patientService: PatientService,
     private router: Router, 
-    private fb: FormBuilder)
+    private fb: FormBuilder, private commentaryService: CommentaryService)
     {
     this.patient= new Patient();
     }
@@ -31,7 +34,7 @@ export class ReviewsComponent implements OnInit{
 
   this.addCommentaryForm = this.fb.group({
     commentary:['',Validators.required],
-    user_id:['', Validators.required],
+    //user_id:['', Validators.required],
     // patient_id: ['',Validators.required],
    });
   }
@@ -54,7 +57,7 @@ export class ReviewsComponent implements OnInit{
     let data =this.addCommentaryForm.value;
     this.commentaryForm.commentary= data.commentary;
 
-   this.patientService.save(this.commentaryForm)
+   this.commentaryService.save(this.commentaryForm, this.patient_id)
    
    try {
     this.addCommentaryForm.value;

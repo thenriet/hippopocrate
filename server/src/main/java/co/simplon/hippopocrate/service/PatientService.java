@@ -2,6 +2,7 @@ package co.simplon.hippopocrate.service;
 
 import java.util.List;
 
+import co.simplon.hippopocrate.model.Commentary;
 import co.simplon.hippopocrate.model.Patient;
 
 public interface PatientService {
@@ -16,5 +17,8 @@ public interface PatientService {
   
     // delete operation
     void deletePatientById(int id);
+
+//	Commentary saveCommentary(Commentary commentary);    
+    
 
 }

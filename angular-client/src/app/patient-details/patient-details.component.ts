@@ -42,12 +42,8 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   loadCommentaryById(){
-  //  this.commentaryService.findAllComments(this.id).subscribe(data => {
-  //  this.commentaries = data;
-  // })
-  this.patient_id = this.route.snapshot.params['patient_id'];
-  this.commentaryService.getCommentaryByPatientId(this.patient_id).subscribe({next: (data) => {
-      this.commentary = data;
+  this.commentaryService.getCommentaryByPatientId(this.id).subscribe({next: (data) => {
+  this.commentaries = data;
   },
   error: (e) => {
     console.log(e);

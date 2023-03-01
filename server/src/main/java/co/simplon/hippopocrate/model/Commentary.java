@@ -1,50 +1,50 @@
 package co.simplon.hippopocrate.model;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
+@jakarta.persistence.Entity
 @Table(name ="records")
 
-public class Commentary {
-	private static final long serialVersionUID = 1L;
-	
+public class Commentary {	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String commentary;
 	
-	@Column(nullable = false)
-	private String[] commentary;
-
-	@Column(nullable = false)
-	private int patient_id;
-
-	@Column(nullable = false)
-	private int user_id; 
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;	
 	
 	public Commentary () {	
 	}
+	
 
-	public Commentary(int id, String[] commentary, int patient_id, int user_id) {
+	public Commentary(int id, String commentary) {
 		super();
 		this.id = id;
 		this.commentary = commentary;
-		this.patient_id = patient_id;
-		this.user_id = user_id;
 	}
+
 
 	public int getId() {
 		return id;
@@ -54,28 +54,21 @@ public class Commentary {
 		this.id = id;
 	}
 
-	public String[] getCommentary() {
+	public String getCommentary() {
 		return commentary;
 	}
 
-	public void setCommentary(String[] commentary) {
+	public void setCommentary(String commentary) {
 		this.commentary = commentary;
 	}
 
-	public int getPatient_id() {
-		return patient_id;
+	public Patient getPatient() {
+		return patient;
 	}
 
-	public void setPatient_id(int patient_id) {
-		this.patient_id = patient_id;
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
 	
 }

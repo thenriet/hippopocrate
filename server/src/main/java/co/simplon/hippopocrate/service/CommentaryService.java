@@ -15,5 +15,4 @@ public interface CommentaryService {
     // delete operation
     void deleteCommentaryById(int id);
 
-	List<Commentary> findAllCommentary(); 
 }

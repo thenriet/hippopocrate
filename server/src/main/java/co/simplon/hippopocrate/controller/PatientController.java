@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,10 +54,19 @@ public class PatientController {
 		return psi.findPatientById(id);
 	}
 	
-	@PutMapping("updatepatient/{id}")
+	@PostMapping("updatepatient/{id}")
 	void updatePatient(@RequestBody Patient patient, @PathVariable int id) {
 		System.out.println("je suis là!");
 		psi.updatePatient(patient, id);
 	}
 	
+	@GetMapping("suivipatient/{id}")
+	public Set<Commentary> getCommentaryList(@PathVariable("id") long patient_id, Model model) {
+		return psi.findCommentary(patient_id);
+	}
+	
+//	@PostMapping("suivipatient/{id}")
+//	void addCommentary(@RequestBody Commentary commentary, @PathVariable("id") long patient_id) {
+//		psi.saveCommentary(commentary);
+//	}
 }

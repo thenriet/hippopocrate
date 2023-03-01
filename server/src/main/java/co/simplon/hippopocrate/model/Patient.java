@@ -2,10 +2,16 @@ package co.simplon.hippopocrate.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -23,6 +29,10 @@ public class Patient {
 	private LocalDate date_in;
 	private LocalDate date_out;
 	
+	@JsonBackReference(value="patient_commentary")
+	@OneToMany(mappedBy = "patient", fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    private Set<Commentary> commentaries;
 	
 	public Patient() {
 		
@@ -107,6 +117,14 @@ public class Patient {
 
 	public void setDate_out(LocalDate date_out) {
 		this.date_out = date_out;
+	}
+
+	public Set<Commentary> getCommentaries() {
+		return commentaries;
+	}
+
+	public void setCommentaries(Set<Commentary> commentaries) {
+		this.commentaries = commentaries;
 	}
 	
 	
