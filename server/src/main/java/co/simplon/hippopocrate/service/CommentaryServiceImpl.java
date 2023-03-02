@@ -35,7 +35,6 @@ public class CommentaryServiceImpl implements CommentaryService {
 		commentary.setCommentary(commentaryDTO.getCommentary());
 		commentary.setPatient(pr.findById(commentaryDTO.getPatientId()).get());
 		commentary.setUser(ur.findById(commentaryDTO.getUserId()).get());
-		System.out.println(commentary);
 		cr.save(commentary);
 	}
 

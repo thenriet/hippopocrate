@@ -90,7 +90,7 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public void deletePatientById(long patientId) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	public PatientDTO createPatientDTOFromDB(long id) {

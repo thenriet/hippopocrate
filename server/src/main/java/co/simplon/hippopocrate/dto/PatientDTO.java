@@ -20,7 +20,6 @@ public class PatientDTO {
 	private String serviceName;
 	private long roomNumber;
 	private long bedNumber;
-
 	
 
 	public long getId() {

@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
 		return userDto.getRole();
 
 	}
-
+	
 	@Override
 	public User findUserByName(String name) {
 		return userRepository.findByName(name);

@@ -1,6 +1,7 @@
 h1{ 
   font-size: 50px;
   padding-bottom: 30px;
+  text-align: center;
 }
 
 img {
@@ -12,13 +13,17 @@ img {
   height: 50px;
 }
 
-body {
+.content {
   margin: 0;
   width: 100vw;
-  height: 100vh;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
   justify-content: center;
 }
 
@@ -34,4 +39,10 @@ button {
   font-size: 25px;
   font-family: 'Roboto Slab';
   cursor: pointer;
+}
+
+button:hover {
+  -ms-transform: scale(1.05); /* IE 9 /
+  -webkit-transform: scale(1.05); / Safari 3-8 */
+  transform: scale(1.05);
 }

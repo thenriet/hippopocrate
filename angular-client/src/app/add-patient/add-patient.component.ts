@@ -59,7 +59,6 @@ export class AddPatientComponent implements OnInit {
   }
 
   onSubmit() {
-
     let data = this.addPatientForm.value;
     this.patient.id = this.patientListLength;
     this.patient.firstname = data.firstname;
@@ -84,13 +83,15 @@ export class AddPatientComponent implements OnInit {
   }
 
   gotoPatientList() {
-    this.router.navigate(['/patients']);
+    this.router.navigate(['patients']).then(() => {
+      window.location.reload();
+    });
   }
 
   onSelectService(){
     console.log('Selected option:', this.serviceId);
     if(this.serviceId){
-      console.log(this.serviceHippo.findOneById(this.serviceId));
+      console.log(this.serviceHippo.findOneServiceById(this.serviceId));
       this.serviceHippo.findRooms(this.serviceId).subscribe(data => {
         this.rooms = data;
         console.log(this.rooms)

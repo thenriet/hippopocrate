@@ -27,16 +27,11 @@ public class Bed {
 	
 	@JsonBackReference(value="bed-patient")
 	@OneToOne(mappedBy = "bed")
+	@JoinColumn(nullable=true)
     private Patient patient;
 	
 	public Bed() {
 		
-	}
-	
-	public Bed(int number, int room_id, boolean occupied) {
-		super();
-		this.number = number;
-		this.occupied = occupied;
 	}
 
 	public long getId() {

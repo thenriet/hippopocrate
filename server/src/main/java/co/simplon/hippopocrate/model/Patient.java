@@ -49,17 +49,6 @@ public class Patient {
 
 	}
 
-	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address, LocalDate dateIn,
-			LocalDate dateOut) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.birthdate = birthdate;
-		this.address = address;
-		this.dateIn = dateIn;
-		this.dateOut = dateOut;
-	}
-
 	public long getId() {
 		return id;
 	}

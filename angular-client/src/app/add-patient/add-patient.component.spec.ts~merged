@@ -1,0 +1,39 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+<<<<<<< HEAD
+import { PopupComponent } from './popup.component';
+
+describe('PopupComponent', () => {
+  let component: PopupComponent;
+  let fixture: ComponentFixture<PopupComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ PopupComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(PopupComponent);
+=======
+import { AddPatientComponent } from './add-patient.component';
+
+describe('PageAddPatientComponent', () => {
+  let component: AddPatientComponent;
+  let fixture: ComponentFixture<AddPatientComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ AddPatientComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(AddPatientComponent);
+>>>>>>> d17867156cb44598f732fa9c504896dd471c22e7
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

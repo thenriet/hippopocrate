@@ -19,6 +19,9 @@ import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ServiceDetailsComponent } from './service-details/service-details.component';
+import { UpdatePatientComponent } from './update-patient/update-patient.component';
+import { DatePipe } from '@angular/common';
+import { PopupComponent } from './popup/popup.component';
 import { PatientRecordsComponent } from './patient-records/patient-records.component';
 
 @NgModule({
@@ -36,6 +39,10 @@ import { PatientRecordsComponent } from './patient-records/patient-records.compo
     UpdateUserComponent,
     ServiceDetailsComponent,
     PatientRecordsComponent,
+    UpdatePatientComponent,
+    PatientListComponent,
+    PatientDetailsComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,11 +55,8 @@ import { PatientRecordsComponent } from './patient-records/patient-records.compo
     UserServiceService,
     PatientService,
     AuthentificationService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: HttpInterceptorService,
-    //   multi: true,
-    // },
+    ReactiveFormsModule,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

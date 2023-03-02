@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Commentary } from '../model/commentary';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service.service';
 import { CommentaryService } from '../service/commentary-service';
+import { PopUpService } from '../service/pop-up.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-patient-details',
@@ -17,17 +19,28 @@ export class PatientDetailsComponent implements OnInit {
   patient = new Patient();
   commentary = new Commentary();
   commentaries!: Commentary[];
+  birthdate!: string | null;
+  isVisible = false;
+  bodyText = 'This text can be updated in modal 1';
 
   constructor(
     private patientService: PatientService,
     private route: ActivatedRoute,
     private router: Router,
-    private commentaryService: CommentaryService
-  ) {}
+    private commentaryService: CommentaryService,
+    private datePipe: DatePipe,
+    protected popUpService: PopUpService
+  ) {
+    this.loadPatientById();
+  }
 
   ngOnInit() {
     this.loadPatientById();
     this.loadCommentaryById();
+  }
+
+  transformDate(date: Date) {
+    this.birthdate = this.datePipe.transform(date, 'dd-MM-YYYY');
   }
 
   loadPatientById() {
@@ -35,6 +48,7 @@ export class PatientDetailsComponent implements OnInit {
     this.patientService.getPatientById(this.id).subscribe({
       next: (data) => {
         this.patient = data;
+        this.transformDate(this.patient.birthdate);
       },
       error: (e) => {
         console.log(e);
@@ -55,5 +69,15 @@ export class PatientDetailsComponent implements OnInit {
 
   suiviId(id: number) {
     this.router.navigate(['suiviPatient', id]);
+  }
+
+  transferTheId(id: number) {
+    this.router.navigate(['updatepatient', id]);
+  }
+
+  gotoPatientDetails(id: number) {
+    this.router.navigate(['patients', id]).then(() => {
+      window.location.reload();
+    });
   }
 }

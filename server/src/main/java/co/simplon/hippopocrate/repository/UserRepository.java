@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 import co.simplon.hippopocrate.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/**
+ * @author tom
+ *
+ * Repository containing CRUD methods for User
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
