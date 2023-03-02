@@ -59,7 +59,6 @@ export class AddPatientComponent implements OnInit {
   }
 
   onSubmit() {
-
     let data = this.addPatientForm.value;
     this.patient.id = this.patientListLength;
     this.patient.firstname = data.firstname;

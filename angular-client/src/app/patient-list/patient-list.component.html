@@ -12,8 +12,8 @@
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let patient of patients">
+      <tbody *ngFor="let patient of patients">
+        <tr *ngIf = "patient.roomId>1;else exit">
           <td>{{ patient.firstname }} {{ patient.lastname }}</td>
           <td>{{ patient.serviceName }}</td>
           <td>{{ patient.roomNumber }}</td>
@@ -22,8 +22,20 @@
             <button (click)="seePatient(patient.id)">Voir détails</button>
           </td>
         </tr>
+          <ng-template #exit>
+            <td>{{ patient.firstname }} {{ patient.lastname }}</td>
+            <td>Sorti le {{ patient.dateOut }} </td>
+            <td></td>
+            <td></td>
+            <td>
+              <button (click)="seePatient(patient.id)">Voir détails</button>
+            </td>  
+          </ng-template>
       </tbody>
     </table>
     <div *ngIf = "role === 'ROLE_SECRETAIRE'"><a routerLinkActive="active" routerLink="/ajouterPatient"><button class ="btn" >Nouveau Patient</button></a></div>
   </div>
 </div>
+ <div class="boutonbas">
+        <button routerLink="/addpatient">Ajouter un patient</button>
+    </div>

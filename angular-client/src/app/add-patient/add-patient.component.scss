@@ -30,12 +30,13 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
-    // border: solid 2px black;
+    width: 60vw;
+    min-width: fit-content;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 100px;
 }
+
 form input {
     width: 400px;
     margin-bottom: 15px;
@@ -49,7 +50,6 @@ form label {
     font-family: 'Roboto Slab';
     font-size: 25px;
     margin-bottom: 30px;
-   
 }
 
 form button {

@@ -1,21 +1,35 @@
 <app-navbar></app-navbar>
 <div class="body">
   <form>
-    <h2>{{ patient.serviceName }}</h2>
-    <p class="titre">Nom patient :
-    {{ patient.firstname }} {{ patient.lastname }}</p>
-    <p>Date de naissance:</p>
-    <p>{{ birthdate }}</p>
-    <p>Adresse:</p>
-    <p>{{ patient.address }}</p>
-    <p>Chambre :</p>
-    <p>{{ patient.roomNumber }}</p>
-    <p>Numéro de lit :</p>
-    <p>{{ patient.bedNumber }}</p>
-    <div class="bouton">
+    <div class="patientDetails" *ngIf = "patient.roomId>1;else exit">
+      <h2>{{ patient.serviceName }}</h2>
+      <p class="titre">Nom patient :
+      {{ patient.firstname }} {{ patient.lastname }}</p>
+      <p>Date de naissance:</p>
+      <p>{{ birthdate }}</p>
+      <p>Adresse:</p>
+      <p>{{ patient.address }}</p>
+      <p>Chambre :</p>
+      <p>{{ patient.roomNumber }}</p>
+      <p>Numéro de lit :</p>
+      <p>{{ patient.bedNumber }}</p>
+      <div class="bouton">
       <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
       <button type="submit" class="button" (click)="popUpService.open('modal-1')">Sortie</button>
     </div>
+    </div>
+    <ng-template #exit>
+      <h2>{{ patient.serviceName }}</h2>
+      <p class="titre">Nom patient :
+      {{ patient.firstname }} {{ patient.lastname }}</p>
+      <p>Date de naissance:</p>
+      <p>{{ birthdate }}</p>
+      <p>Adresse:</p>
+      <p>{{ patient.address }}</p>
+    <div class="bouton">
+      <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
+    </div>
+    </ng-template>
     <table>
       <tr class="date">
         Le 00/00/23 par infirmier

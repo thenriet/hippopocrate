@@ -14,9 +14,33 @@
       text-align: center;
     }
     
+
     button {
-      margin: 2rem;
-      width: 5rem;
+      font-family: "Roboto Slab";
+      width: 100px;
+      height: 50px;
+      font-size: 15px;
+      border: solid 1px white;
+      border-radius: 15px;
+      background-color: #5ecab5;
+      color: white;
+      transition: transform 0.1s;
+      cursor: pointer;
+      border: solid 1px #5ecab5;
+    }
+    
+    button:hover {
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+
+  .popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    button {
+      margin: 1rem;
     }
   }
 
