@@ -33,7 +33,7 @@ export class ServiceDetailsComponent implements OnInit {
 
   loadServiceById() {
     this.id = this.route.snapshot.params['id'];
-    this.serviceHippo.findOneById(this.id).subscribe({
+    this.serviceHippo.findOneServiceById(this.id).subscribe({
       next: (data) => {
         this.service = data;
       },

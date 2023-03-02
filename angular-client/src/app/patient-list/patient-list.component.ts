@@ -49,11 +49,11 @@ export class PatientListComponent {
   }
 
   seePatient(id: number) {
-    this.router.navigate(['patients', id]);
+    this.router.navigate(['patient', id]);
   }
 
   getService(serviceId: number) {
-    this.hippoService.findOneById(serviceId).subscribe(data => {
+    this.hippoService.findOneServiceById(serviceId).subscribe(data => {
       this.service = data;
     })
   }

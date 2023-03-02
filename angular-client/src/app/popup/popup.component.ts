@@ -15,13 +15,13 @@ export class PopupComponent implements OnInit, OnDestroy {
   isOpen = false;
   patientId!: number;
   private element: any;
-  
+
   constructor(
     private popUpService: PopUpService,
-    protected patientService: PatientService, 
+    protected patientService: PatientService,
     private el: ElementRef,
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     ) {
       this.element = el.nativeElement;
       this.patientId = this.route.snapshot.params['id'];
@@ -63,11 +63,11 @@ export class PopupComponent implements OnInit, OnDestroy {
   }
 
   exitThePatient(id : number) {
-    this.patient.bedId=null;
+    this.patient.bedId = null;
     const current = new Date();
     const timestamp = current.getTime();
     this.patient.dateOut= current;
-    console.log(this.patient)   
+    console.log(this.patient)
     this.patientService.exit(this.patient, this.patientId)
     .subscribe(patient => {
       console.log('Patient updated:', patient);

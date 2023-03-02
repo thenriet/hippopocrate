@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody *ngFor="let patient of patients">
-        <tr *ngIf = "patient.roomId>1;else exit">
+        <tr *ngIf = "patient.roomId>0;else exit">
           <td>{{ patient.firstname }} {{ patient.lastname }}</td>
           <td>{{ patient.serviceName }}</td>
           <td>{{ patient.roomNumber }}</td>

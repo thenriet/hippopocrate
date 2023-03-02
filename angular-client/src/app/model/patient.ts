@@ -5,8 +5,8 @@ export class Patient {
   birthdate!: Date;
   address!: string;
   dateIn!: Date;
-  dateOut!: Date;
-  bedId!: number;
+  dateOut!: Date|null|string;
+  bedId!: number|null;
   roomId!: number;
   serviceId!: number;
   serviceName!: string;

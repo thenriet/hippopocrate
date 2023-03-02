@@ -1,26 +1,60 @@
 <app-navbar></app-navbar>
 <div class="body">
   <form>
-    <div class="patientDetails" *ngIf = "patient.roomId>0;else exit">
+    <div class="patientDetails" *ngIf="patient.roomId > 0; else exit">
       <h2>{{ patient.serviceName }}</h2>
-      <p class="titre">Nom patient :
-      {{ patient.firstname }} {{ patient.lastname }}</p>
+      <p class="titre">
+        Nom patient : {{ patient.firstname }} {{ patient.lastname }}
+      </p>
       <p>Date de naissance: {{ birthdate }}</p>
       <p>Adresse: {{ patient.address }}</p>
       <p>Chambre : {{ patient.roomNumber }}</p>
       <p>Numéro de lit : {{ patient.bedNumber }}</p>
       <div class="bouton">
-      <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
-      <button type="submit" class="button" (click)="popUpService.open('modal-1')">Sortie</button>
-    </div>
+        <button
+          type="submit"
+          class="button"
+          (click)="transferTheId(patient.id)"
+        >
+          Modifier
+        </button>
+        <button
+          type="submit"
+          class="button"
+          (click)="popUpService.open('modal-1')"
+        >
+          Sortie
+        </button>
+      </div>
     </div>
     <ng-template #exit>
-    <table *ngFor="let commentary of commentaries" >
+      <h2>{{ patient.serviceName }}</h2>
+      <p class="titre">
+        Nom patient : {{ patient.firstname }} {{ patient.lastname }}
+      </p>
+      <p>Date de naissance: {{ birthdate }}</p>
+      <p>Adresse: {{ patient.address }}</p>
+      <div class="bouton">
+        <button
+          type="submit"
+          class="button"
+          (click)="transferTheId(patient.id)"
+        >
+          Modifier
+        </button>
+      </div>
+    </ng-template>
+    <table *ngFor="let commentary of commentaries">
       <tr class="date">
-        Suivi patient par {{ commentary.userName }}
+        Suivi patient par
+        {{
+          commentary.userName
+        }}
       </tr>
       <tr class="review">
-        {{ commentary.commentary }}
+        {{
+          commentary.commentary
+        }}
       </tr>
     </table>
     <div class="boutonbas">

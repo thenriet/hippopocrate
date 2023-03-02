@@ -21,27 +21,27 @@ export class UpdatePatientComponent {
   updatePatient = new Patient();
   id!:number;
   services !: ServiceHippo[];
-  serviceId!: string;
+  serviceId!: number;
   rooms !: Room[];
-  roomId!: string;
+  roomId!: number;
   beds !: Bed[];
-  bedId!: string;
+  bedId!: number;
 
 
   constructor (
-    private patientService: PatientService, 
+    private patientService: PatientService,
     private serviceHippo: ServiceHippoService,
-    private router: Router, 
-    private fb:FormBuilder, 
-    private route: ActivatedRoute) { 
+    private router: Router,
+    private fb:FormBuilder,
+    private route: ActivatedRoute) {
       this.serviceHippo.findAll().subscribe(data => {
         this.services = data;
       });
   }
-  
+
   ngOnInit(){
     this.loadPatientById();
-  
+
     this.updatePatientForm= this.fb.group({
     firstname:['',Validators.required],
     lastname:['',Validators.required],
@@ -56,7 +56,7 @@ export class UpdatePatientComponent {
    onSubmit(){
     let data= this.updatePatientForm.value;
     console.log(data);
-    this.updatePatient.firstname= data.firstname; 
+    this.updatePatient.firstname= data.firstname;
     this.updatePatient.lastname=data.lastname;
     this.updatePatient.address= data.address;
     this.updatePatient.birthdate= data.birthdate;
@@ -70,7 +70,7 @@ export class UpdatePatientComponent {
     }, error => {
       console.error('Error updating patient:', error);
     });
-    
+
     console.log(this.updatePatient);
     try {
       this.updatePatientForm.value;
@@ -94,13 +94,13 @@ export class UpdatePatientComponent {
       }
     });
   }
-  
+
   gotoPatientDetails(id:number) {
-    this.router.navigate(['patients',id]).then(() => {
+    this.router.navigate(['patient',id]).then(() => {
       window.location.reload();
     });
   }
-  
+
   onSelectService(){
     if(this.serviceId){
       this.serviceHippo.findRooms(this.serviceId).subscribe(data => {
@@ -108,7 +108,7 @@ export class UpdatePatientComponent {
       });
     }
   }
-  
+
   onSelectRoom(){
     if(this.serviceId){
       this.serviceHippo.findBeds(this.roomId).subscribe(data => {
