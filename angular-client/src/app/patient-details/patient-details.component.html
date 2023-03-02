@@ -1,18 +1,14 @@
 <app-navbar></app-navbar>
 <div class="body">
   <form>
-    <div class="patientDetails" *ngIf = "patient.roomId>1;else exit">
+    <div class="patientDetails" *ngIf = "patient.roomId>0;else exit">
       <h2>{{ patient.serviceName }}</h2>
       <p class="titre">Nom patient :
       {{ patient.firstname }} {{ patient.lastname }}</p>
-      <p>Date de naissance:</p>
-      <p>{{ birthdate }}</p>
-      <p>Adresse:</p>
-      <p>{{ patient.address }}</p>
-      <p>Chambre :</p>
-      <p>{{ patient.roomNumber }}</p>
-      <p>Numéro de lit :</p>
-      <p>{{ patient.bedNumber }}</p>
+      <p>Date de naissance: {{ birthdate }}</p>
+      <p>Adresse: {{ patient.address }}</p>
+      <p>Chambre : {{ patient.roomNumber }}</p>
+      <p>Numéro de lit : {{ patient.bedNumber }}</p>
       <div class="bouton">
       <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
       <button type="submit" class="button" (click)="popUpService.open('modal-1')">Sortie</button>
@@ -22,10 +18,8 @@
       <h2>{{ patient.serviceName }}</h2>
       <p class="titre">Nom patient :
       {{ patient.firstname }} {{ patient.lastname }}</p>
-      <p>Date de naissance:</p>
-      <p>{{ birthdate }}</p>
-      <p>Adresse:</p>
-      <p>{{ patient.address }}</p>
+      <p>Date de naissance: {{ birthdate }}</p>
+      <p>Adresse: {{ patient.address }}</p>
     <div class="bouton">
       <button type="submit" class="button" (click)="transferTheId(patient.id)">Modifier</button>
     </div>
