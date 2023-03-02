@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Getter
 @Setter
@@ -31,14 +32,25 @@ public class User {
 
 	@Column(nullable = false)
 	private String password;
-	
-	@JsonBackReference
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name="users_roles",
-            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
-            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
-    private List<Role> roles = new ArrayList<>();
+
+	@JsonBackReference(value="user-roles")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "users_roles", joinColumns = {
+			@JoinColumn(name = "USER_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID") })
+	private List<Role> roles = new ArrayList<>();
+
+	@JsonManagedReference(value="user-commentaries")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Commentary> commentaries;
+
+	public List<Commentary> getCommentaries() {
+		return commentaries;
+	}
+
+	public void setCommentaries(List<Commentary> commentaries) {
+		this.commentaries = commentaries;
+	}
 
 	public Long getId() {
 		return id;
@@ -70,6 +82,6 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
-	}	
+	}
 
 }

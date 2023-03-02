@@ -19,6 +19,7 @@ import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ServiceDetailsComponent } from './service-details/service-details.component';
+import { PatientRecordsComponent } from './patient-records/patient-records.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ServiceDetailsComponent } from './service-details/service-details.compo
     AddUserComponent,
     UpdateUserComponent,
     ServiceDetailsComponent,
+    PatientRecordsComponent,
   ],
   imports: [
     BrowserModule,

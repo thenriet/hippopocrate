@@ -10,6 +10,7 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ServiceDetailsComponent } from './service-details/service-details.component';
+import { PatientRecordsComponent } from './patient-records/patient-records.component';
 
 const routes: Routes = [
   { path: 'services', component: ListeServiceComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'patients', component: PatientListComponent },
   { path: 'patient/:id', component: PatientDetailsComponent},
   { path: 'addPatient', component: AddPatientComponent},
+  { path: 'suiviPatient', component: PatientRecordsComponent},
   { path: '**', redirectTo: '' }
 ];
 

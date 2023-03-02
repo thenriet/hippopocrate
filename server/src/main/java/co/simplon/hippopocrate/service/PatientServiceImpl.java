@@ -3,13 +3,18 @@ package co.simplon.hippopocrate.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.HashSet;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.simplon.hippopocrate.dto.CommentaryDTO;
 import co.simplon.hippopocrate.dto.PatientDTO;
 import co.simplon.hippopocrate.model.Bed;
 import co.simplon.hippopocrate.model.Patient;
+import co.simplon.hippopocrate.model.Commentary;
 import co.simplon.hippopocrate.repository.PatientRepository;
 
 @Service
@@ -202,6 +207,22 @@ public class PatientServiceImpl implements PatientService {
 		patientInDB.setBed(null);
 
 		return pr.save(patientInDB);
+	}
+	
+	//Méthode pour récupérer les commentaires suivi d'un patient
+	public List<CommentaryDTO> findCommentary(long patient_Id) {
+		List<CommentaryDTO> commentariesDTO = new ArrayList<CommentaryDTO>();
+		List<Commentary> commentaries = pr.findById(patient_Id).get().getCommentaries();
+		for(int i = 0; i < commentaries.size(); i++) {
+			CommentaryDTO commentaryDTO = new CommentaryDTO();
+			commentaryDTO.setId(commentaries.get(i).getId());
+			commentaryDTO.setCommentary((commentaries.get(i).getCommentary()));
+			commentaryDTO.setUserId(commentaries.get(i).getUser().getId());
+			commentaryDTO.setUserName((commentaries.get(i).getUser().getName()));
+			commentaryDTO.setPatientId(patient_Id);
+			commentariesDTO.add(commentaryDTO);
+		}
+		return commentariesDTO;
 	}
 
 }

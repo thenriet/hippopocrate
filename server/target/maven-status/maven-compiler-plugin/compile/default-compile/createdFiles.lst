@@ -7,7 +7,6 @@ co\simplon\hippopocrate\service\ServiceServ.class
 co\simplon\hippopocrate\service\ServiceServImpl.class
 co\simplon\hippopocrate\repository\ServiceRepository.class
 co\simplon\hippopocrate\model\Bed.class
-co\simplon\hippopocrate\model\Service.class
 co\simplon\hippopocrate\model\ServiceHippo.class
 co\simplon\hippopocrate\service\UserService.class
 co\simplon\hippopocrate\service\UserServiceImpl.class

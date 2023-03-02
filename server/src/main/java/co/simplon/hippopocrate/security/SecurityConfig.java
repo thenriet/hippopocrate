@@ -39,7 +39,7 @@ public class SecurityConfig {
 				.permitAll().requestMatchers("/api/services").permitAll().requestMatchers("/api/services/{id}")
 				.permitAll().requestMatchers("/api/services/{id}/patients").permitAll()
 				.requestMatchers("/api/services/{id}/rooms").permitAll().requestMatchers("/api/rooms/{id}/beds")
-				.permitAll())
+				.permitAll().requestMatchers("/api/suivipatient/{id}").permitAll().requestMatchers("/api/suivipatient").permitAll())
 				.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll());
 //		http.headers().frameOptions().disable();;
 //						.requestMatchers("/addClient").hasRole("ADMIN")
