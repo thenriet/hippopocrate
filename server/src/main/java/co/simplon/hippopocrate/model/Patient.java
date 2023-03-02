@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -40,16 +39,6 @@ public class Patient {
 		
 	}
 	
-	public Patient(String firstname, String lastname, Date birthdate, int bed_id, String address,  LocalDate dateIn,  LocalDate dateOut) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.birthdate = birthdate;
-		this.address = address;
-		this.dateIn = dateIn;
-		this.dateOut = dateOut;
-	}
-
 	public long getId() {
 		return id;
 	}

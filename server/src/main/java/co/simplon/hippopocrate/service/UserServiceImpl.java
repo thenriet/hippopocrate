@@ -16,14 +16,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
 	private UserRepository userRepository;
-	private RoleRepository roleRepository;
-	private PasswordEncoder passwordEncoder;
-
 	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
 			PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
-		this.roleRepository = roleRepository;
-		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
@@ -34,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserDto> findAllUserDto() {
-		List<UserDto> usersDto = new ArrayList();
+		List<UserDto> usersDto = new ArrayList<UserDto>();
 		List<User> users = userRepository.findAll();
 		for (User user : users) {
 			UserDto userDto = new UserDto();

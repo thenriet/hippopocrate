@@ -38,10 +38,6 @@ public class Room {
 		
 	}
 	
-	public Room(int number, int service_id) {
-		super();
-		this.number = number;
-	}
 
 	public int getId() {
 		return id;
@@ -76,13 +72,6 @@ public class Room {
 	}
 
 
-	public ServiceHippo getServiceHippo() {
-		return serviceHippo;
-	}
-
-	public void setServiceHippo(ServiceHippo serviceHippo) {
-		this.serviceHippo = serviceHippo;
-	}
 
 	
 	

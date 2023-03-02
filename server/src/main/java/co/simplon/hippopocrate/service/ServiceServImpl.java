@@ -47,11 +47,11 @@ public class ServiceServImpl implements ServiceServ {
 	
 	public Set<Bed> findBeds(long roomId) {
 		 Set<Bed> beds = rr.findById(roomId).get().getBeds();
-		 Set<Bed> sortedBeds = new HashSet<Bed>();
-		 beds.forEach((bed) -> {
-		      if(bed.isOccupied() == false) {
+		 Set<Bed> sortedBeds = new HashSet<>();
+		 beds.forEach(bed -> {
+		      if(!bed.isOccupied()) {
 		    	  sortedBeds.add(bed);
-		      };
+		      }
 		    });
 		return sortedBeds;
 	}

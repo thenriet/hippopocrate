@@ -23,7 +23,6 @@ public class PatientServiceImpl implements PatientService {
 	
 	@Override
 	public Patient savePatient(Patient patient) {
-		// TODO Auto-generated method stub
 		return pr.save(patient);
 	}
 
@@ -98,7 +97,7 @@ public class PatientServiceImpl implements PatientService {
 	}
 	
 	public List<PatientDTO> createPatientsDTOFromDB() {
-		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>(); 
+		List<PatientDTO> patientsDTOList = new ArrayList<>(); 
 		List <Patient> patientsInDB = this.fetchPatientList();
 		for (int i = 0; i < patientsInDB.size(); i++) {
 			PatientDTO patientDTO = new PatientDTO();
@@ -125,7 +124,6 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	public void savePatientDTO(PatientDTO patientDTO) {
-		// TODO Auto-generated method stub
 		Patient patient = new Patient();
 		
 		patient.setId(patientDTO.getId());

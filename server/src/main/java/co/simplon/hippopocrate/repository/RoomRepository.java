@@ -5,6 +5,11 @@ import org.springframework.stereotype.Component;
 
 import co.simplon.hippopocrate.model.Room;
 
+/**
+ * @author tom
+ *
+ * Repository containing CRUD methods for Room
+ */
 @Component 
 public interface RoomRepository extends JpaRepository<Room, Long> {
 

@@ -35,12 +35,6 @@ public class Bed {
 		
 	}
 	
-	public Bed(int number, int room_id, boolean occupied) {
-		super();
-		this.number = number;
-		this.occupied = occupied;
-	}
-
 	public long getId() {
 		return id;
 	}
