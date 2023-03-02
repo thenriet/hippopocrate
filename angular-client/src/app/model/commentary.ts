@@ -1,7 +1,7 @@
 export class Commentary {
   id!: number;
   commentary!: String;
-  user_id!: number;
+  userId!: number;
   userName!: String;
-  patient_id!: number;
+  patientId!: number;
 }

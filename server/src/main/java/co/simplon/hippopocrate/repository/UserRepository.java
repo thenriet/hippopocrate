@@ -8,7 +8,7 @@ import co.simplon.hippopocrate.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByName(String name);
 

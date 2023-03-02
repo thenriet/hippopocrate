@@ -18,7 +18,9 @@ public interface UserService {
 
 	void saveUser(UserDto userDto);
 	
-	Optional<User> findById(int id);
+	Optional<User> findById(long id);
 
-	void updateUser(UserDto userDTO, int id);
+	void updateUser(UserDto userDTO, long id);
+
+	long findByName(String username);
 }

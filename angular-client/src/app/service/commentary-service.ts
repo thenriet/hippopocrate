@@ -8,20 +8,18 @@ import { Commentary } from '../model/commentary';
 })
 export class CommentaryService {
   private CommentaryUrl: string = 'http://localhost:8080/api/suivipatient';
+
   constructor(private http: HttpClient) {}
 
-  public save(commentary: Commentary, patient_id: number) {
-    return this.http.post<Commentary>(
-      `${this.CommentaryUrl}/${patient_id}`,
-      commentary
-    );
+  public save(commentary: Commentary) {
+    return this.http.post<Commentary>(this.CommentaryUrl, commentary);
   }
 
   getCommentaryByPatientId(patient_id: number): Observable<Commentary[]> {
     return this.http.get<Commentary[]>(`${this.CommentaryUrl}/${patient_id}`);
   }
 
-  public findAllComments(id: number): Observable<Commentary[]> {
-    return this.http.get<Commentary[]>(this.CommentaryUrl);
-  }
+  // public findAllComments(id: number): Observable<Commentary[]> {
+  //   return this.http.get<Commentary[]>(this.CommentaryUrl);
+  // }
 }

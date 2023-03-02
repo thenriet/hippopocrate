@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'patients', component: PatientListComponent },
   { path: 'patient/:id', component: PatientDetailsComponent},
   { path: 'addPatient', component: AddPatientComponent},
-  { path: 'suiviPatient', component: PatientRecordsComponent},
+  { path: 'suiviPatient/:id', component: PatientRecordsComponent},
   { path: '**', redirectTo: '' }
 ];
 

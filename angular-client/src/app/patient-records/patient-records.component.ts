@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  NonNullableFormBuilder,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../model/patient';
 import { PatientService } from '../service/patient-service.service';
 import { CommentaryService } from '../service/commentary-service';
 import { Commentary } from '../model/commentary';
+import { AuthentificationService } from '../service/authentification-service.service';
 
 @Component({
   selector: 'app-patient-records',
@@ -18,13 +24,17 @@ export class PatientRecordsComponent implements OnInit {
   commentaryForm = new Commentary();
   error = false;
   patient_id!: number;
+  patientRecordsLength!: number;
+  username!: string;
+  userId!: number;
 
   constructor(
     private route: ActivatedRoute,
     private patientService: PatientService,
     private router: Router,
     private fb: FormBuilder,
-    private commentaryService: CommentaryService
+    private commentaryService: CommentaryService,
+    private authService: AuthentificationService
   ) {
     this.patient = new Patient();
   }
@@ -34,8 +44,20 @@ export class PatientRecordsComponent implements OnInit {
 
     this.addCommentaryForm = this.fb.group({
       commentary: ['', Validators.required],
-      //user_id:['', Validators.required],
-      // patient_id: ['',Validators.required],
+    });
+
+    this.commentaryService.getCommentaryByPatientId(this.patient_id).subscribe({
+      next: (result) => {
+        this.patientRecordsLength = result.length + 1;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+    this.username = this.authService.getLoggedInUserName();
+
+    this.authService.getUserIdByUsername(this.username).subscribe((data) => {
+      this.userId = parseInt(data);
     });
   }
 
@@ -52,25 +74,26 @@ export class PatientRecordsComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.patient_id = this.route.snapshot.params['patient_id'];
-
+    this.patient_id = this.route.snapshot.params['patient_id'];
     let data = this.addCommentaryForm.value;
+    this.commentaryForm.id = this.patientRecordsLength;
+    this.commentaryForm.patientId = this.patient.id;
     this.commentaryForm.commentary = data.commentary;
+    this.commentaryForm.userName = this.username;
+    this.commentaryForm.userId = this.userId;
 
-    this.commentaryService.save(this.commentaryForm, this.patient_id);
-
+    this.commentaryService
+      .save(this.commentaryForm)
+      .subscribe((result) => this.gotoPatientDetails(this.patient.id));
     try {
       this.addCommentaryForm.value;
     } catch (error) {
       console.log(error);
       this.error = true;
     }
-
     console.log(this.commentaryForm);
-
-    //subscribe((result) =>
-    this.gotoPatientDetails(this.id);
   }
+
   gotoPatientDetails(id: number) {
     this.router.navigate(['patient', id]);
   }

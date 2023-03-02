@@ -16,6 +16,7 @@ export class AuthentificationService {
   private url = 'http://localhost:8080/api/login';
   private urlLogout = 'http://localhost:8080/logout';
   private urlUsersRole = 'http://localhost:8080/api/users/role';
+  private urlUserId = 'http://localhost:8080/api/users/id/'
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -64,5 +65,9 @@ export class AuthentificationService {
 
   getUserRole(){
     return this.http.get(`${this.urlUsersRole}/${this.getLoggedInUserName()}`, {responseType: 'text'});
+  }
+
+  getUserIdByUsername(username: String){
+    return this.http.get(this.urlUserId + username, {responseType: 'text'});
   }
 }

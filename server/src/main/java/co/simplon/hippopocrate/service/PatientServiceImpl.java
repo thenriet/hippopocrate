@@ -48,8 +48,11 @@ public class PatientServiceImpl implements PatientService {
 		patientDTO.setDateIn(patient.getDateIn());
 		patientDTO.setDateOut(patient.getDateOut());
 		patientDTO.setBedId(patient.getBed().getId());
+		patientDTO.setBedNumber(patient.getBed().getNumber());
 		patientDTO.setRoomId(patient.getBed().getRoom().getId());
+		patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
 		patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
+		patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
 		return patientDTO;
 	}
 
@@ -208,12 +211,12 @@ public class PatientServiceImpl implements PatientService {
 
 		return pr.save(patientInDB);
 	}
-	
-	//Méthode pour récupérer les commentaires suivi d'un patient
+
+	// Méthode pour récupérer les commentaires suivi d'un patient
 	public List<CommentaryDTO> findCommentary(long patient_Id) {
 		List<CommentaryDTO> commentariesDTO = new ArrayList<CommentaryDTO>();
 		List<Commentary> commentaries = pr.findById(patient_Id).get().getCommentaries();
-		for(int i = 0; i < commentaries.size(); i++) {
+		for (int i = 0; i < commentaries.size(); i++) {
 			CommentaryDTO commentaryDTO = new CommentaryDTO();
 			commentaryDTO.setId(commentaries.get(i).getId());
 			commentaryDTO.setCommentary((commentaries.get(i).getCommentary()));

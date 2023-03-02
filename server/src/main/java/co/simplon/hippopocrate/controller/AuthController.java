@@ -106,6 +106,16 @@ public class AuthController {
 		return this.userService.findById(id);
 	}
 	
+	/**
+	 * Méthode pour trouver un id user grâce à son name
+	 * @param name
+	 * @return le id user trouvé
+	 */
+	@GetMapping("users/id/{username}")
+	public long getUserIdByName(@PathVariable String username) {
+		return this.userService.findByName(username);
+	}
+	
 	
 	/**
 	 * Méthode pour modifier le rôle d'un user existant

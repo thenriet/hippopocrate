@@ -27,7 +27,7 @@ public class Commentary {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	private String commentary;
 
 	@JsonBackReference(value="patient-commentaries")
@@ -43,17 +43,17 @@ public class Commentary {
 	public Commentary() {
 	}
 
-	public Commentary(int id, String commentary) {
+	public Commentary(long id, String commentary) {
 		super();
 		this.id = id;
 		this.commentary = commentary;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

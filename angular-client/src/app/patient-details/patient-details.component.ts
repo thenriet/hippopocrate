@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Commentary } from '../model/commentary';
 import { Patient } from '../model/patient';
-import { ServiceHippo } from '../model/serviceHippo';
-import { UserServiceService } from '../service/user-service.service';
 import { PatientService } from '../service/patient-service.service';
 import { CommentaryService } from '../service/commentary-service';
 
@@ -24,8 +22,7 @@ export class PatientDetailsComponent implements OnInit {
     private patientService: PatientService,
     private route: ActivatedRoute,
     private router: Router,
-    private commentaryService: CommentaryService,
-    private userService: UserServiceService
+    private commentaryService: CommentaryService
   ) {}
 
   ngOnInit() {
@@ -57,6 +54,6 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   suiviId(id: number) {
-    this.router.navigate(['suivipatient', id]);
+    this.router.navigate(['suiviPatient', id]);
   }
 }

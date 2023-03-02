@@ -1,14 +1,20 @@
 <app-navbar></app-navbar>
-<div class="container" >
-  <form>
-      <div class="service">
-          <h2> Nom du service</h2>
-      </div>
-
-      <div class="body">
-          <h1> Nom du patient:</h1> <h2> {{patient.lastname}} {{patient.firstname}} </h2>
-          <textarea id="comment" name="comment"></textarea>
-          <button type="submit" (click)="onSubmit()">Ajouter un commentaire</button>
-      </div>
-  </form>
+<div class="container">
+    <div class="body">
+      <form [formGroup]="addCommentaryForm" (ngSubmit)="onSubmit()">
+        <div class="service">
+          <h2>{{ patient.serviceName }}</h2>
+        </div>
+        <h1>{{ patient.lastname }} {{ patient.firstname }}</h1>
+        <input
+          type="textarea"
+          name="commentary"
+          formControlName="commentary"
+          required
+        />
+        <button type="submit" class="button">
+          Ajouter un commentaire
+        </button>
+      </form>
+    </div>
 </div>

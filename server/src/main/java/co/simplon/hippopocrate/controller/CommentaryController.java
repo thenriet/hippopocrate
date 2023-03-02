@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.simplon.hippopocrate.dto.CommentaryDTO;
 import co.simplon.hippopocrate.model.Commentary;
 import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.model.User;
@@ -19,23 +20,22 @@ import co.simplon.hippopocrate.service.CommentaryService;
 import co.simplon.hippopocrate.service.CommentaryServiceImpl;
 import co.simplon.hippopocrate.service.UserService;
 
-
 @RestController
 @Controller
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/")
 
 public class CommentaryController {
-	
+
 	@Autowired
 	private CommentaryServiceImpl csi;
 
-	
-	@PostMapping("suivipatient/{id}")
-	void addCommentary(@RequestBody Commentary commentary) {
-	csi.saveCommentary(commentary);
+	@PostMapping("suivipatient")
+	void addCommentary(@RequestBody CommentaryDTO commentaryDTO) {
+		System.out.println("Premiere étape");
+		csi.saveCommentary(commentaryDTO);
 	}
-	
+
 //	@GetMapping("suivipatient/{id}")
 //	public Commentary findById(@PathVariable long id) {
 //		return csi.findCommentaryById(id);
@@ -45,7 +45,7 @@ public class CommentaryController {
 //	public Commentary updateById(@PathVariable long id) {
 //		return csi.findCommentaryById(id);
 //	}
-	
+
 //	@PutMapping("suivipatient/:id")
 //	void updateCommentary(@RequestBody Patient patient, @PathVariable long patientId) {
 //		System.out.println("je suis là!");

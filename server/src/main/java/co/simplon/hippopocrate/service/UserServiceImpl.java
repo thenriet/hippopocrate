@@ -66,23 +66,23 @@ public class UserServiceImpl implements UserService {
 		}
 		return usersDto;
 	}
-	
-	@Override
-	public void updateUser(UserDto userDTO, int id) {
-		User user = this.userRepository.findById(id).get();
-			user.setName(userDTO.getName());
-			user.setPassword(userDTO.getPassword());
-			Role role = roleService.findByName(userDTO.getRole());
-			System.out.println(user.getRoles());
-			if(user.getRoles().size() == 0) {
-				ArrayList<Role> roles = new ArrayList<>(user.getRoles());
-				roles.add(role);
-				user.setRoles(roles);
-			} else {
-				user.getRoles().set(0, role);
-			}
 
-			userRepository.save(user);
+	@Override
+	public void updateUser(UserDto userDTO, long id) {
+		User user = this.userRepository.findById(id).get();
+		user.setName(userDTO.getName());
+		user.setPassword(userDTO.getPassword());
+		Role role = roleService.findByName(userDTO.getRole());
+		System.out.println(user.getRoles());
+		if (user.getRoles().size() == 0) {
+			ArrayList<Role> roles = new ArrayList<>(user.getRoles());
+			roles.add(role);
+			user.setRoles(roles);
+		} else {
+			user.getRoles().set(0, role);
+		}
+
+		userRepository.save(user);
 	}
 
 	@Override
@@ -104,8 +104,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Optional<User> findById(int id) {
+	public Optional<User> findById(long id) {
 		return userRepository.findById(id);
+	}
+
+	@Override
+	public long findByName(String username) {
+		User user = userRepository.findByName(username);
+		return user.getId();
 	}
 
 //    private UserDto mapToUserDto(User user){
