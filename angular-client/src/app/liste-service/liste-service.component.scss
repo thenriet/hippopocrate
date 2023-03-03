@@ -2,9 +2,9 @@ h1{
     font-family:'Roboto Slab';
     font-size: 50px;
 }
+
 .body{
     display: flex;
-    flex-flow: column wrap;
     align-items: center;
     justify-content: center;
     padding-top: 100px;
@@ -22,4 +22,11 @@ button{
     margin: 100px;
     border: solid 1px #5ECAB5;
     cursor: pointer;
+}
+
+.services{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }

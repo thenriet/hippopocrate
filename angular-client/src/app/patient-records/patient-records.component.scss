@@ -35,28 +35,27 @@ button:hover {
 .body {
   margin: 0;
   font-family: "Roboto Slab";
-
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
 }
 
 form {
   background-color: white;
   background-position: center;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
   width: 800px;
   height: 750px;
   border-radius: 8px;
   padding: 20px;
-  justify-content: center;
 }
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.fiche{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
