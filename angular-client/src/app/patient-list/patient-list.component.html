@@ -33,6 +33,10 @@
           </ng-template>
       </tbody>
     </table>
-    <div *ngIf = "role !== 'ROLE_INFIRMIER'" class="ajouter"><a routerLinkActive="active" routerLink="/addPatient"><button class ="btn" >Nouveau Patient</button></a></div>
+    <div class="ajouter" *ngIf = "role !== 'ROLE_INFIRMIER'" >
+      <a routerLinkActive="active" routerLink="/addPatient">
+        <button class ="btn" >Nouveau Patient</button>
+      </a>
+    </div>
   </div>
 </div>
