@@ -1,5 +1,10 @@
 package co.simplon.hippopocrate.dto;
 
+/**
+ * @author Caroline
+ * File based on the Commentary Model that permit to get the commentary informations associate to an User/patient 
+ *
+ */
 public class CommentaryDTO {
 
 	private long id;

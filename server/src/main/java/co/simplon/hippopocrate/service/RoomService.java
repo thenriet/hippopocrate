@@ -4,6 +4,11 @@ import java.util.List;
 
 import co.simplon.hippopocrate.model.Room;
 
+/**
+* @author Caroline
+* Interface that contains the methods use for the rooms'
+*
+*/
 public interface RoomService {
 	
 	// save operation

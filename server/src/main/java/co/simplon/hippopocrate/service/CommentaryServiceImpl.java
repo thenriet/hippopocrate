@@ -16,6 +16,11 @@ import co.simplon.hippopocrate.repository.CommentaryRepository;
 import co.simplon.hippopocrate.repository.PatientRepository;
 import co.simplon.hippopocrate.repository.UserRepository;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the commentaries' management on our website
+ *
+ */
 @Service
 public class CommentaryServiceImpl implements CommentaryService {
 

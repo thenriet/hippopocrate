@@ -13,6 +13,11 @@ import co.simplon.hippopocrate.model.ServiceHippo;
 import co.simplon.hippopocrate.repository.RoomRepository;
 import co.simplon.hippopocrate.repository.ServiceRepository;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the services' management on our website
+ *
+ */
 @Service
 public class ServiceServImpl implements ServiceServ {
 
