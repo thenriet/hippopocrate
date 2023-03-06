@@ -70,7 +70,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUser(UserDto userDTO, long id) {
 		User user = this.userRepository.findById(id).get();
-		user.setName(userDTO.getName());
+		System.out.println(userDTO);
+		if(userDTO.getName() == null) {
+			user.setName(userDTO.getName());
+		} else {
+			user.setName(userDTO.getName());
+		}
 		user.setPassword(userDTO.getPassword());
 		Role role = roleService.findByName(userDTO.getRole());
 		System.out.println(user.getRoles());

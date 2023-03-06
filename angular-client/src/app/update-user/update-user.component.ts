@@ -57,13 +57,12 @@ export class UpdateUserComponent implements OnInit {
     this.userService.update(this.updateUser, this.id).subscribe(
       (updateUser) => {
         console.log('User updated:', updateUser);
+        this.goToUserList();
       },
       (error) => {
         console.error('Error updating user:', error);
       }
     );
-
-    this.goToUserList();
   }
 
   onSelectRole() {

@@ -10,7 +10,7 @@
       <p>Adresse: {{ patient.address }}</p>
       <p>Chambre : {{ patient.roomNumber }}</p>
       <p>Numéro de lit : {{ patient.bedNumber }}</p>
-      <div class="bouton">
+      <div *ngIf="role != 'ROLE_INFIRMIER'" class="bouton">
         <button
           type="submit"
           class="button"
@@ -34,7 +34,7 @@
       </p>
       <p>Date de naissance: {{ birthdate }}</p>
       <p>Adresse: {{ patient.address }}</p>
-      <div class="bouton">
+      <div *ngIf="role === 'ROLE_ADMIN' || 'ROLE_SECRETAIRE'" class="bouton">
         <button
           type="submit"
           class="button"
@@ -44,21 +44,23 @@
         </button>
       </div>
     </ng-template>
-    <table *ngFor="let commentary of commentaries">
-      <tr class="date">
-        Suivi patient par
-        {{
-          commentary.userName
-        }}
-      </tr>
-      <tr class="review">
-        {{
-          commentary.commentary
-        }}
-      </tr>
-    </table>
-    <div class="boutonbas">
-      <button type="submit" (click)="suiviId(patient.id)">Suivi</button>
+    <div *ngIf="role === 'ROLE_INFIRMIER'">
+      <table *ngFor="let commentary of commentaries">
+        <tr class="date">
+          Suivi patient par
+          {{
+            commentary.userName
+          }}
+        </tr>
+        <tr class="review">
+          {{
+            commentary.commentary
+          }}
+        </tr>
+      </table>
+      <div class="boutonbas">
+        <button type="submit" (click)="suiviId(patient.id)">Suivi</button>
+      </div>
     </div>
   </form>
 </div>

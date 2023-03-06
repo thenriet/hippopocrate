@@ -6,6 +6,7 @@ import { PatientService } from '../service/patient-service.service';
 import { CommentaryService } from '../service/commentary-service';
 import { PopUpService } from '../service/pop-up.service';
 import { DatePipe } from '@angular/common';
+import { AuthentificationService } from '../service/authentification-service.service';
 
 @Component({
   selector: 'app-patient-details',
@@ -22,6 +23,7 @@ export class PatientDetailsComponent implements OnInit {
   birthdate!: string | null;
   isVisible = false;
   bodyText = 'This text can be updated in modal 1';
+  role!: String;
 
   constructor(
     private patientService: PatientService,
@@ -29,7 +31,8 @@ export class PatientDetailsComponent implements OnInit {
     private router: Router,
     private commentaryService: CommentaryService,
     private datePipe: DatePipe,
-    protected popUpService: PopUpService
+    protected popUpService: PopUpService,
+    private authenticationService: AuthentificationService
   ) {
     this.loadPatientById();
   }
@@ -37,6 +40,10 @@ export class PatientDetailsComponent implements OnInit {
   ngOnInit() {
     this.loadPatientById();
     this.loadCommentaryById();
+    this.authenticationService.getUserRole().subscribe((data) => {
+      this.role = data;
+      console.log(this.role)
+    });
   }
 
   transformDate(date: Date) {
