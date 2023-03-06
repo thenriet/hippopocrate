@@ -15,6 +15,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the rooms' informations
+ *
+ */
 @jakarta.persistence.Entity
 @Table(name = "rooms")
 

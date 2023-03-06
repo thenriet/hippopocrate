@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import co.simplon.hippopocrate.model.Room;
 import co.simplon.hippopocrate.repository.RoomRepository;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the rooms' management on our website
+ *
+ */
 @Service
 public class RoomServiceImpl implements RoomService {
 	

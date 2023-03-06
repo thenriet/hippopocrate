@@ -5,6 +5,11 @@ import java.time.LocalDate;
 
 
 
+/**
+ * @author Caroline
+ * File based on the Patient Model that permit to get the informations associate to a patient 
+ *
+ */
 public class PatientDTO {
 	
 	private long id; 

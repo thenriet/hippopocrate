@@ -13,6 +13,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the service' informations
+ *
+ */
 @jakarta.persistence.Entity
 @Table(name = "services")
 

@@ -14,6 +14,11 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the user' informations
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor

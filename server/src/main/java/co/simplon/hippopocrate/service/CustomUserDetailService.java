@@ -14,6 +14,11 @@ import co.simplon.hippopocrate.model.Role;
 import co.simplon.hippopocrate.model.User;
 import co.simplon.hippopocrate.repository.UserRepository;
 
+/**
+ * @author Caroline 
+ * File that contained methods used for the security of the Users' management
+ *
+ */
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 

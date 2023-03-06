@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import co.simplon.hippopocrate.model.Role;
 import co.simplon.hippopocrate.repository.RoleRepository;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the roles' management on our website
+ *
+ */
 @Service
 public class RoleServiceImpl implements RoleService{
 	
