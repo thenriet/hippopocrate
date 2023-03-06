@@ -1,0 +1,30 @@
+.body {
+  font-family: "Roboto Slab";
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  background-color: white;
+  margin: 50px;
+  font-size: 24px;
+}
+
+th,
+td {
+  border: 2px solid black;
+  padding: 10px;
+}
+td {
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
+}

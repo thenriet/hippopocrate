@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="card my-5">
+  <h1>Liste Patients</h1>
+  <div class="card-body">
+    <table class="tableau">
+      <thead>
+        <tr>
+          <th scope="col">Patient</th>
+          <th scope="col">Service</th>
+          <th scope="col">Chambre</th>
+          <th scope="col">Lit</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let patient of patients">
+        <tr *ngIf = "patient.roomId>0;else exit">
+          <td>{{ patient.firstname }} {{ patient.lastname }}</td>
+          <td>{{ patient.serviceName }}</td>
+          <td>{{ patient.roomNumber }}</td>
+          <td>{{ patient.bedNumber }}</td>
+          <td>
+            <button (click)="seePatient(patient.id)">Voir détails</button>
+          </td>
+        </tr>
+          <ng-template #exit>
+            <td>{{ patient.firstname }} {{ patient.lastname }}</td>
+            <td>Sorti le {{ patient.dateOut }} </td>
+            <td></td>
+            <td></td>
+            <td>
+              <button (click)="seePatient(patient.id)">Voir détails</button>
+            </td>
+          </ng-template>
+      </tbody>
+    </table>
+    <div class="ajouter" *ngIf = "role !== 'ROLE_INFIRMIER'" >
+      <a routerLinkActive="active" routerLink="/addPatient">
+        <button class ="btn" >Nouveau Patient</button>
+      </a>
+    </div>
+  </div>
+</div>

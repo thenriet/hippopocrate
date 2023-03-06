@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="body">
+  <h1>{{ service.name }}</h1>
+  <table>
+    <tr>
+      <td><b>Patients :</b></td>
+      <td><b>Chambres :</b></td>
+      <td><b>Lits :</b></td>
+      <td><b>Date d'entrée :</b></td>
+      <td><b>Date de sortie :</b></td>
+    </tr>
+    <tr *ngFor="let patient of patients">
+      <td>{{ patient.firstname }} {{ patient.lastname }}</td>
+      <td>{{ patient.roomNumber }}</td>
+      <td>{{ patient.bedNumber }}</td>
+      <td>{{ patient.dateIn }}</td>
+      <td>{{ patient.dateOut }}</td>
+    </tr>
+  </table>
+  <img src="assets/hippopo.png" width="300px" />
+</div>

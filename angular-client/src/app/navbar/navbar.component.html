@@ -1,0 +1,21 @@
+<nav *ngIf="isLoggedIn">
+  <img
+    src="assets/logo_hippopocrate.png"
+    style="width: 60px"
+    routerLink="/accueil"
+  />
+  <ul>
+    <li *ngIf="role === 'ROLE_ADMIN'">
+      <a routerLink="/users">Liste utilisateurs</a>
+    </li>
+    <li><a href ="http://localhost:4200/patients">Liste patients</a></li>
+  </ul>
+  <div>
+    <img
+      class="logout"
+      src="assets/logout.png"
+      width="50px"
+      (click)="handlelogout()"
+    />
+  </div>
+</nav>

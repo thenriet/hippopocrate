@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<body>
+    <form [formGroup]="addPatientForm" (ngSubmit)="onSubmit()">
+    <h1>Hippopocrate</h1>
+    <h2>Ajouter un patient </h2>
+        <label>Prénom :</label>
+        <input type="text" name="firstname" formControlName="firstname" required>
+        <p *ngIf="error">Veuillez entrer un prénom valide</p>
+
+        <label>Nom :</label>
+        <input type="text" name="lastname" formControlName="lastname" required>
+        <p *ngIf="error">Veuillez entrer un nom valide</p>
+
+        <label>Adresse :</label>
+        <input type="text" name="address" formControlName="address" required>
+        <p *ngIf="error">Veuillez entrer une addresse valide</p>
+
+        <label>Date de naissance :</label>
+        <input type="date" name="birthdate" formControlName="birthdate" required>
+        <p *ngIf="error">Veuillez entrer une date valide</p>
+
+        <label>Services :</label>
+        <select [(ngModel)]="serviceId" (ngModelChange)="onSelectService()" class="dropbox" name="services" id="service" formControlName="service">
+            <option  *ngFor="let service of services" value="{{ service.id }}">{{ service.name }}</option>
+        </select>
+        <p *ngIf="error">Veuillez sélectionner un service</p>
+
+        <label>Chambre :</label>
+        <select [(ngModel)]="roomId" (ngModelChange)="onSelectRoom()" class="dropbox" name="rooms" id="room" formControlName="room">
+            <option  *ngFor="let room of rooms" value="{{ room.id }}">{{ room.number }}</option>
+        </select>
+        <p *ngIf="error">Veuillez sélectionner une chambre</p>
+
+        <label>Lit :</label>
+        <select [(ngModel)]="bedId" class="dropbox" name="beds" id="bed" formControlName="bed">
+            <option  *ngFor="let bed of beds" value="{{ bed.id }}">{{ bed.number }}</option>
+        </select>
+        <p *ngIf="error">Veuillez sélectionner un lit</p>
+
+        <button type="submit" class="button">Valider</button>
+
+    </form>
+</body>

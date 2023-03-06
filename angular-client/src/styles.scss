@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #afa8ba;
+  background-size: 100vh;
+  font-family: "Roboto Slab";
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  a:hover {
+    background-color: #5ecab5;
+    color: white;
+  }
+  font-family: "Roboto Slab";
+}
+
+li {
+  font-size: 25px;
+  list-style: none;
+  align-self: center;
+  font-family: "Roboto Slab";
+}
+
+nav {
+  display: flex;
+  font-family: "Roboto Slab";
+}
+
+h1 {
+  font-size: 50px;
+  font-family: "Roboto Slab";
+}
+
+p {
+  font-size: 25px;
+  font-family: "Roboto Slab";
+}
+
+html {
+  background-color: #afa8ba;
+  background-size: 100vh;
+}

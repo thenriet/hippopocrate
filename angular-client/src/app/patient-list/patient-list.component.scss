@@ -1,0 +1,99 @@
+h1 {
+  font-family: "Roboto Slab";
+  font-size: 50px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.tableau {
+  background-color: white;
+  font-size: 24px;
+  border-collapse: collapse;
+  margin: 100px auto;
+}
+
+thead tr {
+  background-color: white;
+  color: black;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 10px;
+  width: 200px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.patient-table {
+  padding: 10px;
+  width: 200px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+tbody tr,
+td,
+th {
+  border: 1px solid black;
+}
+
+.body {
+  font-family: "Roboto Slab";
+  height: 100vh;
+}
+
+button {
+  font-family: "Roboto Slab";
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  border: solid 1px #5ecab5;
+  border-radius: 15px;
+  background-color: #5ecab5;
+  color: white;
+  transition: transform 0.1s;
+  cursor: pointer;
+  border: solid 1px #5ecab5;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.ajouter{
+display: flex;
+justify-content: center;
+}
+
+.boutonbas {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  button {
+    width: 200px;
+    height: 50px;
+  }
+}
+
+.ajouter {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .tableau {
+    font-size: 16px;
+    button {
+      width: 70px;
+      height: 40px;
+      font-size: 13px;
+    }
+  }
+}
