@@ -39,10 +39,6 @@ public class Room {
 	            cascade = CascadeType.ALL)
 	private Set<Bed> beds;
 	
-	public Room() {
-		
-	}
-	
 	public int getId() {
 		return id;
 	}

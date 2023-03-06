@@ -32,7 +32,6 @@ public class RoleServiceImpl implements RoleService{
 	 */
 	@Override
 	public Role findByName(String name) {
-		// TODO Auto-generated method stub
 		return this.roleRepository.findByName(name);
 	}
 	
@@ -44,7 +43,6 @@ public class RoleServiceImpl implements RoleService{
 	 */
 	@Override
 	public Optional<Role> findById(int id) {
-		// TODO Auto-generated method stub
 		return this.roleRepository.findById(id);
 	}
 
@@ -55,7 +53,6 @@ public class RoleServiceImpl implements RoleService{
 	 */
 	@Override
 	public List<Role> findAll() {
-		// TODO Auto-generated method stub
 		return this.roleRepository.findAll();
 	}
 }

@@ -24,15 +24,13 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
 	private UserRepository userRepository;
-	private RoleRepository roleRepository;
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private RoleService roleService;
 
-	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+	public UserServiceImpl(UserRepository userRepository, 
 			PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
-		this.roleRepository = roleRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
 
@@ -60,8 +58,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public List<User> findAllUsers() {
-		List<User> users = userRepository.findAll();
-		return users;
+		return userRepository.findAll();
 	}
 
 	/**
@@ -72,7 +69,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public List<UserDto> findAllUserDto() {
-		List<UserDto> usersDto = new ArrayList();
+		List<UserDto> usersDto = new ArrayList<UserDto>();
 		List<User> users = userRepository.findAll();
 		for (User user : users) {
 			UserDto userDto = new UserDto();
@@ -97,11 +94,13 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public void updateUser(UserDto userDTO, long id) {
-		User user = this.userRepository.findById(id).get();
+		User user = new User();
+		if(this.userRepository.findById(id).isPresent()) {
+			user = this.userRepository.findById(id).get();
+		}
 		user.setPassword(userDTO.getPassword());
 		Role role = roleService.findByName(userDTO.getRole());
-		System.out.println(user.getRoles());
-		if (user.getRoles().size() == 0) {
+		if (user.getRoles().isEmpty()) {
 			ArrayList<Role> roles = new ArrayList<>(user.getRoles());
 			roles.add(role);
 			user.setRoles(roles);

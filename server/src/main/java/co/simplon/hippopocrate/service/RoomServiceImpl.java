@@ -26,7 +26,6 @@ public class RoomServiceImpl implements RoomService {
 	 */
 	@Override
 	public Room saveRoom(Room room) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -36,7 +35,6 @@ public class RoomServiceImpl implements RoomService {
 	 */
 	@Override
 	public List<Room> fetchRoomList() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -48,13 +46,12 @@ public class RoomServiceImpl implements RoomService {
 	 */
 	@Override
 	public Room updateRoom(Room room, long roomId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void deleteRoomById(long roomId) {
-		// TODO Auto-generated method stub
+		// Method that we do not use but is mandatory
 		
 	}
 	
@@ -66,7 +63,11 @@ public class RoomServiceImpl implements RoomService {
 	 */
 	@Override
 	public Room findById(long roomId) {
-		return this.Rr.findById(roomId).get();
+		Room room = new Room();
+		if(this.Rr.findById(roomId).isPresent()) {
+			room = this.Rr.findById(roomId).get();
+		}
+		return room;
 	}
 
 }

@@ -2,16 +2,11 @@ package co.simplon.hippopocrate.service;
 
 import java.util.List;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.hippopocrate.dto.CommentaryDTO;
 import co.simplon.hippopocrate.model.Commentary;
-import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.repository.CommentaryRepository;
 import co.simplon.hippopocrate.repository.PatientRepository;
 import co.simplon.hippopocrate.repository.UserRepository;
@@ -43,8 +38,12 @@ public class CommentaryServiceImpl implements CommentaryService {
 		Commentary commentary = new Commentary();
 		commentary.setId(commentaryDTO.getId());
 		commentary.setCommentary(commentaryDTO.getCommentary());
-		commentary.setPatient(pr.findById(commentaryDTO.getPatientId()).get());
-		commentary.setUser(ur.findById(commentaryDTO.getUserId()).get());
+		if(pr.findById(commentaryDTO.getPatientId()).isPresent()) {
+			commentary.setPatient(pr.findById(commentaryDTO.getPatientId()).get());
+		}
+		if(ur.findById(commentaryDTO.getUserId()).isPresent()) {
+			commentary.setUser(ur.findById(commentaryDTO.getUserId()).get());
+		}
 		cr.save(commentary);
 	}
 
@@ -71,6 +70,7 @@ public class CommentaryServiceImpl implements CommentaryService {
 
 	@Override
 	public void deleteCommentaryById(int id) {
-	}
+   // TODO Method is empty because we do not use it but it is mandatory
+ }
 
 }

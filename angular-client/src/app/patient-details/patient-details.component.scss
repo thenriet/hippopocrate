@@ -1,6 +1,7 @@
 .titre {
   font-size: 40px;
 }
+
 p {
   display: flex;
   justify-content: center;
@@ -13,16 +14,10 @@ p {
   padding-top: 100px;
 }
 
-h1 {
-  text-align: center;
-}
-
 h1,
-h2,
 p {
   font-family: "Roboto Slab";
   text-align: center;
-
 }
 
 form {
@@ -71,6 +66,7 @@ table {
   border-collapse: collapse;
   background-color: white;
   margin: 30px;
+  width: 60vw;
 }
 tr {
   font-family: "Roboto Slab";

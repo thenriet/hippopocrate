@@ -36,10 +36,6 @@ public class Bed {
 	@OneToOne(mappedBy = "bed")
 	@JoinColumn(nullable=true)
     private Patient patient;
-	
-	public Bed() {
-		
-	}
 
 	public long getId() {
 		return id;

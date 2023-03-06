@@ -44,7 +44,7 @@
         </button>
       </div>
     </ng-template>
-    <div *ngIf="role === 'ROLE_INFIRMIER'">
+    <div *ngIf="role === 'ROLE_INFIRMIER' || 'ROLE_ADMIN'">
       <table *ngFor="let commentary of commentaries">
         <tr class="date">
           Suivi patient par

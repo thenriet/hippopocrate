@@ -42,8 +42,11 @@ public class BedServiceImpl {
 	 * @return the bed object
 	 */
 	public Bed findBedById(long bedId) {
-	
-		return br.findById(bedId).get();
+		Bed bed =  new Bed();
+		if(br.findById(bedId).isPresent()) {
+			bed = br.findById(bedId).get();
+		}
+		return bed;
 	}
 	
 	/**
@@ -53,12 +56,15 @@ public class BedServiceImpl {
 	 * @return
 	 */
 	public Bed updateBed(Bed bed, long bedId) {
-		Bed bedInDB = br.findById(bedId).get();
+		Bed bedInDB = new Bed();
+		if(br.findById(bedId).isPresent()) {
+			bedInDB = br.findById(bedId).get();
+		}
         return br.save(bedInDB);
     }
 
 	public void deleteBedById(long bedId) {
-		
-	}
+   // Method is empty because we do not use it but it is mandatory
+ }
 
 }

@@ -1,19 +1,9 @@
+
 package co.simplon.hippopocrate.controller;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.hippopocrate.dto.PatientDTO;
 import co.simplon.hippopocrate.model.Role;
 
 import co.simplon.hippopocrate.model.User;
@@ -54,10 +43,7 @@ public class AuthController {
 	@PostMapping("login")
 	public boolean login(@RequestBody User user) {
 		User existingUser = userService.findUserByName(user.getName());
-		if (existingUser != null) {
-			return true;
-		}
-		return false;
+		return (existingUser != null);
 }
 	
 	/**
@@ -86,6 +72,11 @@ public class AuthController {
 	@GetMapping("users/roles/{id}")
 	public Optional<Role> getRoleById(@PathVariable int id) {
 		return this.roleService.findById(id);
+	}
+	
+	@GetMapping("users/roles")
+	public List<Role> getAllROles() {
+		return this.roleService.findAll();
 	}
 	/**
 	 * Method to save a user in the database

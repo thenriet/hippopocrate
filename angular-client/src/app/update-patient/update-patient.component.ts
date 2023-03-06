@@ -67,6 +67,7 @@ export class UpdatePatientComponent {
     this.patientService.update(this.updatePatient, this.id)
     .subscribe(updatedPatient => {
       console.log('Patient updated:', updatedPatient);
+      this.gotoPatientDetails(this.id);
     }, error => {
       console.error('Error updating patient:', error);
     });
@@ -79,7 +80,7 @@ export class UpdatePatientComponent {
       this.error = true;
     }
 
-    this.gotoPatientDetails(this.id);
+
   }
 
   loadPatientById() {

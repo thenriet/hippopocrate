@@ -40,16 +40,10 @@ public class SecurityConfig {
 	 */
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests((authorize) -> authorize.requestMatchers("/api/**").permitAll().requestMatchers("/api/users/{id}").permitAll());
+		http.csrf().disable().authorizeHttpRequests(authorize -> authorize.requestMatchers("/api/**").permitAll().requestMatchers("/api/users/{id}").permitAll());
 		return http.build();
 	}
-//	
-//    @Bean
-//    public AuthenticationManager authenticationManager(
-//                                 AuthenticationConfiguration configuration) throws Exception {
-//        return configuration.getAuthenticationManager();
-//    }
-
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
