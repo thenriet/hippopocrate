@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import co.simplon.hippopocrate.model.Bed;
 import co.simplon.hippopocrate.repository.BedRepository;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the beds' management on our website
+ *
+ */
 @Service
 public class BedServiceImpl {
 	

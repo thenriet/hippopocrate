@@ -20,6 +20,10 @@ import co.simplon.hippopocrate.service.CommentaryService;
 import co.simplon.hippopocrate.service.CommentaryServiceImpl;
 import co.simplon.hippopocrate.service.UserService;
 
+/**
+ * @author Caroline
+ *
+ */
 @RestController
 @Controller
 @CrossOrigin(origins = "http://localhost:4200")
@@ -29,26 +33,13 @@ public class CommentaryController {
 
 	@Autowired
 	private CommentaryServiceImpl csi;
-
+	
+	/**
+	 * Method to associate a commentary to a Patient files
+	 * @param commentaryDTO
+	 */
 	@PostMapping("suivipatient")
 	void addCommentary(@RequestBody CommentaryDTO commentaryDTO) {
-		System.out.println("Premiere étape");
 		csi.saveCommentary(commentaryDTO);
 	}
-
-//	@GetMapping("suivipatient/{id}")
-//	public Commentary findById(@PathVariable long id) {
-//		return csi.findCommentaryById(id);
-//	}
-//
-//	@GetMapping("suivipatient/:id")
-//	public Commentary updateById(@PathVariable long id) {
-//		return csi.findCommentaryById(id);
-//	}
-
-//	@PutMapping("suivipatient/:id")
-//	void updateCommentary(@RequestBody Patient patient, @PathVariable long patientId) {
-//		System.out.println("je suis là!");
-//		psi.updatePatient(patient, patientId);
-//	}
 }

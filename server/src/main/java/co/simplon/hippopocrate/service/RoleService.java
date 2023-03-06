@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 import co.simplon.hippopocrate.model.Role;
 
+/**
+* @author Caroline
+* Interface that contains the methods use for the role'
+*
+*/
 @Service
 public interface RoleService {
     Role findByName(String name);

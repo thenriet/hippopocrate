@@ -6,6 +6,11 @@ import java.util.Optional;
 import co.simplon.hippopocrate.model.User;
 import co.simplon.hippopocrate.model.UserDto;
 
+/**
+* @author Caroline
+* Interface that contains the methods use for the user'
+*
+*/
 public interface UserService {
 
     User findUserByName(String name);

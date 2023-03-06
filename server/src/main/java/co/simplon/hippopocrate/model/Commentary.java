@@ -20,6 +20,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the commentary's informations
+ *
+ */
 @jakarta.persistence.Entity
 @Table(name = "records")
 

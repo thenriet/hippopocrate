@@ -16,6 +16,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the Users' management on our website
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

@@ -10,12 +10,18 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the role' informations
+ *
+ */
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name="roles")
+
 public class Role
 {
     @Id

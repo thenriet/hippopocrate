@@ -18,6 +18,11 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the patient's informations
+ *
+ */
 @jakarta.persistence.Entity
 @Table(name = "patients")
 

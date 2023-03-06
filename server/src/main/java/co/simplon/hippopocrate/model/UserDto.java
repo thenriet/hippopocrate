@@ -1,5 +1,10 @@
 package co.simplon.hippopocrate.model;
 
+/**
+ * @author Caroline
+ * File based on the User Model that permit to get the informations associate to an user 
+ *
+ */
 public class UserDto {
 	private long id;
 	private String name;

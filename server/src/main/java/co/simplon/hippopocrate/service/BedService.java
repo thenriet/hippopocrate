@@ -4,6 +4,11 @@ import java.util.List;
 
 import co.simplon.hippopocrate.model.Bed;
 
+/**
+ * @author Caroline
+ * Interface that contains the methods use for the beds'
+ *
+ */
 public interface BedService {
 	
 	 // save operation

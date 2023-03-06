@@ -17,6 +17,11 @@ import co.simplon.hippopocrate.model.Patient;
 import co.simplon.hippopocrate.model.Commentary;
 import co.simplon.hippopocrate.repository.PatientRepository;
 
+/**
+ * @author Caroline 
+ * File that contained the methods used for the patients' management on our website
+ *
+ */
 @Service
 public class PatientServiceImpl implements PatientService {
 

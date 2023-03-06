@@ -10,8 +10,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+/**
+ * @author Caroline
+ * File that permit to transfer the beds' informations
+ *
+ */
 @jakarta.persistence.Entity
 @Table(name = "beds")
+
+
 public class Bed {
 	
 	@Id
