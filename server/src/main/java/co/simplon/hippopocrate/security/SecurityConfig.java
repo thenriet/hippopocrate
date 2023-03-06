@@ -30,7 +30,7 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests((authorize) -> authorize.requestMatchers("/api/**").permitAll().requestMatchers("/api/updateUser/{id}").permitAll());
+		http.csrf().disable().authorizeHttpRequests((authorize) -> authorize.requestMatchers("/api/**").permitAll());
 //		http.headers().frameOptions().disable();;
 //						.requestMatchers("/addClient").hasRole("ADMIN")
 //						.requestMatchers("/formUpdateClient/{id}").hasRole("ADMIN")

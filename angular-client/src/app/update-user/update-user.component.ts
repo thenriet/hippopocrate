@@ -8,16 +8,15 @@ import { UserServiceService } from '../service/user-service.service';
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
-  styleUrls: ['./update-user.component.scss']
+  styleUrls: ['./update-user.component.scss'],
 })
 export class UpdateUserComponent implements OnInit {
-
   updateUserForm!: FormGroup;
   user = new User();
   updateUser = new User();
   roles!: Role[];
   roleId!: number;
-  userListLength!: number;
+  // userListLength!: number;
   id!: number;
 
   constructor(
@@ -39,29 +38,30 @@ export class UpdateUserComponent implements OnInit {
       role: ['', Validators.required],
     });
 
-    this.userService
-      .findAll()
-      .subscribe((result) => (this.userListLength = result.length = 1));
+    // this.userService
+    //   .findAll()
+    //   .subscribe((result) => (this.userListLength = result.length + 1));
   }
 
   onSubmit() {
     let data = this.updateUserForm.value;
-    if(this.updateUserForm.value.name) {
-      this.updateUser.name = this.updateUserForm.value.name;
+    console.log(data);
+    if (data.name) {
+      this.updateUser.name = data.name;
     } else {
       this.updateUser.name = this.user.name;
     }
-    if(this.updateUserForm.value.role) {
-      this.updateUser.role = this.updateUserForm.value.role;
-    } else {
-      this.updateUser.role = this.user.role;
-    }
+    this.updateUser.role = data.role;
     this.updateUser.password = this.user.password;
-    this.userService.update(this.updateUser, this.id).subscribe(updateUser => {
-      console.log('User updated:', updateUser);
-    }, error => {
-      console.error('Error updating user:', error);
-    });
+    console.log(this.updateUser);
+    this.userService.update(this.updateUser, this.id).subscribe(
+      (updateUser) => {
+        console.log('User updated:', updateUser);
+      },
+      (error) => {
+        console.error('Error updating user:', error);
+      }
+    );
 
     this.goToUserList();
   }
@@ -80,7 +80,7 @@ export class UpdateUserComponent implements OnInit {
   goToUserList() {
     this.router.navigate(['/users']).then(() => {
       window.location.reload();
-    });;
+    });
   }
 
   loadUserById() {
@@ -91,7 +91,7 @@ export class UpdateUserComponent implements OnInit {
       },
       error: (e) => {
         console.log(e);
-      }
+      },
     });
   }
 }

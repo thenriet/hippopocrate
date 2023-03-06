@@ -30,8 +30,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
-  // border: solid 2px black;
+  width: 60vw;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 100px;
@@ -54,7 +53,7 @@ form label {
 form button {
   font-family: "Roboto Slab";
   width: 100px;
-  font-size: 12px;
+  font-size: 15px;
   border: solid 1px white;
   border-radius: 15px;
   height: 40px;

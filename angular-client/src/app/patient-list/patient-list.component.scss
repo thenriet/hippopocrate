@@ -75,6 +75,11 @@ button:hover {
   }
 }
 
+.ajouter {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
   .tableau {
     font-size: 16px;
