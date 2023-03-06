@@ -116,14 +116,13 @@ public class AuthController {
 		return this.userService.findByName(username);
 	}
 	
-	
 	/**
 	 * Method to modify an existing User's role
 	 * @param userDTO 
 	 * @return the new User's role
 	 */
-	@PutMapping("updateUser/{id}")
-	void updateUser (@RequestBody UserDto userDTO, @PathVariable int id) {
+	@PutMapping("updateuser/{id}")
+	void updateUser (@RequestBody UserDto userDTO, @PathVariable long id) {
 		this.userService.updateUser(userDTO, id);
 	}
 }

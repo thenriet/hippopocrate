@@ -11,7 +11,7 @@ export class UserServiceService {
   private usersUrl = 'http://localhost:8080/api/users';
   private usersDtoUrl = 'http://localhost:8080/api/usersDto';
   private rolesUrl = 'http://localhost:8080/api/users/roles';
-  private updateUrl = 'http://localhost:8080/api/updateUser';
+  private updateUrl = 'http://localhost:8080/api/updateuser';
 
   constructor(private http: HttpClient) {}
 

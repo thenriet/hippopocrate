@@ -4,7 +4,13 @@
     <h1>Hippopocrate</h1>
     <h2>Modifier un utilisateur</h2>
     <label>Nom d'utilisateur :</label>
-    <input type="text" name="name" formControlName="name" required placeholder="{{ user.name }}" />
+    <input
+      type="text"
+      name="name"
+      formControlName="name"
+      required
+      placeholder="{{ user.name }}"
+    />
     <label>Habilitation :</label>
     <select
       [(ngModel)]="roleId"

@@ -52,12 +52,14 @@ public class PatientServiceImpl implements PatientService {
 		patientDTO.setAddress(patient.getAddress());
 		patientDTO.setDateIn(patient.getDateIn());
 		patientDTO.setDateOut(patient.getDateOut());
-		patientDTO.setBedId(patient.getBed().getId());
-		patientDTO.setBedNumber(patient.getBed().getNumber());
-		patientDTO.setRoomId(patient.getBed().getRoom().getId());
-		patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
-		patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
-		patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
+		if (patient.getBed() != null) {
+			patientDTO.setBedId(patient.getBed().getId());
+			patientDTO.setBedNumber(patient.getBed().getNumber());
+			patientDTO.setRoomId(patient.getBed().getRoom().getId());
+			patientDTO.setRoomNumber(patient.getBed().getRoom().getNumber());
+			patientDTO.setServiceId(patient.getBed().getRoom().getService().getId());
+			patientDTO.setServiceName(patient.getBed().getRoom().getService().getName());
+		}
 		return patientDTO;
 	}
 
@@ -95,7 +97,7 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public void deletePatientById(long patientId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public PatientDTO createPatientDTOFromDB(long id) {
