@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author Caroline, Ondine
- * File that contained the methods used for the Users' management on our website
+ * @author Caroline, Ondine File that contained the methods used for the Users'
+ *         management on our website
  *
  */
 @Service
@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * Method to save a new user in the database from a userDTo object
+	 * 
 	 * @param userDto
 	 *
 	 */
@@ -53,8 +54,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
-	 *Method to fetch all the existing users
-	 *@return the list of users
+	 * Method to fetch all the existing users
+	 * 
+	 * @return the list of users
 	 */
 	@Override
 	public List<User> findAllUsers() {
@@ -64,6 +66,7 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * Method to find all the existing users and convert them into userDTO objects
+	 * 
 	 * @return the list of userDTO objects
 	 *
 	 */
@@ -87,19 +90,14 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * Method to update a user in the database from a userDTO object
+	 * 
 	 * @param userDTO
-	 * @param id the user id
+	 * @param id      the user id
 	 *
 	 */
 	@Override
 	public void updateUser(UserDto userDTO, long id) {
 		User user = this.userRepository.findById(id).get();
-		System.out.println(userDTO);
-		if(userDTO.getName() == null) {
-			user.setName(userDTO.getName());
-		} else {
-			user.setName(userDTO.getName());
-		}
 		user.setPassword(userDTO.getPassword());
 		Role role = roleService.findByName(userDTO.getRole());
 		System.out.println(user.getRoles());
@@ -116,6 +114,7 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * Method to find the role of a user thanks to the user name
+	 * 
 	 * @param name the name of the user
 	 * @return the role of the user
 	 *
@@ -132,9 +131,10 @@ public class UserServiceImpl implements UserService {
 		return userDto.getRole();
 
 	}
-	
+
 	/**
 	 * Method to find a user by his name
+	 * 
 	 * @param name
 	 * @return the user
 	 *
@@ -146,6 +146,7 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * Method to find a user by his id
+	 * 
 	 * @param id
 	 * @return the user
 	 *
@@ -157,6 +158,7 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * Method to find a user id by the user name
+	 * 
 	 * @param name
 	 * @return the user id
 	 *
