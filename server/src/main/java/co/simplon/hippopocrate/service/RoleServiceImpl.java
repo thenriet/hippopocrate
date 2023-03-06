@@ -10,7 +10,7 @@ import co.simplon.hippopocrate.model.Role;
 import co.simplon.hippopocrate.repository.RoleRepository;
 
 /**
- * @author Caroline 
+ * @author Caroline, Ondine 
  * File that contained the methods used for the roles' management on our website
  *
  */
@@ -24,18 +24,35 @@ public class RoleServiceImpl implements RoleService{
 		this.roleRepository = roleRepository;
 	}
 
+	/**
+	 * Method to find a role by its name
+	 * @param name the role name
+	 * @return the role object
+	 *
+	 */
 	@Override
 	public Role findByName(String name) {
 		// TODO Auto-generated method stub
 		return this.roleRepository.findByName(name);
 	}
 	
+	/**
+	 * Method to find a role by its id
+	 * @param id
+	 * @return the role object
+	 *
+	 */
 	@Override
 	public Optional<Role> findById(int id) {
 		// TODO Auto-generated method stub
 		return this.roleRepository.findById(id);
 	}
 
+	/**
+	 * Method to find all the roles
+	 * return the list of roles
+	 *
+	 */
 	@Override
 	public List<Role> findAll() {
 		// TODO Auto-generated method stub

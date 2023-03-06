@@ -17,7 +17,7 @@ import co.simplon.hippopocrate.repository.PatientRepository;
 import co.simplon.hippopocrate.repository.UserRepository;
 
 /**
- * @author Caroline 
+ * @author Caroline, Ondine
  * File that contained the methods used for the commentaries' management on our website
  *
  */
@@ -33,6 +33,11 @@ public class CommentaryServiceImpl implements CommentaryService {
 	@Autowired
 	private UserRepository ur;
 
+	/**
+	 * Method to save a commentary from a commentaryDTO object
+	 * @param commentaryDTO
+	 *
+	 */
 	@Override
 	public void saveCommentary(CommentaryDTO commentaryDTO) {
 		Commentary commentary = new Commentary();
@@ -43,11 +48,22 @@ public class CommentaryServiceImpl implements CommentaryService {
 		cr.save(commentary);
 	}
 
+	/**
+	 * Method to fetch all the commentaries
+	 * @return the list of commentaries
+	 *
+	 */
 	@Override
 	public List<Commentary> fetchCommentaryList() {
 		return cr.findAll();
 	}
 
+	/**
+	 * Method to update a commentary by its id
+	 * @param commentary
+	 * @param id
+	 *
+	 */
 	@Override
 	public Commentary updateCommentary(Commentary commentary, int id) {
 		return null;

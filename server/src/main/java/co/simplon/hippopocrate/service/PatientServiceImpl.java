@@ -18,7 +18,7 @@ import co.simplon.hippopocrate.model.Commentary;
 import co.simplon.hippopocrate.repository.PatientRepository;
 
 /**
- * @author Caroline 
+ * @author Caroline, Ondine
  * File that contained the methods used for the patients' management on our website
  *
  */
@@ -36,12 +36,21 @@ public class PatientServiceImpl implements PatientService {
 		return pr.save(patient);
 	}
 
+	/**
+	 * Method to fetch all the patients
+	 *
+	 */
 	@Override
 	public List<Patient> fetchPatientList() {
 		// TODO Auto-generated method stub
 		return pr.findAll();
 	}
 
+	/**
+	 * Method to find a patient by his id
+	 * @param patientId
+	 * @return a patient DTO object 
+	 */
 	public PatientDTO findPatientById(long patientId) {
 		Patient patient = pr.findById(patientId).get();
 		PatientDTO patientDTO = new PatientDTO();
@@ -63,6 +72,12 @@ public class PatientServiceImpl implements PatientService {
 		return patientDTO;
 	}
 
+	/***
+	 * Method to update information about a specific patient
+	 *@param patientDTO
+	 *@param patientId
+	 *@return saves the updated patient
+	 */
 	@Override
 	public Patient updatePatient(PatientDTO patientDTO, long patientId) {
 		// TODO Auto-generated method stub
@@ -100,6 +115,11 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
+	/**
+	 * Method to create a new patient DTO from a patient
+	 * @param id the patient id
+	 * @return the patientDTO object created
+	 */
 	public PatientDTO createPatientDTOFromDB(long id) {
 		Patient patient = pr.findById(id).get();
 		PatientDTO patientDTO = new PatientDTO();
@@ -121,6 +141,10 @@ public class PatientServiceImpl implements PatientService {
 		return patientDTO;
 	}
 
+	/**
+	 * Method to create a list of patientDTO from all the existing patients in the database
+	 * @return the list of patientDTO
+	 */
 	public List<PatientDTO> createPatientsDTOFromDB() {
 		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>();
 		List<Patient> patientsInDB = this.fetchPatientList();
@@ -148,6 +172,11 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
+	/**
+	 * Method to find all the patients from a specific service
+	 * @param id the id of the service
+	 * @return the list of patients
+	 */
 	public List<PatientDTO> fetchPatientsByService(int id) {
 		List<PatientDTO> patientsDTOList = new ArrayList<PatientDTO>();
 		List<Patient> patientsInDB = this.fetchPatientList();
@@ -176,6 +205,10 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
+	/**
+	 * Method to save a patient in the database
+	 * @param patientDTO
+	 */
 	public void savePatientDTO(PatientDTO patientDTO) {
 		// TODO Auto-generated method stub
 		Patient patient = new Patient();
@@ -194,6 +227,12 @@ public class PatientServiceImpl implements PatientService {
 		pr.save(patient);
 	}
 
+	/**
+	 * Method to register the exit of a patient by setting its bed to null
+	 * @param patientDTO
+	 * @param patientId
+	 * @return saving the exited patient
+	 */
 	public Patient exitPatient(PatientDTO patientDTO, long patientId) {
 		Patient patientInDB = pr.findById(patientId).get();
 
@@ -219,7 +258,12 @@ public class PatientServiceImpl implements PatientService {
 		return pr.save(patientInDB);
 	}
 
-	// Méthode pour récupérer les commentaires suivi d'un patient
+	
+	/**
+	 * Method to fetch all the commentaries for a specific patient
+	 * @param patient_Id
+	 * @return the list of commentaries
+	 */
 	public List<CommentaryDTO> findCommentary(long patient_Id) {
 		List<CommentaryDTO> commentariesDTO = new ArrayList<CommentaryDTO>();
 		List<Commentary> commentaries = pr.findById(patient_Id).get().getCommentaries();

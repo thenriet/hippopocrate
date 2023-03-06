@@ -28,6 +28,10 @@ public class CustomUserDetailService implements UserDetailsService {
 		this.userRepository = userRepository;
 	}
 
+	/**
+	 * Method to find a specific user by his name and gets his authorities
+	 *
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
 		User user = userRepository.findByName(name);
